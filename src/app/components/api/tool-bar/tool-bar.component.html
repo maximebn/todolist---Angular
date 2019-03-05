@@ -1,0 +1,45 @@
+<mat-toolbar color="primary" style="min-height: 55px !important; height: 30px !important;">
+    <mat-toolbar-row class="container col-lg-12 mx-auto">
+         <div class="col-lg-2">
+         </div>
+         <div class="col-lg-2 title">
+             To Do List
+         </div>
+         <div class="col-lg-3">
+           <button mat-button><mat-icon>search</mat-icon></button>
+           <mat-form-field>
+               <input matInput placeholder="Recherche" type="text">
+           </mat-form-field>
+         </div>
+         <div class="col-lg-3 mx-auto">
+           <button mat-button>
+               <mat-icon>add</mat-icon>
+           </button>
+           <button mat-button>
+             <mat-icon>poll</mat-icon>
+           </button>
+
+           <button mat-button [matMenuTriggerFor]="settings"><mat-icon>settings</mat-icon></button>
+
+             <mat-menu #settings="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="theme"><mat-icon>color_lens</mat-icon>Thème</button>
+              <button mat-menu-item><mat-icon>help</mat-icon>Aide</button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item><mat-icon>eject</mat-icon>Se déconnecter</button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item><mat-icon>cancel</mat-icon>Se désinscrire</button>
+              <mat-divider></mat-divider>
+
+             </mat-menu>
+
+             <mat-menu #theme="matMenu">
+               <button class="orangeButton" mat-menu-item (click)="changeToOrangeTheme()">Orange</button>
+               <button class="purpleButton" mat-menu-item (click)="changeToPurpleTheme()">Purple</button>
+               <button class="greenButton"  mat-menu-item (click)="changeToGreenTheme()">Green</button>
+             </mat-menu>
+
+         </div>
+         <div class="col-lg-2">
+       </div>
+   </mat-toolbar-row>
+</mat-toolbar>

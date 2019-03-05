@@ -1,0 +1,37 @@
+<!--HEADER : TOOLBAR WITH MENUS AND OPTIONS -->
+<header>
+  <app-tool-bar></app-tool-bar>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+        <mat-drawer-container class="main-container">
+            <mat-drawer class="leftsidenav" mode="side" opened fxLayout="clumn" fxLayoutAlign="space-between>Drawer content">
+              <div fxFlex>
+
+              </div>
+              <div fxFlex="235px">
+                The navigation drawer
+              </div>
+
+            </mat-drawer>
+
+            <mat-drawer class="rightsidenav" mode="side" position="end" opened>
+              <div class="container">
+              </div>
+            </mat-drawer>
+            <mat-drawer-content style="overflow-y: auto" class="col-lg-10">Main content
+              <div>
+                <h4>
+                  Ajouter une tâche
+                </h4>
+              </div>
+              <div>
+                  <button mat-button>
+                      <mat-icon>add</mat-icon> Ajouter la tâche
+                  </button>
+              </div>
+            </mat-drawer-content>
+        </mat-drawer-container>
+  <router-outlet></router-outlet>
+</main>

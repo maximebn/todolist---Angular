@@ -1,0 +1,72 @@
+// --------------------------------------------------- //
+// Buttons :
+
+button {
+  cursor : pointer;
+  outline: 0;
+}
+
+.orangeButton:hover {
+  background-color: rgba(255, 144, 40, 0.75);
+  color: white
+}
+
+.purpleButton:hover {
+  background-color: rgba(133, 45, 74, 0.75);
+  color: white
+}
+
+.greenButton:hover {
+  background-color: rgba(24, 108, 114, 0.75);
+  color: white
+}
+
+// --------------------------------------------------- //
+// Icons :
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: lighter;
+  font-style: lighter;
+  font-size: 25px;
+  display: inline-block;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+// --------------------------------------------------- //
+// Toolbar :
+
+.mat-toolbar {
+  background-color: var(--background-color);
+  position: fixed;
+  z-index: 999;
+}
+
+.mat-toolbar-row {
+  font-size: 14px;
+}
+
+.toolbarmenu {
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.mat-menu-item {
+  font-size: 12px;
+  width: 200px;
+}
+
+// --------------------------------------------------- //
+// Others :
+
+.mat-form-field {
+  font-size: 12px;
+  color: rgba(252, 252, 252, 0.74);;
+}
+
+.input {
+  max-height: 10px;
+}
