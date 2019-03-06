@@ -36,7 +36,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
-import { RequestService } from './shared/services/request.service';
+
+import { TachesListDateComponent } from './components/taches-list-date/taches-list-date.component';
 
 
 
@@ -45,7 +46,8 @@ import { RequestService } from './shared/services/request.service';
     AppComponent,
     ToolBarComponent,
     HomeComponent,
-    ApiComponent
+    ApiComponent,
+    TachesListDateComponent
   ],
   imports: [
     BrowserModule,
@@ -73,9 +75,7 @@ import { RequestService } from './shared/services/request.service';
     OAuthModule.forRoot()
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS, useClass : RequestService, multi: true,
-    }
+    
   ],
 
   bootstrap: [AppComponent]
