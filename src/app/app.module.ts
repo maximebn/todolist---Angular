@@ -38,6 +38,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 
 import { TachesListDateComponent } from './components/taches-list-date/taches-list-date.component';
+import { TachesListProjetComponent } from './components/taches-list-projet/taches-list-projet.component';
 
 
 
@@ -47,7 +48,8 @@ import { TachesListDateComponent } from './components/taches-list-date/taches-li
     ToolBarComponent,
     HomeComponent,
     ApiComponent,
-    TachesListDateComponent
+    TachesListDateComponent,
+    TachesListProjetComponent
   ],
   imports: [
     BrowserModule,
