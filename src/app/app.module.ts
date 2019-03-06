@@ -37,6 +37,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import { RequestService } from './shared/services/request.service';
+import {MatDialogModule} from '@angular/material/dialog';
+import { RegisterDialogComponent } from './components/home/register-dialog/register-dialog.component';
 
 
 
@@ -45,7 +47,8 @@ import { RequestService } from './shared/services/request.service';
     AppComponent,
     ToolBarComponent,
     HomeComponent,
-    ApiComponent
+    ApiComponent,
+    RegisterDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { RequestService } from './shared/services/request.service';
     MatMenuModule,
     MatDividerModule,
     FlexLayoutModule,
+    MatDialogModule,
     HttpClientModule,
     OAuthModule.forRoot()
   ],
@@ -77,6 +81,7 @@ import { RequestService } from './shared/services/request.service';
       provide: HTTP_INTERCEPTORS, useClass : RequestService, multi: true,
     }
   ],
+  entryComponents: [RegisterDialogComponent],
 
   bootstrap: [AppComponent]
 })

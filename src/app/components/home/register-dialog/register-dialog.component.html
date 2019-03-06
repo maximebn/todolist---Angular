@@ -1,0 +1,44 @@
+<div fxLayout='column'>
+
+    <div fxFlex="20%">
+        <button mat-button color="primary" class="cancel no-hover-effect" (click)="onNoClick()"><mat-icon>cancel</mat-icon></button>
+    </div>
+
+    <div>
+      <h6> Inscrivez-vous dès maintenant :</h6>
+    </div>
+
+
+    <div fxFlex="80%" class="main-content">
+      <mat-card>
+
+          <form [formGroup]="registerForm">
+              <mat-form-field>
+                <input matInput placeholder="Votre prénom" formControlName="firstName" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Votre adresse mail" formControlName="mail" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                  <input matInput placeholder="Votre mot de passe" type="password" formControlName="password" required>
+              </mat-form-field>
+         </form>
+
+      </mat-card>
+
+
+        <button mat-button class="valider" [mat-dialog-close]="true" [disabled]="registerForm.invalid">Créez votre compte</button>
+
+    </div>
+</div>
+
+
+
+     <!--
+    // faire des méthodes de vérification des données
+    // un bouton disabled si les trois champs sont nuls ou un des champs est non valide.
+     -->
+
+
