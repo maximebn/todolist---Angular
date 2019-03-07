@@ -1,4 +1,4 @@
 export interface ProjetInterface {
-    id?: number;
+    id?: any;
     titre?: string;
 }

@@ -2,6 +2,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import { TacheService } from 'src/app/shared/services/tacheservice';
+import { ActivatedRoute } from '@angular/router';
 import* as moment from 'moment'
 
 @Component({
@@ -11,25 +12,29 @@ import* as moment from 'moment'
 })
 export class TachesListDateComponent implements OnInit {
   public taches: Array<TacheInterface>;
-  @Input() page:string;
- 
+  @Input() page: string;
+
 
 
   constructor(
-    private tacheService: TacheService
+    private tacheService: TacheService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.page = this.route.snapshot.data.page;
+
+    console.log(this.page);
     this.getRemote(this.page);
   }
-  
+
   public getRemote(page?: string ){
-    
-  
+
+
     this.tacheService.getRemoteTaches(this.page).subscribe((resultat)=>{
     console.log(resultat);
-    this.taches = resultat
-    
+    this.taches = resultat;
+
     })
 
   }

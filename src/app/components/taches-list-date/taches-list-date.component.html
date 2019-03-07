@@ -1,3 +1,16 @@
+
 <div *ngFor="let tache of taches">
-  {{tache.date}}
+  <div>
+    <h2>En retard</h2>
+      <app-tache [tache]="tache" *ngIf= "tache.statut === 'En retard'" ></app-tache>
+  </div>
+  <div>
+      <app-tache [tache]="tache" *ngIf="tache.statut != 'En retard'" ></app-tache>
+  </div>
+
+
+
+</div>
+<div>
+  <!-- ajouter <app-ajout-tache>-->
 </div>

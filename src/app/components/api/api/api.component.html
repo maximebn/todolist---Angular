@@ -5,33 +5,47 @@
 
 <!-- MAIN CONTENT -->
 <main>
-        <mat-drawer-container class="main-container">
-            <mat-drawer class="leftsidenav" mode="side" opened fxLayout="clumn" fxLayoutAlign="space-between>Drawer content">
+        <mat-sidenav-container class="main-container">
+            <mat-sidenav class="leftsidenav" mode="side" opened fxLayout="clumn" fxLayoutAlign="space-between>Drawer content">
               <div fxFlex>
 
               </div>
+
               <div fxFlex="235px">
-                The navigation drawer
+              <div>
+
+                  <button mat-button [routerLink]= "['todayList']" >
+                    <mat-icon>today</mat-icon>
+                    <span matBadge="3">Aujourd'hui</span>
+                  </button>
+                  <button mat-button [routerLink]= "['weekList']" >
+                      <mat-icon>date_range</mat-icon>
+                      <span matBadge="3">7 jours</span>
+                    </button>
+                    <button mat-button [routerLink]= "['allTache']" >
+                        <mat-icon>event_note</mat-icon>
+                        <span matBadge="3">Toutes vos taches</span>
+                      </button>
+
+                <app-projets-list></app-projets-list>
+              </div>
               </div>
 
-            </mat-drawer>
+            </mat-sidenav>
 
-            <mat-drawer class="rightsidenav" mode="side" position="end" opened>
+
+            <mat-sidenav class="rightsidenav" mode="side" position="end" opened>
               <div class="container">
               </div>
-            </mat-drawer>
-            <mat-drawer-content style="overflow-y: auto" class="col-lg-10">Main content
+            </mat-sidenav>
+            <mat-sidenav-content style="overflow-y: auto" class="col-lg-10">Main content
               <div>
-                <h4>
-                  Ajouter une tâche
-                </h4>
+                  <router-outlet></router-outlet>
+                  <app-tache></app-tache>
               </div>
-              <div>
-                  <button mat-button>
-                      <mat-icon>add</mat-icon> Ajouter la tâche
-                  </button>
-              </div>
-            </mat-drawer-content>
-        </mat-drawer-container>
-  <router-outlet></router-outlet>
+
+
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+
 </main>

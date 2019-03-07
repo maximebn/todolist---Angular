@@ -1,3 +1,4 @@
+import { ProjetService } from 'src/app/shared/services/projetservice';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -39,7 +40,11 @@ import {MatDividerModule} from '@angular/material/divider';
 
 import { TachesListDateComponent } from './components/taches-list-date/taches-list-date.component';
 import { TachesListProjetComponent } from './components/taches-list-projet/taches-list-projet.component';
+import { ProjetsListComponent } from './components/projets-list/projets-list.component';
+import { TacheComponent } from './components/tache/tache.component';
 
+import {MatRadioModule} from '@angular/material/radio';
+import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.component';
 
 
 @NgModule({
@@ -49,7 +54,10 @@ import { TachesListProjetComponent } from './components/taches-list-projet/tache
     HomeComponent,
     ApiComponent,
     TachesListDateComponent,
-    TachesListProjetComponent
+    TachesListProjetComponent,
+    ProjetsListComponent,
+    TacheComponent,
+    AjoutProjetComponent
   ],
   imports: [
     BrowserModule,
@@ -74,10 +82,14 @@ import { TachesListProjetComponent } from './components/taches-list-projet/tache
     MatDividerModule,
     FlexLayoutModule,
     HttpClientModule,
-    OAuthModule.forRoot()
+    OAuthModule.forRoot(),
+    MatRadioModule,
+    MatButtonModule,
+
   ],
   providers: [
-    
+
+
   ],
 
   bootstrap: [AppComponent]
