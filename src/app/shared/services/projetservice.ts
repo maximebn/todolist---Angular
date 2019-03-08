@@ -2,7 +2,7 @@ import { ProjetInterface } from './../interface/projet';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 })
 
 export class ProjetService {
+public behaviorSubject : BehaviorSubject<Array<ProjetInterface>> = new BehaviorSubject<Array<ProjetInterface>>([]);
 
 constructor (private httpClient: HttpClient) {
 
@@ -25,7 +26,10 @@ constructor (private httpClient: HttpClient) {
   public saveProjetRemote(projet: ProjetInterface){
     const projetDto = JSON.stringify(projet);
     return this.httpClient.post(environment.apiRoot + 'projet/save', projetDto);
+  }
 
+  public remplaceSubject(projets: Array<ProjetInterface>){
+    this.behaviorSubject.next(projets);
   }
 }
 
