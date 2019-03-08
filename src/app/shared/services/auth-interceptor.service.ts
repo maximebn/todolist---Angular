@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpInterceptor, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpRequest, HttpInterceptor, HttpHandler, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RequestService } from './request.service';
 
@@ -15,20 +15,28 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Je récupère le token depuis le cookie ;
-    const authToken = this.requestService.getTokenFromCookie();
-
     // Je modifie mon header en y ajoutant un cookie :
-    request.headers.set('Authorization', 'Bearer ' + authToken);
 
     // Si le token existe bien, je l'ajoute à toutes les requêtes
     // S'il n'existe pas (cas des premiers accès login/authentification), je ne fais rien.
-    if (this.requestService.isLoggedIn) {
-      const authReq = request.clone({
-        headers: request.headers
-      });
-      return next.handle(authReq);
+    console.log(this.requestService.isLoggedIn);
+
+    if (this.requestService.isLoggedIn()) {
+    const authToken = this.requestService.getTokenFromCookie();
+    console.log(authToken);
+
+    const headers = new HttpHeaders({
+        'Authorization': 'Bearer ' + authToken,
+        'Content-Type': 'application/json'
+        });
+
+      // request.headers.append('Authorization', 'Bearer ' + authToken);
+    const authReq = request.clone({headers});
+
+    return next.handle(authReq);
 
     }
+    else { return next.handle(request); }
   }
 
 }

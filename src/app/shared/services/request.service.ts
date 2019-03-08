@@ -45,12 +45,13 @@ export class RequestService {
     return this.cookieService.get('access_token');
   }
 
-  isLoggedIn() {
+  isLoggedIn(): boolean {
+    console.log(this.cookieService.check('access_token'));
     return this.cookieService.check('access_token');
   }
 
   // Si token : vers l'api, sinon vers login :
-  checkCredentials(){
+  checkCredentials() {
     if (!this.isLoggedIn()) {
         this.router.navigate(['/']);
     } else {
