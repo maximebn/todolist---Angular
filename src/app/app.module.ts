@@ -49,6 +49,13 @@ import { TachesListDateComponent } from './components/taches-list-date/taches-li
 import { TachesListProjetComponent } from './components/taches-list-projet/taches-list-projet.component';
 import { ProjetsListComponent } from './components/projets-list/projets-list.component';
 import { TacheComponent } from './components/tache/tache.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
+
+import { AddingTaskComponent } from './components/api/adding-task/adding-task.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import {MatRadioModule} from '@angular/material/radio';
 import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.component';
@@ -66,7 +73,8 @@ import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.com
     TacheComponent,
     AjoutProjetComponent,
     RegisterDialogComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    AddingTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +91,7 @@ import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.com
     MatCardModule,
     MatChipsModule,
     MatListModule,
+    MatGridListModule,
     MatButtonModule,
     MatInputModule,
     FormsModule,
@@ -95,7 +104,10 @@ import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.com
     HttpClientModule,
     MatRadioModule,
     MatButtonModule,
-
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [
     CookieService,

@@ -1,0 +1,54 @@
+<form [formGroup]="tacheForm">
+
+<mat-card>
+
+  <div class="melo">
+
+    <mat-grid-list cols="4" rowHeight="100px">
+      
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-form-field>
+        <input [formControl]="titreSaisi" class="form-control" required maxlenght="150" matInput
+          placeholder="Tâche">
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-form-field>
+        <input [formControl]="date" class="form-control" matInput [matDatepicker]="picker"
+          placeholder="Choisir une date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1"><button mat-raised-button> 
+        <mat-form-field>
+          <select [formControl]="priorite" matNativeControl placeholder="Priorité">
+            <option value="Normale">Normale</option>
+            <option value="Importante">Importante</option>
+            <option value="Prioritaire">Prioritaire</option>
+          </select>
+        </mat-form-field>
+      </button></mat-grid-tile>
+    
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <button mat-raised-button [matMenuTriggerFor]="settings" (click)="openBottomSheet()" >
+        Projet
+      </button>
+      <mat-menu #settings="matMenu">
+      </mat-menu>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <button mat-raised-button (click)="save()">Ajouter une tâche</button>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1"><button mat-raised-button>Annuler</button> </mat-grid-tile>
+  </mat-grid-list>
+ </div>
+
+</mat-card>
+
+</form>
