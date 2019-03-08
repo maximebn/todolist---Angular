@@ -10,13 +10,8 @@ import * as moment from 'moment';
 export class TacheComponent implements OnInit {
   @Input() tache : TacheInterface;
 
-//public tache: TacheInterface;
-titre = 'une tache';
-    date = moment();
-    titreP = 'maison';
-    statut= 'en cours';
-    priorite= 'non';
-    id = 2;
+
+
 
   constructor() { }
 
