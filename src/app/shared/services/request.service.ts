@@ -53,7 +53,7 @@ export class RequestService {
   // Si token : vers l'api, sinon vers login :
   checkCredentials() {
     if (!this.isLoggedIn()) {
-        this.router.navigate(['/']);
+      this.logout();
     } else {
       this.router.navigate(['/api']);
     }

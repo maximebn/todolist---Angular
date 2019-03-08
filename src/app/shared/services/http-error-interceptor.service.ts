@@ -1,3 +1,5 @@
+import { CookieService } from 'ngx-cookie-service';
+import { RequestService } from 'src/app/shared/services/request.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Injectable } from '@angular/core';
@@ -9,7 +11,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class HttpErrorInterceptorService implements HttpInterceptor {
 
-  constructor(private snackBar: MatSnackBar, private router: Router) {
+  constructor(private snackBar: MatSnackBar, private router: Router, private requestService: RequestService, private cookieService: CookieService) {
 }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -24,7 +26,8 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
             this.snackBar.open('Opération refusée : ce compte existe déjà. Veuillez utiliser une autre adresse ou vous connecter', 'Fermer');
           }
           else if (error.status === 401) {
-            this.snackBar.open('Vous n\'êtes pas autorisé à accéder à cette ressource. Veuillez vous connceter.', 'Fermer');
+            this.snackBar.open('Vous n\'êtes pas autorisé à accéder à cette ressource. Veuillez vous connecter.', 'Fermer');
+            this.cookieService.deleteAll();
             this.router.navigate(['/']);
           }
           else if (error.status === 404) {

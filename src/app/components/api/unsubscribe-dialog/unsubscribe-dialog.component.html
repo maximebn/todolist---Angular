@@ -1,0 +1,30 @@
+<div fxLayout='column'>
+
+  <div fxFlex="20%">
+      <button mat-button color="primary" class="cancel no-hover-effect" (click)="onNoClick()"><mat-icon>cancel</mat-icon></button>
+  </div>
+
+  <div>
+    <h6> Attention, vous êtes sur le point de supprimer votre compte :</h6>
+  </div>
+
+
+  <div fxFlex="60%" class="main-content">
+  <mat-card mat-dialog-content>
+    <div>
+        La suppression de votre compte est irréversible. Elle entraînera la perte de toutes les données associées. Vous ne saurez donc plus quoi faire demain matin.
+        Nous en conserverons évidemment une petite partie de vos données pour se faire quelques billets.
+    </div>
+  </mat-card>
+
+    <div mat-dialog-actions>
+      <div fxFlex="110%">
+          <mat-checkbox ng-click="checked(toggle)">J'ai bien compris que la suppresion de mon compte est définitive.</mat-checkbox>
+      </div>
+      <div fxFlex="110%">
+          <button mat-button ng-disabled="!toggle" class="valider" mat-dialog-close="true" (click)=onValidateDeleting()> Valider la suppresion </button>
+      </div>
+   </div>
+
+  </div>
+</div>

@@ -24,6 +24,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 
 // Material modules :
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -52,6 +53,7 @@ import { TacheComponent } from './components/tache/tache.component';
 
 import {MatRadioModule} from '@angular/material/radio';
 import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.component';
+import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/unsubscribe-dialog.component';
 
 
 @NgModule({
@@ -66,7 +68,8 @@ import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.com
     TacheComponent,
     AjoutProjetComponent,
     RegisterDialogComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    UnsubscribeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +97,7 @@ import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.com
     MatSnackBarModule,
     HttpClientModule,
     MatRadioModule,
+    MatCheckboxModule,
     MatButtonModule,
 
   ],
@@ -107,8 +111,8 @@ import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.com
       useClass: HttpErrorInterceptorService,
       multi: true,
     }
-  ],
-  entryComponents: [RegisterDialogComponent, LoginDialogComponent],
+    ],
+  entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent],
 
   bootstrap: [AppComponent]
 })
