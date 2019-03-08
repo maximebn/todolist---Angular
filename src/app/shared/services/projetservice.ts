@@ -16,7 +16,7 @@ constructor (private httpClient: HttpClient) {
 
 }
   public getRemoteTachesProjet(idProjet: number): Observable<TacheInterface[]> {
-    return this.httpClient.get<TacheInterface[]>(environment.apiRoot + 'projet/listOne?idProjet=' + idProjet);
+    return this.httpClient.get<TacheInterface[]>(environment.apiRoot + 'projet/findOne?idProjet=' + idProjet);
   }
 
   public getRemoteProjets(): Observable<ProjetInterface[]> {
