@@ -36,8 +36,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { TachesListDateComponent } from './components/taches-list-date/taches-list-date.component';
+import { AddingTaskComponent } from './components/api/adding-task/adding-task.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -47,7 +53,8 @@ import { TachesListDateComponent } from './components/taches-list-date/taches-li
     ToolBarComponent,
     HomeComponent,
     ApiComponent,
-    TachesListDateComponent
+    TachesListDateComponent,
+    AddingTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +71,7 @@ import { TachesListDateComponent } from './components/taches-list-date/taches-li
     MatCardModule,
     MatChipsModule,
     MatListModule,
+    MatGridListModule,
     MatButtonModule,
     MatInputModule,
     FormsModule,
@@ -72,7 +80,10 @@ import { TachesListDateComponent } from './components/taches-list-date/taches-li
     MatDividerModule,
     FlexLayoutModule,
     HttpClientModule,
-    OAuthModule.forRoot()
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [
     

@@ -7,7 +7,7 @@ export interface TacheInterface {
     date?: moment.Moment;
     priorite?: string;
     statut?:string; 
-    id?: number;
+    id?: any;
     projet?:ProjetInterface;
   
 }
