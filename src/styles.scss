@@ -26,6 +26,13 @@ md-tab-group {
   color: black;
 }
 
+.no-hover-effect.mat-button.mat-primary .mat-button-focus-overlay,
+.no-hover-effect.mat-button.mat-accent .mat-button-focus-overlay,
+.no-hover-effect.mat-button.mat-warn .mat-button-focus-overlay
+{
+  background-color: transparent;
+}
+
 // Redéfinition du label des onglets :
 .mat-tab-label {
   color : black;

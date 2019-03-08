@@ -1,4 +1,43 @@
-<p>
-  home works!
-</p>
+<main>
+  <header>
+       <mat-toolbar color="primary" style="min-height: 55px !important; height: 30px !important;">
+              <mat-toolbar-row class="container col-lg-12 mx-auto">
+                   <div class="col-lg-2">
+                   </div>
+                   <div class="col-lg-2 title">
+                       To Do List
+                   </div>
+                   <div class="col-lg-2 title">
+                      Découvrez mon fonctionnement
+                  </div>
+                  <div class="col-lg-2 title">
+                      S'inscrire
+                  </div>
+                  <div class="col-lg-2 title">
+                      Se connecter
+                  </div>
+               </mat-toolbar-row>
+      </mat-toolbar>
+  </header>
 
+  <body class="image">
+
+    <h1>
+      Marre de se sentir payé à ne rien foutre ?
+    </h1>
+
+    <h3>
+      Découvrez notre application dévéloppée au coeur de la Tarn Valley
+    </h3>
+
+    <button mat-button (click)="openDialog()">
+        Inscrivez-vous vite !
+    </button>
+
+    <button mat-button color="primary" class="connexion no-hover-effect" (click)="openLoginDialog()">
+      Ou bien connectez-vous si vous possédez déjà un compte
+    </button>
+
+  </body>
+
+</main>

@@ -1,6 +1,8 @@
 import { ProjetService } from 'src/app/shared/services/projetservice';
+import { HttpErrorInterceptorService } from './shared/services/http-error-interceptor.service';
+import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -12,12 +14,12 @@ import { ApiComponent } from './components/api/api/api.component';
 
 
 import { HttpClientModule } from '@angular/common/http';
-import { OAuthModule } from 'angular-oauth2-oidc';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -37,6 +39,11 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
+import { RequestService } from './shared/services/request.service';
+import {MatDialogModule} from '@angular/material/dialog';
+import { RegisterDialogComponent } from './components/home/register-dialog/register-dialog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoginDialogComponent } from './components/home/login-dialog/login-dialog.component';
 
 import { TachesListDateComponent } from './components/taches-list-date/taches-list-date.component';
 import { TachesListProjetComponent } from './components/taches-list-projet/taches-list-projet.component';
@@ -57,7 +64,9 @@ import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.com
     TachesListProjetComponent,
     ProjetsListComponent,
     TacheComponent,
-    AjoutProjetComponent
+    AjoutProjetComponent,
+    RegisterDialogComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -81,16 +90,25 @@ import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.com
     MatMenuModule,
     MatDividerModule,
     FlexLayoutModule,
+    MatDialogModule,
+    MatSnackBarModule,
     HttpClientModule,
-    OAuthModule.forRoot(),
     MatRadioModule,
     MatButtonModule,
 
   ],
   providers: [
-
-
+    CookieService,
+      {
+       provide: HTTP_INTERCEPTORS, useClass : AuthInterceptorService, multi: true,
+     },
+     {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorService,
+      multi: true,
+    }
   ],
+  entryComponents: [RegisterDialogComponent, LoginDialogComponent],
 
   bootstrap: [AppComponent]
 })

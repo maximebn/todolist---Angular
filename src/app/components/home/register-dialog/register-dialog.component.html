@@ -1,0 +1,38 @@
+<div fxLayout='column'>
+
+    <div fxFlex="20%">
+        <button mat-button color="primary" class="cancel no-hover-effect" (click)="onNoClick()"><mat-icon>cancel</mat-icon></button>
+    </div>
+
+    <div>
+      <h6> Inscrivez-vous dès maintenant :</h6>
+    </div>
+
+
+    <div fxFlex="80%" class="main-content">
+      <mat-card mat-dialog-content>
+
+          <form [formGroup]="registerForm">
+              <mat-form-field>
+                <input matInput [(ngModel)]="userData.prenom" placeholder="Votre prénom" formControlName="firstName" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput [(ngModel)]="userData.mail" placeholder="Votre adresse mail" formControlName="mail" required>
+                <mat-error *ngIf="emailFormControl.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                  <input matInput [(ngModel)]="userData.password" placeholder="Votre mot de passe" type="password" formControlName="password" required>
+              </mat-form-field>
+         </form>
+
+      </mat-card>
+
+
+      <div mat-dialog-actions>
+          <button mat-button class="valider" mat-dialog-close="true" [disabled]="registerForm.invalid" (click)=onSaveData()> Créez votre compte</button>
+      </div>
+
+    </div>
+</div>

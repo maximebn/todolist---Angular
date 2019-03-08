@@ -1,0 +1,67 @@
+.image{
+  height:60em; background-size:cover; width:auto;
+  background-image:url('https://d3ptyyxy2at9ui.cloudfront.net/illo-space-telescope-0752a1.png');
+  background-position:50% 50%;
+}
+
+.mat-button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto ;
+  color: white;
+  background-color : rgba(223, 72, 35, 0.945);
+  outline: 0;
+}
+
+// --------------------------------------------------- //
+// Body :
+
+h1 {
+  padding-top: 250px;
+  color : white;
+  font-size: 50px;
+  text-align: center;
+}
+
+h3 {
+  color : rgba(241, 234, 234, 0.747);
+  text-align: center;
+  font-size: 30px;
+  padding-top: 20px;
+}
+
+.connexion {
+  color : white;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  font-size: 13px;
+  margin-top: 30px;
+}
+
+// --------------------------------------------------- //
+// Toolbar :
+
+.mat-toolbar {
+  color: blue;
+  background-color: white;
+  position: fixed;
+  z-index: 999;
+}
+
+.mat-toolbar-row {
+  font-size: 14px;
+}
+
+.toolbarmenu {
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.mat-menu-item {
+  font-size: 12px;
+  width: 200px;
+}

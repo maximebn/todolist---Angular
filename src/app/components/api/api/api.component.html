@@ -6,7 +6,8 @@
 <!-- MAIN CONTENT -->
 <main>
         <mat-sidenav-container class="main-container">
-            <mat-sidenav class="leftsidenav" mode="side" opened fxLayout="clumn" fxLayoutAlign="space-between>Drawer content">
+
+            <mat-sidenav class="leftsidenav" mode="side" opened fxLayout="column" fxLayoutAlign="space-between>Drawer content">
               <div fxFlex>
 
               </div>
@@ -21,11 +22,11 @@
                   <button mat-button [routerLink]= "['weekList']" >
                       <mat-icon>date_range</mat-icon>
                       <span matBadge="3">7 jours</span>
-                    </button>
-                    <button mat-button [routerLink]= "['allTache']" >
+                  </button>
+                  <button mat-button [routerLink]= "['allTache']" >
                         <mat-icon>event_note</mat-icon>
                         <span matBadge="3">Toutes vos taches</span>
-                      </button>
+                  </button>
 
                 <app-projets-list></app-projets-list>
               </div>
@@ -33,19 +34,22 @@
 
             </mat-sidenav>
 
-
             <mat-sidenav class="rightsidenav" mode="side" position="end" opened>
               <div class="container">
               </div>
             </mat-sidenav>
+
             <mat-sidenav-content style="overflow-y: auto" class="col-lg-10">Main content
               <div>
                   <router-outlet></router-outlet>
-                  <app-tache></app-tache>
               </div>
-
-
+              <div>
+                  <button mat-button>
+                      <mat-icon>add</mat-icon> Ajouter la tâche
+                  </button>
+              </div>
             </mat-sidenav-content>
+
         </mat-sidenav-container>
 
 </main>
