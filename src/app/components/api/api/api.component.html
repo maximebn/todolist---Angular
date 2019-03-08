@@ -5,8 +5,8 @@
 
 <!-- MAIN CONTENT -->
 <main>
-        <mat-drawer-container class="main-container">
-            <mat-drawer class="leftsidenav" mode="side" opened fxLayout="clumn" fxLayoutAlign="space-between>Drawer content">
+        <mat-sidenav-container class="main-container">
+            <mat-sidenav class="leftsidenav" mode="side" opened fxLayout="column" fxLayoutAlign="space-between>Drawer content">
               <div fxFlex>
 
               </div>
@@ -14,13 +14,13 @@
                 The navigation drawer
               </div>
 
-            </mat-drawer>
+            </mat-sidenav>
 
-            <mat-drawer class="rightsidenav" mode="side" position="end" opened>
+            <mat-sidenav class="rightsidenav" mode="side" position="end" opened>
               <div class="container">
               </div>
-            </mat-drawer>
-            <mat-drawer-content style="overflow-y: auto" class="col-lg-10">Main content
+            </mat-sidenav>
+            <mat-sidenav-content style="overflow-y: auto" class="col-lg-10">Main content
               <div>
                 <h4>
                   Ajouter une tâche
@@ -31,7 +31,7 @@
                       <mat-icon>add</mat-icon> Ajouter la tâche
                   </button>
               </div>
-            </mat-drawer-content>
-        </mat-drawer-container>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
   <router-outlet></router-outlet>
 </main>

@@ -1,0 +1,33 @@
+<div fxLayout='column'>
+
+  <div fxFlex="20%">
+      <button mat-button color="primary" class="cancel no-hover-effect" (click)="onNoClick()"><mat-icon>cancel</mat-icon></button>
+  </div>
+
+  <div>
+    <h6> Connectez-vous :</h6>
+  </div>
+
+
+  <div fxFlex="80%" class="main-content">
+    <mat-card mat-dialog-content>
+
+        <form [formGroup]="loginForm">
+            <mat-form-field>
+              <input matInput [(ngModel)]="userData.mail" placeholder="Username (adresse mail)" formControlName="mail" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [(ngModel)]="userData.password" placeholder="Mot de passe" type="password" formControlName="password" required>
+            </mat-form-field>
+       </form>
+
+    </mat-card>
+
+
+    <div mat-dialog-actions>
+        <button mat-button class="valider" mat-dialog-close="true" [disabled]="loginForm.invalid" (click)=onSaveData()> Connexion</button>
+    </div>
+
+  </div>
+</div>

@@ -1,5 +1,7 @@
+import { HttpErrorInterceptorService } from './shared/services/http-error-interceptor.service';
+import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -11,12 +13,12 @@ import { ApiComponent } from './components/api/api/api.component';
 
 
 import { HttpClientModule } from '@angular/common/http';
-import { OAuthModule } from 'angular-oauth2-oidc';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -39,6 +41,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import { RequestService } from './shared/services/request.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import { RegisterDialogComponent } from './components/home/register-dialog/register-dialog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoginDialogComponent } from './components/home/login-dialog/login-dialog.component';
 
 
 
@@ -48,7 +52,8 @@ import { RegisterDialogComponent } from './components/home/register-dialog/regis
     ToolBarComponent,
     HomeComponent,
     ApiComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -73,15 +78,21 @@ import { RegisterDialogComponent } from './components/home/register-dialog/regis
     MatDividerModule,
     FlexLayoutModule,
     MatDialogModule,
+    MatSnackBarModule,
     HttpClientModule,
-    OAuthModule.forRoot()
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS, useClass : RequestService, multi: true,
+    CookieService,
+      {
+       provide: HTTP_INTERCEPTORS, useClass : AuthInterceptorService, multi: true,
+     },
+     {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorService,
+      multi: true,
     }
   ],
-  entryComponents: [RegisterDialogComponent],
+  entryComponents: [RegisterDialogComponent, LoginDialogComponent],
 
   bootstrap: [AppComponent]
 })
