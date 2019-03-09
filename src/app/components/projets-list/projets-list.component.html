@@ -16,14 +16,22 @@
 
 
 
-        <button mat-button [routerLink]="['projet', projet.id,'titre', projet.titre]">{{projet.titre}} <mat-icon class="essai">lens</mat-icon></button>
-
-
+        <button mat-button [routerLink]="['projet', projet.id,'titre', projet.titre]"  [hidden]="projet.isUpdating">{{projet.titre}} <mat-icon class="essai">lens</mat-icon></button>
+        <form >
+          
+          <app-ajout-projet [projet]="projet" 
+                            [hidden]="!projet.isUpdating"
+                            [params]="{ titreComp : 'Modifier ce projet',
+                                        placeHolder : projet.titre ,
+                                        update: true ,
+                                        step : 0 } ">
+                          </app-ajout-projet>
+        </form>
             <button mat-icon-button [matMenuTriggerFor]="menu">
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item>
+              <button mat-menu-item (click)="showUpdate(projet)">
                 <mat-icon>create</mat-icon>
                 <span>Modifier</span>
                 <!-- ajouter (click)= update()-->
@@ -40,6 +48,12 @@
             </mat-menu>
           </div>
 
-    <app-ajout-projet></app-ajout-projet>
+    <app-ajout-projet [params]="{ titreComp: 'Ajouter un projet',
+                                  placeHolder: 'nom du projet',
+                                  update: false,
+                                  step : 1 } "
+   
+                      
+                      ></app-ajout-projet>
   </mat-expansion-panel>
 </mat-accordion>

@@ -23,13 +23,20 @@ constructor (private httpClient: HttpClient) {
     return this.httpClient.get<ProjetInterface[]>(environment.apiRoot + 'projet/findAll');
   }
 
-  public saveProjetRemote(projet: ProjetInterface){
+  public saveProjetRemote(projet: ProjetInterface) :Observable<ProjetInterface>{
     const projetDto = JSON.stringify(projet);
+    console.log(projet);
     return this.httpClient.post(environment.apiRoot + 'projet/save', projetDto);
   }
 
   public remplaceSubject(projets: Array<ProjetInterface>){
     this.behaviorSubject.next(projets);
   }
-}
 
+  public updateProjetRemote(projet: ProjetInterface): Observable<ProjetInterface>{
+    const projetDto= JSON.stringify(projet);
+    console.log(projetDto);
+    return this.httpClient.put(environment.apiRoot+ 'projet/update', projetDto)
+  }
+}
+ 

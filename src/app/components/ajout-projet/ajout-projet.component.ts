@@ -1,6 +1,6 @@
 import { ProjetInterface } from './../../shared/interface/projet';
 import { ProjetService } from './../../shared/services/projetservice';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -11,20 +11,20 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AjoutProjetComponent implements OnInit {
 
-public projet: ProjetInterface = {};
+@Input() projet: ProjetInterface;
+@Input() params: any;// Modifier info et affichage composant  (ajouter ou modifier)
+
 titreSaisi = new FormControl();
 public projetForm: FormGroup;
-step :number;
 public projets : Array<ProjetInterface>;
 
   setStep(index: number) {
-    this.step = index;
+    this.params.step = index;
   }
 
   nextStep() {
-    this.step++;
+    this.params.step++;
   }
-
 
   constructor(
     public projetService: ProjetService
@@ -32,11 +32,13 @@ public projets : Array<ProjetInterface>;
   ) { }
 
   ngOnInit() {
-      this.projetForm = new FormGroup({})
+      this.projetForm = new FormGroup({});
+  
 
   }
-
+// Créer un nouveau projet
   public save(){
+    this.projet= {};
     this.projet.id = '';
     this.projet.titre = this.titreSaisi.value;
     //recuperer la liste actuelle de projets
@@ -50,6 +52,27 @@ public projets : Array<ProjetInterface>;
         this.projetService.remplaceSubject(this.projets);
       }
     );
+  }
+
+  //Modifier un projet existant
+  public update(projet: ProjetInterface){
+    this.projet= {};
+    this.projet.id=projet.id;
+    this.projet.titre=this.titreSaisi.value;
+    
+    
+    this.projetService.behaviorSubject.subscribe((resultat) => {
+      this.projets = resultat;
+    })
+    this.projetService.updateProjetRemote(this.projet).subscribe(
+      (resultat)=> {
+        this.projet = resultat;
+        this.projets.slice(this.projet.id);//ajout du projet avec id à la liste récupérée
+        this.projetService.remplaceSubject(this.projets);
+      }
+    );
+
+
   }
 
 }

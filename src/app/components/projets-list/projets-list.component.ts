@@ -13,14 +13,20 @@ export class ProjetsListComponent implements OnInit {
   public projets: Array<ProjetInterface>;
   public subscription: Subscription;
 
+ 
   constructor(private projetService: ProjetService) {}
 
   ngOnInit() {
     this.getRemote();
     this.subscription = this.projetService.behaviorSubject.subscribe((resultat)=>{
       this.projets = resultat;
+      this.projets.forEach(projet => {
+        projet.isUpdating=false;
+        
+      });
     }
     );
+    
 
   }
 
@@ -30,5 +36,12 @@ export class ProjetsListComponent implements OnInit {
       this.projetService.remplaceSubject(this.projets);
     });
   }
+
+  public showUpdate(projet: ProjetInterface){
+    projet.isUpdating=true;
+    
+  }
+
+  
 
 }

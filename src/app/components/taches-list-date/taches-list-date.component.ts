@@ -4,6 +4,7 @@ import { TacheInterface } from 'src/app/shared/interface/tache';
 import { TacheService } from 'src/app/shared/services/tacheservice';
 import { ActivatedRoute } from '@angular/router';
 import* as moment from 'moment'
+import { ToastrComponentlessModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-taches-list-date',
@@ -13,6 +14,7 @@ import* as moment from 'moment'
 export class TachesListDateComponent implements OnInit {
   public taches: Array<TacheInterface>;
   @Input() page: string;
+  @Input() dates: Array<any>;
 
 
 
@@ -23,17 +25,32 @@ export class TachesListDateComponent implements OnInit {
 
   ngOnInit() {
     this.page = this.route.snapshot.data.page;
-
-    console.log(this.page);
+    this.dates= this.route.snapshot.data.dates;
+   
+   
     this.getRemote(this.page);
+   
   }
 
   public getRemote(page?: string ){
 
 
-    this.tacheService.getRemoteTaches(this.page).subscribe((resultat)=>{
+    this.tacheService.getRemoteTaches(page).subscribe((resultat)=>{
     console.log(resultat);
     this.taches = resultat;
+    this.dates=this.route.snapshot.data.dates;
+    if (this.dates.length===0){
+      for(let i=0; i< this.taches.length; i++){
+        
+        let date=this.taches[i].date;
+        
+        if (this.dates.indexOf(date) === -1){
+          let objetDate= { date: date};
+          this.dates.push(objetDate);
+      }
+      }
+    }
+    
 
     })
 
