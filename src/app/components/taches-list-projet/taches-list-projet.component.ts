@@ -25,12 +25,17 @@ constructor(
     this.getRemote();
   }
   public getRemote() {
-     this.projet.id = +this.route.snapshot.paramMap.get('id');
-     this.projet.titre=this.route.snapshot.paramMap.get('titre');
-     console.log(this.projet);
-     this.projetService.getRemoteTachesProjet(this.projet.id).subscribe((resultat) => {
-      this.taches = resultat;
-    });
+    this.route.url.subscribe(()=> {
+      this.projet.id= +this.route.snapshot.paramMap.get('id');
+      this.projet.titre=this.route.snapshot.paramMap.get('titre');
+      this.projetService.getRemoteTachesProjet(this.projet.id).subscribe((resultat) => {
+        this.taches = resultat;
+      });
+    })
+    
+     
+    
+   
   }
 
 }

@@ -2,6 +2,7 @@ import { ProjetInterface } from './../../shared/interface/projet';
 import { ProjetService } from './../../shared/services/projetservice';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-ajout-projet',
@@ -63,16 +64,20 @@ public projets : Array<ProjetInterface>;
     
     this.projetService.behaviorSubject.subscribe((resultat) => {
       this.projets = resultat;
-    })
+    });
     this.projetService.updateProjetRemote(this.projet).subscribe(
       (resultat)=> {
         this.projet = resultat;
-        this.projets.slice(this.projet.id);//ajout du projet avec id à la liste récupérée
+       
+        const index=this.projets.indexOf(projet); // Trouver l'index dans le tableau projets où l'on doit fr la modif
+    
+        this.projets.splice(index, 1, this.projet);//suppression de l'ancien projet à l'index recuperé
+                                                  // et ajout du nouveau projet à cet index
         this.projetService.remplaceSubject(this.projets);
+        this.projet.isUpdating = false;// Réafficher le projet et non le composant pr le modifier
+
       }
     );
-
-
   }
 
 }

@@ -6,6 +6,6 @@
     </div>
     <div>
       <button mat-flat-button>{{tache.date | date: 'dd-MM-yyyy'}}</button>
-      <button mat-flat-button ></button>{{tache.projet.titre}}<mat-icon>lens</mat-icon>
+      <button mat-flat-button [routerLink]="['../projet', tache.projet.id,'titre', tache.projet.titre]">{{tache.projet.titre}}<mat-icon>lens</mat-icon></button>
     </div>
 </div>
