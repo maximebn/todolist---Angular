@@ -1,5 +1,5 @@
 
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import { TacheService } from 'src/app/shared/services/tacheservice';
 import { ActivatedRoute } from '@angular/router';
@@ -13,6 +13,7 @@ import* as moment from 'moment'
 export class TachesListDateComponent implements OnInit {
   public taches: Array<TacheInterface>;
   @Input() page: string;
+  public titre: string;
 
 
 
@@ -23,6 +24,7 @@ export class TachesListDateComponent implements OnInit {
 
   ngOnInit() {
     this.page = this.route.snapshot.data.page;
+    this.titre = this.route.snapshot.data.title;
 
     console.log(this.page);
     this.getRemote(this.page);

@@ -14,17 +14,8 @@ export class AjoutProjetComponent implements OnInit {
 public projet: ProjetInterface = {};
 titreSaisi = new FormControl();
 public projetForm: FormGroup;
-step :number;
-public projets : Array<ProjetInterface>;
-
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
+doIshow = true;
+public projets: Array<ProjetInterface>;
 
   constructor(
     public projetService: ProjetService
@@ -34,6 +25,10 @@ public projets : Array<ProjetInterface>;
   ngOnInit() {
       this.projetForm = new FormGroup({})
 
+  }
+
+  public toggle() {
+    this.doIshow = !this.doIshow;
   }
 
   public save(){

@@ -1,29 +1,11 @@
-<mat-accordion>
-  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-    <mat-expansion-panel-header >
-      <div>
-        <mat-panel-description>
-        <mat-icon>add</mat-icon>
-      </mat-panel-description>
-    </div>
-    <div>
-      <mat-panel-title>
-        Ajouter un projet
-      </mat-panel-title>
-    </div>
-    </mat-expansion-panel-header>
-<form [formGroup]="projetForm">
-<mat-form-field>
-  <input matInput placeholder="Input" [formControl]="titreSaisi" required>
-</mat-form-field>
-<button mat-button (click)="nextStep()" (click)="save()">Valider</button>
-<button mat-button (click)="nextStep()">Annuler</button>
+<form *ngIf="doIshow" [formGroup]="projetForm">
+  <div class="form-group">
+      <input class="form-control" placeholder="Mon nouveau projet" [formControl]="titreSaisi" required>
+          <button mat-button (click)="save()">
+              Ajout projet
+          </button>
+  </div>
 </form>
-
-</mat-expansion-panel>
-
-</mat-accordion>
-
 
 
 

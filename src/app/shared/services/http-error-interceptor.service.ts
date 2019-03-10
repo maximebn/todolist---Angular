@@ -11,7 +11,8 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class HttpErrorInterceptorService implements HttpInterceptor {
 
-  constructor(private snackBar: MatSnackBar, private router: Router, private requestService: RequestService, private cookieService: CookieService) {
+  constructor(private snackBar: MatSnackBar, private router: Router,
+              private requestService: RequestService, private cookieService: CookieService) {
 }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -27,14 +28,14 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
           }
           else if (error.status === 401) {
             this.snackBar.open('Vous n\'êtes pas autorisé à accéder à cette ressource. Veuillez vous connecter.', 'Fermer');
-            this.cookieService.deleteAll();
+            localStorage.removeItem('access_token');
+            console.log(localStorage.getItem('access_token'));
             this.router.navigate(['/']);
           }
           else if (error.status === 404) {
             this.snackBar.open('La page que vous demandez n\'existe plus !', 'Fermer');
             this.router.navigate(['/api']);
           }
-          console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
         }
         return EMPTY;
       })

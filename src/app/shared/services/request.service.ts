@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Injectable({
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class RequestService {
 
-  constructor(private httpClient: HttpClient, private cookieService: CookieService, private router: Router) {}
+  constructor(private httpClient: HttpClient,
+              private router: Router, private snackBar: MatSnackBar) {}
 
    // ------------------------------------------------------------------------------------------------------ //
   // Je demande un token à partir du mail, password, et des données oAuth2 : un body, un en-tête, une uri.
@@ -31,27 +33,31 @@ export class RequestService {
   // ------------------------------------------------------------------------------------------------------ //
   // Je demande au back, et sauvegarde le token dans un cookie :
     this.httpClient.post<any>(uri, body.toString(), {headers}).subscribe(
-      data => this.saveTokenInCookie(data));
+      data => {
+        this.saveToken(data);
+    });
   }
 
   // Je redirgie vers l'api si token généré
-  saveTokenInCookie(token){
-    this.cookieService.set('access_token', token.access_token);
-    console.log( this.cookieService.get('access_token'));
+  saveToken(token){
+    localStorage.setItem('access_token', token.access_token);
     this.router.navigate(['/api']);
   }
 
-  getTokenFromCookie() {
-    return this.cookieService.get('access_token');
+  getTokenFromStorage() {
+    return localStorage.getItem('access_token');
   }
 
   isLoggedIn(): boolean {
-    console.log(this.cookieService.check('access_token'));
-    return this.cookieService.check('access_token');
+    if (localStorage.getItem('access_token')) {
+      return true;
+    }
+    return false;
   }
 
   // Si token : vers l'api, sinon vers login :
   checkCredentials() {
+    console.log(this.isLoggedIn);
     if (!this.isLoggedIn()) {
       this.logout();
     } else {
@@ -61,7 +67,7 @@ export class RequestService {
 
   // logout : je supprimer le cookie, donc le token, je redirige vers login :
   logout() {
-      this.cookieService.deleteAll();
+      localStorage.removeItem('access_token');
       this.router.navigate(['/']);
     }
 

@@ -34,7 +34,7 @@ const routes: Routes = [
       {
         path: 'allTache',
         component: TachesListDateComponent,
-        data: { title: 'Toutes vos taches', page: 'findAll'}
+        data: { title: 'Toutes vos tâches', page: 'findAll'}
       },
       {
         path: 'projet/:id/titre/:titre',

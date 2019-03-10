@@ -14,20 +14,21 @@
 
               <div fxFlex="235px">
               <div>
+                  <mat-divider></mat-divider>
 
-                  <button mat-button [routerLink]= "['todayList']" >
-                    <mat-icon>today</mat-icon>
+                  <button mat-button [routerLink]= "['todayList']" class="sidemenu">
+                      <i class="fas fa-inbox"></i>
                     <span matBadge="3">Aujourd'hui</span>
                   </button>
-                  <button mat-button [routerLink]= "['weekList']" >
-                      <mat-icon>date_range</mat-icon>
-                      <span matBadge="3">7 jours</span>
+                  <button mat-button [routerLink]= "['weekList']" class="sidemenu" >
+                      <i class="far fa-calendar"></i>
+                      <span matBadge="3">7 prochains jours</span>
                   </button>
-                  <button mat-button [routerLink]= "['allTache']" >
-                        <mat-icon>event_note</mat-icon>
+                  <button mat-button [routerLink]= "['allTache']" class="sidemenu">
+                      <i class="far fa-calendar-alt"></i>
                         <span matBadge="3">Toutes vos taches</span>
                   </button>
-
+                  <mat-divider></mat-divider>
                 <app-projets-list></app-projets-list>
               </div>
               </div>
@@ -39,14 +40,9 @@
               </div>
             </mat-sidenav>
 
-            <mat-sidenav-content style="overflow-y: auto" class="col-lg-10">Main content
+            <mat-sidenav-content>
               <div>
                   <router-outlet></router-outlet>
-              </div>
-              <div>
-                  <button mat-button>
-                      <mat-icon>add</mat-icon> Ajouter la tâche
-                  </button>
               </div>
             </mat-sidenav-content>
 

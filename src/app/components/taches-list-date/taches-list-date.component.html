@@ -1,20 +1,48 @@
-<h2>En retard</h2>
-<div *ngFor="let tache of taches">
+<h4>{{ titre }}</h4>
 
-  <div>
+<div *ngIf="taches.length > 0">
 
-      <app-tache [tache]="tache" *ngIf= "tache.statut === 'En retard'" ></app-tache>
+  <h6 class="enretard">
+    En retard :
+  </h6>
+
+  <div class="blocTaches">
+    <div *ngFor="let tache of taches">
+          <app-tache [tache]="tache" *ngIf= "tache.statut === 'En retard'"></app-tache>
     </div>
-</div>
-  <h2>autre</h2>
+  </div>
+
+<h6>
+  En cours :
+</h6>
+
   <div *ngFor="let tache of taches">
   <div>
       <app-tache [tache]="tache" *ngIf="tache.statut != 'En retard'" ></app-tache>
   </div>
-
-
+</div>
 
 </div>
+
+
+<div *ngIf="taches.length == 0">
+    <h6 class="centré">
+        Vous n'avez encore planifié aucune tâche. Il est temps de se réveiller !
+    </h6>
+    <img src="../../assets/Sloth-Vector.jpg"
+        height="300px"
+        width="550px" />
+
+    <div class="centré">
+        <button mat-button>
+            Ajouter une tâche
+        </button>
+    </div>
+</div>
+
+
+
+
 <div>
   <!-- ajouter <app-ajout-tache>-->
 </div>

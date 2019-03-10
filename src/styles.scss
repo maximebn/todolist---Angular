@@ -33,6 +33,19 @@ md-tab-group {
   background-color: transparent;
 }
 
+// Mat-radio-button :
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: var(--background-color);
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: var(--background-color);
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: transparent;
+}
+
 // Redéfinition du label des onglets :
 .mat-tab-label {
   color : black;

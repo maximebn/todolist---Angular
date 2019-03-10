@@ -1,4 +1,3 @@
-import { ProjetService } from 'src/app/shared/services/projetservice';
 import { HttpErrorInterceptorService } from './shared/services/http-error-interceptor.service';
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,7 +23,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 
 // Material modules :
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCheckboxModule, MAT_CHECKBOX_CLICK_ACTION} from '@angular/material/checkbox';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -45,6 +44,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { RegisterDialogComponent } from './components/home/register-dialog/register-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginDialogComponent } from './components/home/login-dialog/login-dialog.component';
+import {MatTreeModule} from '@angular/material/tree';
 
 import { TachesListDateComponent } from './components/taches-list-date/taches-list-date.component';
 import { TachesListProjetComponent } from './components/taches-list-projet/taches-list-projet.component';
@@ -98,9 +98,9 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
     HttpClientModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatButtonModule,
-
-  ],
+    MatTreeModule,
+    MatButtonModule
+    ],
   providers: [
     CookieService,
       {
@@ -110,7 +110,8 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptorService,
       multi: true,
-    }
+    },
+    {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}
     ],
   entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent],
 

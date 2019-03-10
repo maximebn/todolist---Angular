@@ -41,8 +41,11 @@ export class ToolBarComponent implements OnInit {
   public unsubscribe(): void {
     const dialogRef = this.dialog.open(UnsubscribeDialogComponent, {
       width: '700px',
-      height: '500px'});
+      height: '420px'});
   }
+
+
+
 
 
   // ----------------------------------------------------------- //

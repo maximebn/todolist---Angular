@@ -1,11 +1,13 @@
-<div class="row">
-    <div class="col-4">
-      <mat-radio-button class="example-radio-button" >
+<div fxLayout="row">
+  <div fxFlex>
+      <mat-radio-button [disableRipple]="true" class="radio-button" >
         {{tache.titre}}
       </mat-radio-button>
     </div>
-    <div>
+    <div fxFlex>
       <button mat-flat-button>{{tache.date | date: 'dd-MM-yyyy'}}</button>
-      <button mat-flat-button ></button>{{tache.projet.titre}}<mat-icon>lens</mat-icon>
+      <button mat-flat-button >{{tache.projet.titre}}<i class="fas fa-box-open"></i></button>
     </div>
 </div>
+<mat-divider></mat-divider>
+

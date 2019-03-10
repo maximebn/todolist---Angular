@@ -9,20 +9,19 @@
   </div>
 
 
-  <div fxFlex="60%" class="main-content">
-  <mat-card mat-dialog-content>
-    <div>
-        La suppression de votre compte est irréversible. Elle entraînera la perte de toutes les données associées. Vous ne saurez donc plus quoi faire demain matin.
-        Nous en conserverons évidemment une petite partie de vos données pour se faire quelques billets.
+  <div fxFlex class="main-content">
+    <div class="main-text">
+        Vous ne saurez donc plus quoi faire demain matin.
+        Nous conserverons évidemment une petite partie de vos données pour se faire quelques billets.
+        Vous renoncez de fait à vos droits d’accès, de rectification, d’opposition et d’effacement de vos données, et ce, même si c'est illégal.
     </div>
-  </mat-card>
 
-    <div mat-dialog-actions>
-      <div fxFlex="110%">
-          <mat-checkbox ng-click="checked(toggle)">J'ai bien compris que la suppresion de mon compte est définitive.</mat-checkbox>
+    <div mat-dialog-actions class="check">
+      <div>
+          <mat-checkbox [(ngModel)]="disabled">J'ai bien compris qu'on me prend pour un jambon.</mat-checkbox>
       </div>
       <div fxFlex="110%">
-          <button mat-button ng-disabled="!toggle" class="valider" mat-dialog-close="true" (click)=onValidateDeleting()> Valider la suppresion </button>
+          <button mat-button [disabled]="!disabled" class="valider" mat-dialog-close="true" (click)=onValidateDeleting()> Valider la suppresion </button>
       </div>
    </div>
 

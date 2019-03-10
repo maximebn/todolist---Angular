@@ -16,6 +16,12 @@
   outline: 0;
 }
 
+button {
+  outline: none;
+  font-weight: 400;
+  color: grey;
+}
+
 // --------------------------------------------------- //
 // Body :
 
@@ -64,4 +70,14 @@ h3 {
 .mat-menu-item {
   font-size: 12px;
   width: 200px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+  color: rgba(13, 79, 87, 0.877);
+}
+
+.fas {
+  margin-right: 5px;
 }
