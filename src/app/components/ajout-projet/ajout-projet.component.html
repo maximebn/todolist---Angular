@@ -1,4 +1,4 @@
-<form *ngIf="doIshow" [formGroup]="projetForm">
+<form [formGroup]="projetForm">
   <div class="form-group">
       <input class="form-control" placeholder="Mon nouveau projet" [formControl]="titreSaisi" required>
           <button mat-button (click)="save()">

@@ -33,7 +33,7 @@ export class TachesListDateComponent implements OnInit {
   public getRemote(page?: string ){
 
 
-    this.tacheService.getRemoteTaches(this.page).subscribe((resultat)=>{
+    this.tacheService.getRemoteTaches(this.page).subscribe((resultat) => {
     console.log(resultat);
     this.taches = resultat;
 
