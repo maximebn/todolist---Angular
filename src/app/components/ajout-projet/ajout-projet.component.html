@@ -1,31 +1,13 @@
 
-  <mat-expansion-panel [expanded]="params.step === 0 "
-   (opened)="setStep(0)" hideToggle>
-    <mat-expansion-panel-header >
-      <div>
-        <mat-panel-description>
-        <mat-icon [hidden]="params.update">add</mat-icon>
-        <mat-icon  [hidden]="!params.update">create</mat-icon>
-      </mat-panel-description>
-    </div>
-    <div>
-      <mat-panel-title>
-        {{params.titreComp}}
-      </mat-panel-title>
-    </div>
-    </mat-expansion-panel-header>
 <form [formGroup]="projetForm">
-<mat-form-field>
-  <input matInput placeholder={{params.placeHolder}} [formControl]="titreSaisi" required>
-</mat-form-field>
-<button mat-button (click)="nextStep()" (click)="update(projet)" [hidden]="!params.update">Modifier</button>
-<button mat-button (click)="nextStep()" (click)="save()" [hidden]="params.update">Ajouter</button>
-<button mat-button (click)="nextStep()">Annuler</button>
+  <div class="form-group">
+      <input class="form-control" placeholder={{params.placeHolder}} [formControl]="titreSaisi" required>
+          <button mat-button (click)="save()"  [hidden]="params.update">
+              Ajout projet
+          </button>
+          <button mat-button  (click)="update(projet)" [hidden]="!params.update">Modifier</button>
+  </div>
 </form>
-
-</mat-expansion-panel>
-
-
 
 
 

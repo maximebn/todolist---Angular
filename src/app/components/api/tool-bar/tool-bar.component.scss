@@ -4,6 +4,7 @@
 button {
   cursor : pointer;
   outline: 0;
+  font-size:20px;
 }
 
 .orangeButton:hover {
@@ -24,15 +25,12 @@ button {
 // --------------------------------------------------- //
 // Icons :
 
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: lighter;
-  font-style: lighter;
-  font-size: 25px;
-  display: inline-block;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
+.fas {
+  margin-right: 10px;
+}
+
+.fab {
+  margin-top:10px;
 }
 
 // --------------------------------------------------- //
@@ -55,8 +53,9 @@ button {
 }
 
 .mat-menu-item {
-  font-size: 12px;
-  width: 200px;
+  color: rgb(87, 82, 82);
+  font-size: 13px;
+  width: 180px;
 }
 
 // --------------------------------------------------- //
@@ -69,4 +68,10 @@ button {
 
 .input {
   max-height: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-left:20px;
 }

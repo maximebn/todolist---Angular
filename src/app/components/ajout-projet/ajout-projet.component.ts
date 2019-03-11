@@ -1,8 +1,9 @@
 import { ProjetInterface } from './../../shared/interface/projet';
 import { ProjetService } from './../../shared/services/projetservice';
+
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-ajout-projet',
@@ -12,20 +13,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AjoutProjetComponent implements OnInit {
 
-@Input() projet: ProjetInterface;
+
+public projet: ProjetInterface = {};
+public titreSaisi = new FormControl('', Validators.required);
+public projetForm: FormGroup;
+public projets: Array<ProjetInterface>;
 @Input() params: any;// Modifier info et affichage composant  (ajouter ou modifier)
 
-titreSaisi = new FormControl();
-public projetForm: FormGroup;
-public projets : Array<ProjetInterface>;
-
-  setStep(index: number) {
-    this.params.step = index;
-  }
-
-  nextStep() {
-    this.params.step++;
-  }
 
   constructor(
     public projetService: ProjetService

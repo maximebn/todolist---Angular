@@ -12,6 +12,8 @@ export class ProjetsListComponent implements OnInit {
 
   public projets: Array<ProjetInterface>;
   public subscription: Subscription;
+  public doIshow;
+  public doIshowProjects;
 
  
   constructor(private projetService: ProjetService) {}
@@ -37,11 +39,21 @@ export class ProjetsListComponent implements OnInit {
     });
   }
 
+
   public showUpdate(projet: ProjetInterface){
     projet.isUpdating=true;
     
   }
 
   
+
+   public toggle() {
+     this.doIshow = !this.doIshow;
+    }
+
+    public toggleProjects() {
+      this.doIshowProjects = !this.doIshowProjects;
+     }
+
 
 }

@@ -33,6 +33,7 @@ border-width:0.5px;
 
 .mat-sidenav-content {
   padding-top: 100px;
+  height:100%;
   overflow: hidden;
 }
 
@@ -56,3 +57,24 @@ border-width:0.5px;
   height: 100%;
   background-color: white;
 }
+
+.sidemenu {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: left;
+  background-color: transparent;
+  color: rgba(41, 37, 37, 0.767);
+}
+
+.sidemenu:hover {
+  background-color: white;
+}
+
+.fas {
+  margin-right: 12px;
+}
+
+.far {
+  margin-right: 12px;
+}
+

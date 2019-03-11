@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from './../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -59,16 +60,16 @@ export class HomeComponent implements OnInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result)
-      {
       const logUtilisateur: User = new User().deserialize(result);
       console.log(logUtilisateur);
 
       // Je demande un token
       this.requestService.obtainAccessToken(logUtilisateur);
-      }
-    });
-
+      },
+      error => {  {
+        this.snackBar.open('Aie !', 'Fermer');
+      }}
+    );
 
 }
 }

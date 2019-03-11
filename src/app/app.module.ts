@@ -1,4 +1,3 @@
-import { ProjetService } from 'src/app/shared/services/projetservice';
 import { HttpErrorInterceptorService } from './shared/services/http-error-interceptor.service';
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,7 +23,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 
 // Material modules :
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCheckboxModule, MAT_CHECKBOX_CLICK_ACTION} from '@angular/material/checkbox';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -50,6 +49,13 @@ import { TachesListDateComponent } from './components/taches-list-date/taches-li
 import { TachesListProjetComponent } from './components/taches-list-projet/taches-list-projet.component';
 import { ProjetsListComponent } from './components/projets-list/projets-list.component';
 import { TacheComponent } from './components/tache/tache.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
+
+import { AddingTaskComponent } from './components/api/adding-task/adding-task.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import {MatRadioModule} from '@angular/material/radio';
 import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.component';
@@ -69,6 +75,7 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
     AjoutProjetComponent,
     RegisterDialogComponent,
     LoginDialogComponent,
+    AddingTaskComponent,
     UnsubscribeDialogComponent
   ],
   imports: [
@@ -86,6 +93,7 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
     MatCardModule,
     MatChipsModule,
     MatListModule,
+    MatGridListModule,
     MatButtonModule,
     MatInputModule,
     FormsModule,
@@ -99,8 +107,11 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
     MatRadioModule,
     MatCheckboxModule,
     MatButtonModule,
-
-  ],
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
+    ],
   providers: [
     CookieService,
       {
@@ -110,7 +121,8 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptorService,
       multi: true,
-    }
+    },
+    {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}
     ],
   entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent],
 
