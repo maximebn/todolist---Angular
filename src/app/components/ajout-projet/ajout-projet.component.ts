@@ -14,7 +14,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AjoutProjetComponent implements OnInit {
 
 
-public projet: ProjetInterface = {};
+@Input() public projet: ProjetInterface = {};
 public titreSaisi = new FormControl('', Validators.required);
 public projetForm: FormGroup;
 public projets: Array<ProjetInterface>;

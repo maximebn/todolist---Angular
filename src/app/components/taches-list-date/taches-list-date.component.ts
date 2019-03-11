@@ -12,7 +12,7 @@ import { ToastrComponentlessModule } from 'ngx-toastr';
   styleUrls: ['./taches-list-date.component.scss']
 })
 export class TachesListDateComponent implements OnInit {
-  public taches: Array<TacheInterface>;
+  public taches: Array<TacheInterface>=[{}];
   @Input() page: string;
 
   @Input() dates: Array<any>;
