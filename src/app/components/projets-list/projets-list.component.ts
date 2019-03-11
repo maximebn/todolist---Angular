@@ -14,6 +14,7 @@ export class ProjetsListComponent implements OnInit {
   public subscription: Subscription;
   public doIshow;
   public doIshowProjects;
+  public projet: ProjetInterface = {};
 
  
   constructor(private projetService: ProjetService) {}
@@ -24,6 +25,7 @@ export class ProjetsListComponent implements OnInit {
       this.projets = resultat;
       this.projets.forEach(projet => {
         projet.isUpdating=false;
+        console.log(projet);
         
       });
     }
@@ -42,6 +44,7 @@ export class ProjetsListComponent implements OnInit {
 
   public showUpdate(projet: ProjetInterface){
     projet.isUpdating=true;
+    console.log (projet +'update')
     
   }
 
