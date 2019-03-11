@@ -19,11 +19,9 @@ export class AuthInterceptorService implements HttpInterceptor {
 
     // Si le token existe bien, je l'ajoute à toutes les requêtes
     // S'il n'existe pas (cas des premiers accès login/authentification), je ne fais rien.
-    console.log(this.requestService.isLoggedIn);
 
     if (this.requestService.isLoggedIn()) {
-    const authToken = this.requestService.getTokenFromCookie();
-    console.log(authToken);
+    const authToken = this.requestService.getTokenFromStorage();
 
     const headers = new HttpHeaders({
         'Authorization': 'Bearer ' + authToken,
@@ -32,11 +30,8 @@ export class AuthInterceptorService implements HttpInterceptor {
 
       // request.headers.append('Authorization', 'Bearer ' + authToken);
     const authReq = request.clone({headers});
-
     return next.handle(authReq);
-
     }
     else { return next.handle(request); }
   }
-
 }

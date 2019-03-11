@@ -1,3 +1,5 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { RequestService } from './../../../shared/services/request.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -12,8 +14,8 @@ export class UnsubscribeDialogComponent implements OnInit {
   disabled = false;
 
 
-  constructor(private dialogRef: MatDialogRef<UnsubscribeDialogComponent>, private userService: UserService, private router: Router) {
-     }
+  constructor(private dialogRef: MatDialogRef<UnsubscribeDialogComponent>, private snackBar: MatSnackBar,
+              private userService: UserService, private requestService: RequestService) {}
 
   ngOnInit() {
   }
@@ -23,9 +25,12 @@ export class UnsubscribeDialogComponent implements OnInit {
   }
 
   onValidateDeleting(): void {
-    this.userService.deleteUser();
-    this.dialogRef.close();
-    this.router.navigate(['']);
+    this.userService.deleteUser().subscribe((data) => {this.dialogRef.close();
+                                                       this.requestService.logout();
+                                                       // tslint:disable-next-line:max-line-length
+                                                       this.snackBar.open('Votre compte a bien été supprimé. Bon vent.', 'Fermer');
+                                                      }
+    );
 
   }
 

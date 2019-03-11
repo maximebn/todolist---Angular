@@ -1,5 +1,4 @@
 button {
-  display: block;
   outline: 0;
   margin-bottom: 30px;
   width: 100%;
@@ -13,34 +12,27 @@ button {
 .main-content {
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
-  width: 70%;
+  text-align: justify;
+  width: 90%;
+  font-size: 14px;
+}
+
+.main-text {
+  margin-bottom: 20px;
 }
 
 .valider {
   display: block;
+  font-size: 15px;
   float: center;
   margin-left: auto;
   margin-right: auto ;
-  color: black;
-  background-color : rgba(228, 223, 222, 0.795);
-  width: 100%;
-  border-radius: 10px;
-  padding-left: -10px;
-  padding-right: -10px;
-}
-
-.annuler {
-  font-size: 20px;
-  display: block;
-  float: center;
-  margin-left: auto;
-  margin-right: auto ;
+  margin-top:30px;
+  padding: 5px 5px;
   color: white;
-  background-color : rgba(223, 72, 35, 0.945);
-  width: 100%;
-  padding-top:5px;
-  padding-bottom: 5px;
+  background-color : var(--background-color);
+  width: 50%;
+  border-radius: 10px;
 }
 
 form {
@@ -60,5 +52,14 @@ form {
 
 h6 {
   margin-bottom: 25px;
+  text-align: center;
+}
+
+.check {
+  text-align: center;
+  float: center;
+}
+
+.check {
   text-align: center;
 }

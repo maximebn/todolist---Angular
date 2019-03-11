@@ -1,7 +1,7 @@
 import { ProjetInterface } from './../../shared/interface/projet';
 import { ProjetService } from './../../shared/services/projetservice';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-ajout-projet',
@@ -12,19 +12,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AjoutProjetComponent implements OnInit {
 
 public projet: ProjetInterface = {};
-titreSaisi = new FormControl();
+public titreSaisi = new FormControl('', Validators.required);
 public projetForm: FormGroup;
-step :number;
-public projets : Array<ProjetInterface>;
-
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
+public projets: Array<ProjetInterface>;
 
   constructor(
     public projetService: ProjetService

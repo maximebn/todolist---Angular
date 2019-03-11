@@ -12,6 +12,8 @@ export class ProjetsListComponent implements OnInit {
 
   public projets: Array<ProjetInterface>;
   public subscription: Subscription;
+  public doIshow;
+  public doIshowProjects;
 
   constructor(private projetService: ProjetService) {}
 
@@ -30,5 +32,13 @@ export class ProjetsListComponent implements OnInit {
       this.projetService.remplaceSubject(this.projets);
     });
   }
+
+   public toggle() {
+     this.doIshow = !this.doIshow;
+    }
+
+    public toggleProjects() {
+      this.doIshowProjects = !this.doIshowProjects;
+     }
 
 }
