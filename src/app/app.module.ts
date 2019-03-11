@@ -79,6 +79,7 @@ import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.com
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CookieService, 
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
