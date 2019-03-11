@@ -12,7 +12,7 @@
       <button mat-button [routerLink]="['projet', projet.id,'titre', projet.titre]" [hidden]="projet.isUpdating" [disableRipple]="true" class="projets no-hover-effect">
           <span>{{ projet.titre }}</span>
       </button>
-      <app-ajout-projet [projet]="projet" 
+      <app-ajout-projet [projet]="projet"
       [hidden]="!projet.isUpdating"
       [params]="{ titreComp : 'Modifier ce projet',
                   placeHolder : projet.titre ,
@@ -23,7 +23,7 @@
    <div fxFlex>
      <button mat-icon-button [matMenuTriggerFor]="menu" class="bouton-menu" [disableRipple]="true"><i class="fas fa-ellipsis-h"></i></button>
   </div>
-  
+
 
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="showUpdate(projet)">
