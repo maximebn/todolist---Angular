@@ -25,8 +25,6 @@ export class ProjetsListComponent implements OnInit {
       this.projets = resultat;
       this.projets.forEach(projet => {
         projet.isUpdating=false;
-        console.log(projet);
-        
       });
     }
     );
