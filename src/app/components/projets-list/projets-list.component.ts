@@ -64,7 +64,7 @@ export class ProjetsListComponent implements OnInit {
      public openDialogueDelete(projet): void {
       const dialogRef = this.dialog.open(EffacerDialogComponentComponent, {
         width: '350px',
-        height: '150px',
+        height: '160px',
         data: projet});
     }
 }
