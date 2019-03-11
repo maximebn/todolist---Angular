@@ -44,7 +44,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { RegisterDialogComponent } from './components/home/register-dialog/register-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginDialogComponent } from './components/home/login-dialog/login-dialog.component';
-import {MatTreeModule} from '@angular/material/tree';
 
 import { TachesListDateComponent } from './components/taches-list-date/taches-list-date.component';
 import { TachesListProjetComponent } from './components/taches-list-projet/taches-list-projet.component';
@@ -82,7 +81,6 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CookieService,
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
