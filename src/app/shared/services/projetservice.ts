@@ -13,6 +13,7 @@ export class ProjetService {
 public behaviorSubject : BehaviorSubject<Array<ProjetInterface>> = new BehaviorSubject<Array<ProjetInterface>>([]);
 
 constructor (private httpClient: HttpClient) {
+  
 
 }
   public getRemoteTachesProjet(idProjet: number): Observable<TacheInterface[]> {

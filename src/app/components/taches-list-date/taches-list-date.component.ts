@@ -29,8 +29,10 @@ export class TachesListDateComponent implements OnInit {
 
   ngOnInit() {
     this.page = this.route.snapshot.data.page;
+    
 
     this.dates= this.route.snapshot.data.dates;
+    
    
    
 
@@ -52,8 +54,10 @@ export class TachesListDateComponent implements OnInit {
     this.taches = resultat;
     this.dates=this.route.snapshot.data.dates;
     if (this.dates.length===0){
+      
       for(let i=0; i< this.taches.length; i++){
-        
+        let statut= this.taches[i].statut;
+        if(statut !== "En retard"){
         let date=this.taches[i].date;
         
         if (this.dates.indexOf(date) === -1){
@@ -62,7 +66,7 @@ export class TachesListDateComponent implements OnInit {
       }
       }
     }
-    
+  }
 
     })
 
