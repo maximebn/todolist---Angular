@@ -60,6 +60,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
 import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.component';
 import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/unsubscribe-dialog.component';
+import { EffacerDialogComponentComponent } from './components/projets-list/effacer-dialog-component/effacer-dialog-component.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
     RegisterDialogComponent,
     LoginDialogComponent,
     AddingTaskComponent,
-    UnsubscribeDialogComponent
+    UnsubscribeDialogComponent,
+    EffacerDialogComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -124,7 +126,7 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
     },
     {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}
     ],
-  entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent],
+  entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent, EffacerDialogComponentComponent],
 
   bootstrap: [AppComponent]
 })
