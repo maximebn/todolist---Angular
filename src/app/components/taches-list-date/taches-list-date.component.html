@@ -33,7 +33,7 @@
 
 
 <div *ngFor="let date of dates">
-  <h6>{{date.date | date: 'EEEE d MMMM yyyy' }}</h6>
+  <h6>{{date.date | date   : 'EEEE d MMMM yyyy' : undefined : 'fr'  }}</h6>
   <div *ngFor="let tache of taches">
       <div>
           <app-tache [tache]="tache" *ngIf="(tache.date === date.date) &&(tache.statut != 'En retard') " ></app-tache>
