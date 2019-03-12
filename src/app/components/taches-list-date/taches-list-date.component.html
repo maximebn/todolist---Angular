@@ -33,7 +33,7 @@
 
 
 <div *ngFor="let date of dates">
-  <h6>{{date.date | date: 'EEEE d MMMM yyyy'}}</h6>
+  <h6>{{date.date | date   : 'EEEE d MMMM yyyy' : undefined : 'fr'  }}</h6>
   <mat-divider></mat-divider>
   <div *ngFor="let tache of taches">
       <div>
