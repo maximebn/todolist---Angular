@@ -20,20 +20,20 @@ const routes: Routes = [
         path: 'todayList',
         component: TachesListDateComponent,
         data: { title: 'Aujourd\'hui', page: 'todayList', dates: [ 
-          {date: moment().locale('fr').format('YYYY-MM-DD')}
+           moment().locale('fr').format('YYYY-MM-DD')
         ]}
       },
       {
         path: 'weekList',
         component: TachesListDateComponent,
         data: { title: '7 prochains jours', page: 'weekList', dates: [
-          {date: moment().locale('fr').format('YYYY-MM-DD')},
-          {date: moment().locale('fr').add(1, 'days').format('YYYY-MM-DD')},
-           {date: moment().locale('fr').add(2, 'days').format('YYYY-MM-DD')},
-           {date: moment().locale('fr').add(3, 'days').format('YYYY-MM-DD')},
-           {date: moment().locale('fr').add(4, 'days').format('YYYY-MM-DD')},
-           {date: moment().locale('fr').add(5, 'days').format('YYYY-MM-DD')},
-           {date: moment().locale('fr').add(6, 'days').format('YYYY-MM-DD')}
+           moment().locale('fr').format('YYYY-MM-DD'),
+           moment().locale('fr').add(1, 'days').format('YYYY-MM-DD'),
+            moment().locale('fr').add(2, 'days').format('YYYY-MM-DD'),
+            moment().locale('fr').add(3, 'days').format('YYYY-MM-DD'),
+            moment().locale('fr').add(4, 'days').format('YYYY-MM-DD'),
+            moment().locale('fr').add(5, 'days').format('YYYY-MM-DD'),
+            moment().locale('fr').add(6, 'days').format('YYYY-MM-DD')
         ]}
       },
       {
