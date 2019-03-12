@@ -1,13 +1,39 @@
-<div fxLayout="row" fxLayoutAlign="space-between center">
-  <div fxFlex="60%" class="titre">
-      <mat-radio-button [disableRipple]="true" class="radio-button" >
-            {{tache.titre}}
+
+<div>
+<div fxLayout="row">
+
+<div fxFlex="60%">
+      <mat-radio-button [disableRipple]="true" class="radio-button" (click)= changeStatutEffectuee(tache) >
+        {{tache.titre}}
       </mat-radio-button>
     </div>
     <div fxFlex>
       <button mat-flat-button>{{tache.date | date: 'dd-MM-yyyy'}}</button>
       <button mat-flat-button [routerLink]="['../projet', tache.projet.id,'titre', tache.projet.titre]" class="titreProjet">{{tache.projet.titre}}<i class="fas fa-circle-notch"></i></button>
     </div>
+
+
+
+    <div fxFlex=10%>
+      <button mat-icon-button  [matMenuTriggerFor]="menu" class="bouton-menu" [disableRipple]="true"><i class="fas fa-ellipsis-h"></i></button>
+   </div>
+
+
+             <mat-menu #menu="matMenu">
+               <button mat-menu-item (click)="showUpdate(tache)">
+                 <mat-icon>create</mat-icon>
+                 <span>Modifier</span>
+
+               </button>
+               <button mat-menu-item (click)="openDialogueDelete(tache)">
+                 <mat-icon>delete</mat-icon>
+                 <span>Supprimer</span>
+
+               </button>
+
+             </mat-menu>
 </div>
+</div>
+
 <mat-divider></mat-divider>
 
