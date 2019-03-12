@@ -20,5 +20,11 @@ public getRemoteTaches(page): Observable<TacheInterface[]> {
           environment.apiRoot+'tache/'+page)
       }
 
+public updateTache(tache:TacheInterface) :Observable<any>{
+  const tacheDto = JSON.stringify(tache);
+  console.log(tacheDto);
+  return this.httpClient.put(environment.apiRoot+ 'tache/update', tacheDto )
+}
+
   
 }

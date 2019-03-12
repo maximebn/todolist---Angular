@@ -32,7 +32,7 @@ export class TachesListDateComponent implements OnInit {
     
 
     this.dates= this.route.snapshot.data.dates;
-    
+  
    
    
 

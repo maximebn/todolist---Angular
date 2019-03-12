@@ -124,6 +124,7 @@ import { EffacerDialogComponentComponent } from './components/projets-list/effac
       useClass: HttpErrorInterceptorService,
       multi: true,
     },
+   
     {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}
     ],
   entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent, EffacerDialogComponentComponent],
