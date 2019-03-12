@@ -34,22 +34,11 @@
 
 <div *ngFor="let date of dates">
   <h6>{{date | date   : 'EEEE d MMMM yyyy' : undefined : 'fr'  }}</h6>
+  <mat-divider></mat-divider>
   <div *ngFor="let tache of taches">
       <div>
           <app-tache [tache]="tache" *ngIf="(tache.date === date) &&(tache.statut != 'En retard') " ></app-tache>
-
       </div>
-
-
+    </div>
+    <button type="button" class="btn btn-light ajoutTache"><i class="fas fa-plus"></i>Ajouter une tâche</button>
 </div>
-  <button>Ajout tache</button>
-</div>
-
-</div>
-
-
-
-
-
-
-

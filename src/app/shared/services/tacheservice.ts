@@ -14,8 +14,6 @@ export class TacheService{
 
     }
 public getRemoteTaches(page): Observable<TacheInterface[]> {
-
-
         return this.httpClient.get<TacheInterface[]>(
           environment.apiRoot+'tache/'+page)
       }

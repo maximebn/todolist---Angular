@@ -19,7 +19,8 @@ const routes: Routes = [
       {
         path: 'todayList',
         component: TachesListDateComponent,
-        data: { title: 'Aujourd\'hui', page: 'todayList', dates: [ 
+
+        data: { title: 'Aujourd\'hui', page: 'todayList', dates: [
            moment().locale('fr').format('YYYY-MM-DD')
         ]}
       },
@@ -27,6 +28,7 @@ const routes: Routes = [
         path: 'weekList',
         component: TachesListDateComponent,
         data: { title: '7 prochains jours', page: 'weekList', dates: [
+
            moment().locale('fr').format('YYYY-MM-DD'),
            moment().locale('fr').add(1, 'days').format('YYYY-MM-DD'),
             moment().locale('fr').add(2, 'days').format('YYYY-MM-DD'),
@@ -44,7 +46,7 @@ const routes: Routes = [
       {
         path: 'allTache',
         component: TachesListDateComponent,
-        data: { title: 'Toutes vos taches', page: 'findAll', dates: [ ]}  
+        data: { title: 'Toutes vos taches', page: 'findAll', dates: []}
       },
       {
         path: 'projet/:id/titre/:titre',
