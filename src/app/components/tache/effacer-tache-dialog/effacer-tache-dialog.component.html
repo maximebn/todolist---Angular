@@ -1,0 +1,19 @@
+<div fxLayout='column'>
+
+  <h6 class="main-text">
+    Etes-vous sûr et certain de vouloir supprimer cette tache: {{tache.titre}} ?
+  </h6>
+
+  <div fxLayout='row'>
+
+  <div fxFlex="50%">
+    <button mat-button  class="valider" mat-dialog-close="true"(click)=validateDeletingTache(tache)> Oui </button>
+  </div>
+
+  <div fxFlex="50%">
+    <button mat-button  class="annuler" mat-dialog-close="true"(click)="onNoClick()"> Non </button>
+  </div>
+
+  </div>
+
+  </div>

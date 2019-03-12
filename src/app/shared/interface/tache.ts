@@ -6,9 +6,10 @@ export interface TacheInterface {
     priorite?: string;
 
 
-    statut?:string; 
+    statut?:string;
     id?: any;
     projet?:ProjetInterface;
-  
+
+    isUpdating?: boolean;
 
 }

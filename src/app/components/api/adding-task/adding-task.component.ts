@@ -1,4 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+
+import { Component, OnInit, Inject, Input } from '@angular/core';
+
+
 import {FormControl, FormGroup} from '@angular/forms';
 import { CreateTask } from 'src/app/shared/services/create.service';
 import { TacheInterface } from 'src/app/shared/interface/tache';
@@ -17,8 +20,9 @@ export interface Priorite {
   templateUrl: './adding-task.component.html',
   styleUrls: ['./adding-task.component.scss']
 })
+
 export class AddingTaskComponent implements OnInit {
-  tache :TacheInterface={};
+  @Input() tache :TacheInterface;
 
   titreSaisi= new FormControl();
   date = new FormControl(new Date());
@@ -31,18 +35,21 @@ export class AddingTaskComponent implements OnInit {
   //priorites: string[] = ['Normale', 'Importante', 'Prioritaire'];
 
 
-  constructor(private creationTacheService : CreateTask, 
+
+  constructor(private creationTacheService : CreateTask,
     public dialogRef: MatDialogRef<AddingTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public projets: Array<ProjetInterface>) {}
+
 
 
   ngOnInit() {
     this.tacheForm=new FormGroup({});
     console.log(this.projets);
   }
-  
+
 
   public save(): void {
+
 
     // Récupère la date depuis le formulaire
     const formDate: string = this.date.value;
@@ -50,6 +57,7 @@ export class AddingTaskComponent implements OnInit {
     // Convertir la date 'chaîne' en date 'date'
     const momentDate: moment.Moment = moment(formDate, 'DD/MM/YYYY');
 
+    this.tache={};
     this.tache.titre=this.titreSaisi.value;
     this.tache.date=momentDate.format("YYYY-MM-DD");
     this.tache.priorite=this.priorite.value;

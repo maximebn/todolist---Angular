@@ -18,7 +18,7 @@ export class ProjetsListComponent implements OnInit {
   public doIshow;
   public doIshowProjects;
   public projet: ProjetInterface = {};
-  
+
 
 
   constructor(private projetService: ProjetService, private dialog: MatDialog) {}
@@ -27,13 +27,13 @@ export class ProjetsListComponent implements OnInit {
     this.getRemote();
     this.subscription = this.projetService.behaviorSubject.subscribe((resultat)=>{
       this.projets = resultat;
-      
-      
-      
+
+
+
       this.projets.forEach(projet => {
         projet.isUpdating=false;
 
-        console.log(projet);
+
 
       });
     }
@@ -52,8 +52,6 @@ export class ProjetsListComponent implements OnInit {
 
   public showUpdate(projet: ProjetInterface){
     projet.isUpdating=true;
-    console.log (projet +'update')
-
   }
 
 
