@@ -1,0 +1,40 @@
+
+<div class="main-content">
+      <h5>
+        Votre productivité des 7 derniers jours :
+      </h5>
+
+      <mat-divider></mat-divider>
+
+      <div *ngIf="isWorking()" class="recap">
+        {{nbreTachesEffectuees }} tâche(s) effectuées | {{ nbreTachesEnRetard }} tâche(s) en retard.
+       </div>
+
+       <div *ngIf="!isWorking()" class="recap">
+          Vous n'avez (encore) rien foutu ! Votre indice est donc à zéro.
+        </div>
+
+      <circle-progress
+        [percent]="indicePerformance"
+        [radius]="70"
+        [outerStrokeWidth]="10"
+        [innerStrokeWidth]="4"
+        [outerStrokeColor]="'var(--background-color)'"
+        [innerStrokeColor]="'rgb(167, 161, 161, 0.8)'"
+        [animation]="true"
+        [animationDuration]="3000"
+        [showSubtitle] = "true"
+        [subtitle]="'Indice de performance'"
+      ></circle-progress>
+
+      <mat-divider></mat-divider>
+
+      <h6>
+        Comment est calculé l'indice de performance ?
+      </h6>
+      <div class="content">
+        Votre indice est calculé sur votre activité des 7 derniers jours. Si vous finissez une tâche, vous progressez. Si vous la laissez arriver à échéance, vous êtes pénalisé.
+        Sa priorité est aussi prise en compte : ne laissez pas traîner les plus urgentes !
+      </div>
+</div>
+
