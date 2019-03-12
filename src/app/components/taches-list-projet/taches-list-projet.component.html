@@ -1,7 +1,7 @@
 <h6>{{projet.titre}}</h6>
 <div *ngFor="let tache of taches">
 
-    <app-tache [tache]="tache"></app-tache>
+    <app-tache [tache]="tache" *ngIf="(tache.statut != 'Effectuée')"></app-tache>
  </div>
  <div>
   <button>ajouter tache</button>
