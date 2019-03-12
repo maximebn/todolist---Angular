@@ -2,13 +2,14 @@ import * as moment from 'moment';
 import {ProjetInterface} from './projet';
 export interface TacheInterface {
     titre?: string;
-    date?: moment.Moment;
+    date?: string;
     priorite?: string;
 
 
-    statut?:string; 
+    statut?:string;
     id?: any;
     projet?:ProjetInterface;
-  
+
+    isUpdating?: boolean;
 
 }
