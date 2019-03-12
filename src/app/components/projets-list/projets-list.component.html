@@ -23,7 +23,7 @@
    <div fxFlex>
      <button mat-icon-button [matMenuTriggerFor]="menu" class="bouton-menu" [disableRipple]="true"><i class="fas fa-ellipsis-h"></i></button>
   </div>
-  </div>
+
 
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="showUpdate(projet)">
@@ -42,14 +42,14 @@
               </button>
             </mat-menu>
 
-
+</div>
 <mat-divider></mat-divider>
 <button type="button" class="btn btn-light ajoutProjet" (click) ="toggle()"><i class="fas fa-plus"></i>Ajouter un projet</button>
 <app-ajout-projet *ngIf="doIshow" [params]="{ titreComp: 'Ajouter un projet',
                                               placeHolder: 'nom du projet',
                                               update: false,
                                               step : 1 } "
-                                              ></app-ajout-projet>
+                                               ></app-ajout-projet>
 
 </div>
 

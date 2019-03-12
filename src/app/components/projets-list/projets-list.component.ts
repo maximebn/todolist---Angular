@@ -1,7 +1,10 @@
+import { MatDialog } from '@angular/material/dialog';
+import { EffacerDialogComponentComponent } from './effacer-dialog-component/effacer-dialog-component.component';
 import { ProjetService } from './../../shared/services/projetservice';
 import { Component, OnInit } from '@angular/core';
 import { ProjetInterface } from 'src/app/shared/interface/projet';
 import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-projets-list',
@@ -14,9 +17,10 @@ export class ProjetsListComponent implements OnInit {
   public subscription: Subscription;
   public doIshow;
   public doIshowProjects;
+  public projet: ProjetInterface = {};
 
- 
-  constructor(private projetService: ProjetService) {}
+
+  constructor(private projetService: ProjetService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.getRemote();
@@ -24,11 +28,13 @@ export class ProjetsListComponent implements OnInit {
       this.projets = resultat;
       this.projets.forEach(projet => {
         projet.isUpdating=false;
-        
+
+        console.log(projet);
+
       });
     }
     );
-    
+
 
   }
 
@@ -42,10 +48,11 @@ export class ProjetsListComponent implements OnInit {
 
   public showUpdate(projet: ProjetInterface){
     projet.isUpdating=true;
-    
+    console.log (projet +'update')
+
   }
 
-  
+
 
    public toggle() {
      this.doIshow = !this.doIshow;
@@ -55,5 +62,10 @@ export class ProjetsListComponent implements OnInit {
       this.doIshowProjects = !this.doIshowProjects;
      }
 
-
+     public openDialogueDelete(projet): void {
+      const dialogRef = this.dialog.open(EffacerDialogComponentComponent, {
+        width: '350px',
+        height: '160px',
+        data: projet});
+    }
 }

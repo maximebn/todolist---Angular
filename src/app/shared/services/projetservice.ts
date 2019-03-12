@@ -13,6 +13,7 @@ export class ProjetService {
 public behaviorSubject : BehaviorSubject<Array<ProjetInterface>> = new BehaviorSubject<Array<ProjetInterface>>([]);
 
 constructor (private httpClient: HttpClient) {
+  
 
 }
   public getRemoteTachesProjet(idProjet: number): Observable<TacheInterface[]> {
@@ -23,7 +24,7 @@ constructor (private httpClient: HttpClient) {
     return this.httpClient.get<ProjetInterface[]>(environment.apiRoot + 'projet/findAll');
   }
 
-  public saveProjetRemote(projet: ProjetInterface) :Observable<ProjetInterface>{
+  public saveProjetRemote(projet: ProjetInterface): Observable<ProjetInterface>{
     const projetDto = JSON.stringify(projet);
     console.log(projet);
     return this.httpClient.post(environment.apiRoot + 'projet/save', projetDto);
@@ -36,7 +37,11 @@ constructor (private httpClient: HttpClient) {
   public updateProjetRemote(projet: ProjetInterface): Observable<ProjetInterface>{
     const projetDto= JSON.stringify(projet);
     console.log(projetDto);
-    return this.httpClient.put(environment.apiRoot+ 'projet/update', projetDto)
+    return this.httpClient.put(environment.apiRoot+ 'projet/update', projetDto);
+  }
+
+  public deleteById(projet: ProjetInterface): Observable<ProjetInterface[]>{
+    return this.httpClient.delete<ProjetInterface[]>(environment.apiRoot + 'projet/deleteById?idProjet=' + projet.id);
   }
 }
- 
+

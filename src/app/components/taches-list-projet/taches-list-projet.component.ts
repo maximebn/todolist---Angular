@@ -23,6 +23,7 @@ constructor(
 
   ngOnInit() {
     this.getRemote();
+    
   }
   public getRemote() {
     this.route.url.subscribe(()=> {
