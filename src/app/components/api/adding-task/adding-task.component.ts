@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { CreateTask } from 'src/app/shared/services/create.service';
 import { TacheInterface } from 'src/app/shared/interface/tache';
@@ -13,8 +13,9 @@ export interface Priorite {
   templateUrl: './adding-task.component.html',
   styleUrls: ['./adding-task.component.scss']
 })
+
 export class AddingTaskComponent implements OnInit {
-  tache :TacheInterface={};
+  @Input() tache :TacheInterface;
 
   titreSaisi= new FormControl();
   date = new FormControl(new Date());
@@ -27,6 +28,7 @@ export class AddingTaskComponent implements OnInit {
   //priorites: string[] = ['Normale', 'Importante', 'Prioritaire'];
 
 
+
   constructor(private creationTacheService : CreateTask) { }
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class AddingTaskComponent implements OnInit {
 
 
   public save(): void {
+    this.tache={};
     this.tache.titre=this.titreSaisi.value;
     this.tache.date=this.date.value;
     this.tache.priorite=this.priorite.value;

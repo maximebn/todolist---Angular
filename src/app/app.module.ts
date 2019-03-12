@@ -63,6 +63,7 @@ import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.com
 import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/unsubscribe-dialog.component';
 import { PerformanceComponent } from './components/api/performance/performance.component';
 import { EffacerDialogComponentComponent } from './components/projets-list/effacer-dialog-component/effacer-dialog-component.component';
+import { EffacerTacheDialogComponent } from './components/tache/effacer-tache-dialog/effacer-tache-dialog.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { EffacerDialogComponentComponent } from './components/projets-list/effac
     AddingTaskComponent,
     UnsubscribeDialogComponent,
     PerformanceComponent,
-    EffacerDialogComponentComponent
+    EffacerDialogComponentComponent,
+    EffacerTacheDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -136,10 +138,10 @@ import { EffacerDialogComponentComponent } from './components/projets-list/effac
       useClass: HttpErrorInterceptorService,
       multi: true,
     },
-   
+
     {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}
     ],
-  entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent, EffacerDialogComponentComponent],
+  entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent, EffacerDialogComponentComponent, EffacerTacheDialogComponent],
 
   bootstrap: [AppComponent]
 })

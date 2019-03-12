@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import * as moment from 'moment';
 import { TacheService } from 'src/app/shared/services/tacheservice';
+import { MatDialog } from '@angular/material/dialog';
+import { EffacerTacheDialogComponent } from './effacer-tache-dialog/effacer-tache-dialog.component';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class TacheComponent implements OnInit {
 
 
 
-  constructor( public tacheService : TacheService) { }
+  constructor( public tacheService : TacheService, private dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -27,4 +29,13 @@ export class TacheComponent implements OnInit {
     this.tacheService.updateTache(tache).subscribe();
   }
 
+  public openDialogueDelete(tache): void {
+    const dialogRef = this.dialog.open(EffacerTacheDialogComponent, {
+      width: '350px',
+      height: '160px',
+      data: tache});
+  }
+  public showUpdate(tache: TacheInterface){
+    tache.isUpdating=true;
+  }
 }

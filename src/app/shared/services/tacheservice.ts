@@ -13,9 +13,9 @@ export class TacheService{
     constructor(private httpClient: HttpClient){
 
     }
-public getRemoteTaches(page): Observable<TacheInterface[]> { 
+public getRemoteTaches(page): Observable<TacheInterface[]> {
 
-     
+
         return this.httpClient.get<TacheInterface[]>(
           environment.apiRoot+'tache/'+page)
       }
@@ -26,5 +26,9 @@ public updateTache(tache:TacheInterface) :Observable<any>{
   return this.httpClient.put(environment.apiRoot+ 'tache/update', tacheDto )
 }
 
-  
+public deleteOne(tache: TacheInterface){
+  console.log(tache);
+  return this.httpClient.delete(environment.apiRoot + 'tache/deleteOne?idTache=' + tache.id);
+}
+
 }
