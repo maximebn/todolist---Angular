@@ -44,10 +44,10 @@ export class ToolBarComponent implements OnInit {
     openDialog(projets: Array<ProjetInterface>): void {
       const dialogRef = this.dialog.open(AddingTaskComponent, {
         width: '700px',
-        height: '285px',
+        height: '240px',
         data: projets})
       }
-     
+
   // ----------------------------------------------------------- //
   // Log-out :
 

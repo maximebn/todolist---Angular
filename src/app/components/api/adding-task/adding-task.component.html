@@ -1,66 +1,58 @@
-<div mat-dialog-content>
-
 <form [formGroup]="tacheForm">
 
-<mat-card>
+  <div fxLayout="row">
 
-  <div class="melo">
-
-    <mat-grid-list cols="4" rowHeight="100px">
-      
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <mat-form-field>
-        <input [formControl]="titreSaisi" class="form-control" required maxlenght="150" matInput
-          placeholder="Tâche">
-      </mat-form-field>
-    </mat-grid-tile>
-
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <mat-form-field>
-        <input [formControl]="date" class="form-control" matInput [matDatepicker]="picker"
-          placeholder="Choisir une date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </mat-grid-tile>
-
-    <mat-grid-tile [colspan]="1" [rowspan]="1"><button mat-raised-button> 
+    <div fxFlex="60%">
         <mat-form-field>
-          <select [formControl]="priorite" matNativeControl placeholder="Priorité">
-            <option value="Normale">Normale</option>
-            <option value="Importante">Importante</option>
-            <option value="Prioritaire">Prioritaire</option>
-          </select>
+            <input matInput [formControl]="titreSaisi" class="form-control" required maxlenght="150"
+              placeholder="Votre nouvelle tâche">
         </mat-form-field>
-      </button></mat-grid-tile>
-    
+    </div>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-       
-        <button mat-raised-button> 
-            <mat-form-field>
-      <select [formControl]="projetSaisi" matNativeControl placeholder="Projet">
-        <div *ngFor="let projet of projets">
-            <option value="projet">{{projet.titre}}</option>
-           
-        </div>
-      </select>
-    </mat-form-field>
-      </button>
+    <div fxFlex="40%">
+          <mat-form-field>
+            <input [formControl]="date" class="form-control" matInput [matDatepicker]="picker"
+              placeholder="Choisir une date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+       </div>
+    </div>
 
-    </mat-grid-tile>
+  <div fxLayout="row">
+    <div fxFlex="25%">
+        <mat-form-field>
+            <select [formControl]="priorite" matNativeControl placeholder="Priorité">
+              <option value="Normale">Normale</option>
+              <option value="Importante">Importante</option>
+              <option value="Prioritaire">Prioritaire</option>
+            </select>
+        </mat-form-field>
+    </div>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <button mat-raised-button (click)="save()">Ajouter une tâche</button>
-    </mat-grid-tile>
+    <div fxFlex="25%">
+        <mat-form-field>
+            <select [formControl]="projetSaisi" matNativeControl placeholder="Projet">
+              <option *ngFor="let projet of projets" value="projet">
+                {{projet.titre}}</option>
+            </select>
+        </mat-form-field>
+    </div>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-         <button mat-raised-button (click)="onNoClick()">Annuler</button> </mat-grid-tile>
-  </mat-grid-list>
+    <div fxFlex="50%">
+        <button mat-button class="ajoutTache" (click)="save()">
+            Ajouter une tâche
+        </button>
+    </div>
+
  </div>
-
-</mat-card>
 
 </form>
 
+
+<div fxLayout='column'>
+
+    <div fxFlex="40%">
+        <button mat-button color="primary" class="cancel no-hover-effect" (click)="onNoClick()">Annuler</button>
+    </div>
 </div>

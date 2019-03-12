@@ -2,9 +2,25 @@
 width: 90%;}
 
 .mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab {
-  
     width: 90%;}
 
 .mat-raised-button{
         line-height: 60px
-    }
+}
+
+.ajoutTache {
+  color: white;
+  background-color : var(--background-color);
+  outline: none;
+  width: 73%;
+  margin-left: 20%;
+  margin-top: 15px;
+}
+
+.cancel {
+  width: 36%;
+  float:right;
+  outline: none;
+  color: grey;
+  margin-right: 20px;
+}
