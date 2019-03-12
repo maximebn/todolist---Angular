@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { CreateTask } from 'src/app/shared/services/create.service';
 import { TacheInterface } from 'src/app/shared/interface/tache';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import * as moment from 'moment';
+import { ProjetInterface } from 'src/app/shared/interface/projet';
 
 export interface Priorite {
   value: string;
@@ -23,7 +24,7 @@ export class AddingTaskComponent implements OnInit {
   date = new FormControl(new Date());
   priorite=new FormControl();
   statut=new FormControl();
-  projet=new FormControl();
+  projetSaisi=new FormControl();
 
   tacheForm: FormGroup;
 
@@ -31,11 +32,13 @@ export class AddingTaskComponent implements OnInit {
 
 
   constructor(private creationTacheService : CreateTask, 
-    public dialogRef: MatDialogRef<AddingTaskComponent>) {}
+    public dialogRef: MatDialogRef<AddingTaskComponent>,
+    @Inject(MAT_DIALOG_DATA) public projets: Array<ProjetInterface>) {}
 
 
   ngOnInit() {
     this.tacheForm=new FormGroup({});
+    console.log(this.projets);
   }
   
 
@@ -52,7 +55,7 @@ export class AddingTaskComponent implements OnInit {
     this.tache.priorite=this.priorite.value;
     this.tache.statut='';
     this.tache.id='';
-    this.tache.projet=this.projet.value;
+    this.tache.projet=this.projetSaisi.value;
 
 
     this.creationTacheService.addTask(this.tache).subscribe(() => console.log('ok'));

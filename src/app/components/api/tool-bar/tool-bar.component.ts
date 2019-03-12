@@ -7,6 +7,9 @@ import { AddingTaskComponent } from 'src/app/components/api/adding-task/adding-t
 import { RequestService } from 'src/app/shared/services/request.service';
 import { UnsubscribeDialogComponent } from '../unsubscribe-dialog/unsubscribe-dialog.component';
 import { Router } from '@angular/router';
+import { ProjetInterface } from 'src/app/shared/interface/projet';
+import { ProjetService } from 'src/app/shared/services/projetservice';
+import { Subscription } from 'rxjs';
 
 @Component ({
   selector: 'app-tool-bar',
@@ -16,8 +19,13 @@ import { Router } from '@angular/router';
 
 export class ToolBarComponent implements OnInit {
 
+  public projets: Array<ProjetInterface>;
+  public subscription :Subscription;
+
    // Injection du themeService dans le constructeur (service de changement de thème et sauvegarde en local storage)
-   constructor(private themeService: ThemeService, private requestService: RequestService, private router: Router,
+   constructor(private themeService: ThemeService,
+              private projetService:  ProjetService,
+     private requestService: RequestService, private router: Router,
                private dialog: MatDialog, private userService: UserService, private snackBar: MatSnackBar, public dialogue: MatDialog) {
   }
 
@@ -27,12 +35,17 @@ export class ToolBarComponent implements OnInit {
       this.themeService.changeToOrangeTheme();
     }
     this.themeService.updateTheme();
-    }
+    this.getRemote();
+    this.subscription = this.projetService.behaviorSubject.subscribe((resultat)=>{
+      this.projets = resultat;
+    });
+  }
 
-    openDialog(): void {
+    openDialog(projets: Array<ProjetInterface>): void {
       const dialogRef = this.dialog.open(AddingTaskComponent, {
         width: '700px',
-        height: '285px'})
+        height: '285px',
+        data: projets})
       }
      
   // ----------------------------------------------------------- //
@@ -77,6 +90,12 @@ export class ToolBarComponent implements OnInit {
       this.themeService.changeToGreenTheme();
       this.themeService.updateTheme();
     }
+  }
+  public getRemote() {
+    this.projetService.getRemoteProjets().subscribe((resultat) => {
+      this.projets = resultat;
+      this.projetService.remplaceSubject(this.projets);
+    });
   }
 
 }
