@@ -29,5 +29,11 @@ export class UserService {
     const uriPost = environment.apiRoot + 'user/delete';
     return this.httpClient.delete<any>(uriPost);
   }
+
+  public getPerformance(): Observable<any> {
+    const uriGet = environment.apiRoot + 'user/completionIndex';
+    return this.httpClient.get<any>(uriGet);
+  }
+
 }
 

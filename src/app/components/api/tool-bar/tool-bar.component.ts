@@ -1,7 +1,7 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from './../../../shared/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemeService } from 'src/app/shared/services/theme.service';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { UnsubscribeDialogComponent } from '../unsubscribe-dialog/unsubscribe-dialog.component';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component ({
   selector: 'app-tool-bar',
   templateUrl: './tool-bar.component.html',
-  styleUrls: ['./tool-bar.component.scss']
+  styleUrls: ['./tool-bar.component.scss'],
 })
 
 export class ToolBarComponent implements OnInit {

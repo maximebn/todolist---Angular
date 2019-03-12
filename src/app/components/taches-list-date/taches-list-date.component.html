@@ -2,9 +2,6 @@
 
 <h4>{{ titre }}</h4>
 
-
-
-
 <div *ngIf="taches.length == 0">
     <h6 class="centré">
         Vous n'avez encore planifié aucune tâche. Il est temps de se réveiller !
@@ -40,9 +37,9 @@
   <div *ngFor="let tache of taches">
       <div>
           <app-tache [tache]="tache" *ngIf="(tache.date === date.date) &&(tache.statut != 'En retard') " ></app-tache>
-          
+
       </div>
-     
+
 
 </div>
   <button>Ajout tache</button>

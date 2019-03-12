@@ -10,6 +10,8 @@ mat-radio-button {
 mat-divider {
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 button {
@@ -17,8 +19,14 @@ button {
   outline: none;
 }
 
-.fa-box-open {
-  margin-left: 10px;
+.fa-circle-notch {
+  margin-left: 8px;
+}
+
+.titreProjet {
+  color: grey;
+  font-size: 12px;
+  text-align: left;
 }
 
 

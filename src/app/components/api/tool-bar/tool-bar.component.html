@@ -15,9 +15,14 @@
            <button mat-button>
             <i class="fas fa-plus"></i>
            </button>
-           <button mat-button>
+           <button mat-button [matMenuTriggerFor]="appMenu">
             <i class="fas fa-chart-pie"></i>
            </button>
+
+           <mat-menu #appMenu="matMenu">
+            <app-performance></app-performance>
+          </mat-menu>
+        
 
            <button mat-button [matMenuTriggerFor]="settings"><i class="fas fa-cog"></i></button>
 

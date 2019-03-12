@@ -9,9 +9,9 @@
 <div *ngIf="doIshowProjects">
 <div *ngFor="let projet of projets" fxLayout="row">
    <div fxFlex="100%">
-      <button mat-button [routerLink]="['projet', projet.id,'titre', projet.titre]" [hidden]="projet.isUpdating" [disableRipple]="true" class="projets no-hover-effect">
-          <span>{{ projet.titre }}</span>
-      </button>
+      <div [routerLink]="['projet', projet.id,'titre', projet.titre]" [hidden]="projet.isUpdating" class="projets no-hover-effect">
+        <i class="fas fa-circle-notch"></i> <span>{{ projet.titre }}</span>
+      </div>
       <app-ajout-projet [projet]="projet"
       [hidden]="!projet.isUpdating"
       [params]="{ titreComp : 'Modifier ce projet',

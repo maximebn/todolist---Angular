@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 // Project components :
 import { AppComponent } from './app.component';
@@ -60,6 +61,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
 import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.component';
 import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/unsubscribe-dialog.component';
+import { PerformanceComponent } from './components/api/performance/performance.component';
 import { EffacerDialogComponentComponent } from './components/projets-list/effacer-dialog-component/effacer-dialog-component.component';
 
 
@@ -78,6 +80,7 @@ import { EffacerDialogComponentComponent } from './components/projets-list/effac
     LoginDialogComponent,
     AddingTaskComponent,
     UnsubscribeDialogComponent,
+    PerformanceComponent,
     EffacerDialogComponentComponent
   ],
   imports: [
@@ -112,8 +115,17 @@ import { EffacerDialogComponentComponent } from './components/projets-list/effac
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
-    ],
+    MatSelectModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: 'var(--background-color)',
+      innerStrokeColor: 'var(--background-color)',
+      animationDuration: 3000
+    }),
+  ],
   providers: [
     CookieService,
       {
