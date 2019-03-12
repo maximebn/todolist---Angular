@@ -61,7 +61,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { AjoutProjetComponent } from './components/ajout-projet/ajout-projet.component';
 import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/unsubscribe-dialog.component';
 
-
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -122,9 +122,10 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
       useClass: HttpErrorInterceptorService,
       multi: true,
     },
-    {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}
+    {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'},
+    {provide: MAT_DATE_LOCALE, useValue: 'fr'},
     ],
-  entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent],
+  entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent,AddingTaskComponent],
 
   bootstrap: [AppComponent]
 })
