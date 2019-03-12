@@ -3,6 +3,7 @@ import { UserService } from './../../../shared/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemeService } from 'src/app/shared/services/theme.service';
+import { AddingTaskComponent } from 'src/app/components/api/adding-task/adding-task.component';
 import { RequestService } from 'src/app/shared/services/request.service';
 import { UnsubscribeDialogComponent } from '../unsubscribe-dialog/unsubscribe-dialog.component';
 import { Router } from '@angular/router';
@@ -17,7 +18,7 @@ export class ToolBarComponent implements OnInit {
 
    // Injection du themeService dans le constructeur (service de changement de thème et sauvegarde en local storage)
    constructor(private themeService: ThemeService, private requestService: RequestService, private router: Router,
-               private dialog: MatDialog, private userService: UserService, private snackBar: MatSnackBar) {
+               private dialog: MatDialog, private userService: UserService, private snackBar: MatSnackBar, public dialogue: MatDialog) {
   }
 
   // Initialisation : véfication et chargement du thème en local Storage sinon thème par défaut :
@@ -28,6 +29,12 @@ export class ToolBarComponent implements OnInit {
     this.themeService.updateTheme();
     }
 
+    openDialog(): void {
+      const dialogRef = this.dialog.open(AddingTaskComponent, {
+        width: '700px',
+        height: '285px'})
+      }
+     
   // ----------------------------------------------------------- //
   // Log-out :
 

@@ -19,7 +19,7 @@ export class TachesListDateComponent implements OnInit {
 
   public titre: string;
 
-
+  panelOpenState: boolean;
 
 
   constructor(

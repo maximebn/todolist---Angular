@@ -64,7 +64,7 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
 import { PerformanceComponent } from './components/api/performance/performance.component';
 import { EffacerDialogComponentComponent } from './components/projets-list/effacer-dialog-component/effacer-dialog-component.component';
 
-
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -136,10 +136,11 @@ import { EffacerDialogComponentComponent } from './components/projets-list/effac
       useClass: HttpErrorInterceptorService,
       multi: true,
     },
-   
-    {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}
+
+    {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'},
+    {provide: MAT_DATE_LOCALE, useValue: 'fr'},
     ],
-  entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent, EffacerDialogComponentComponent],
+  entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent,AddingTaskComponent],
 
   bootstrap: [AppComponent]
 })
