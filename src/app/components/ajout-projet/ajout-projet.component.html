@@ -2,8 +2,8 @@
 <form [formGroup]="projetForm">
   <div class="form-group">
       <input class="form-control" placeholder={{params.placeHolder}} [formControl]="titreSaisi" required>
-          <button mat-button (click)="save()"  [hidden]="params.update">
-              Ajout projet
+          <button mat-button (click)="save()" [hidden]="params.update">
+                Ajout projet
           </button>
           <button mat-button  (click)="update(projet)" [hidden]="!params.update">Modifier</button>
           <button mat-button (click)="doNothing(projet)" [hidden]="!params.update">Annuler</button>

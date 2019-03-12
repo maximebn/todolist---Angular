@@ -64,7 +64,6 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
 import { PerformanceComponent } from './components/api/performance/performance.component';
 import { EffacerDialogComponentComponent } from './components/projets-list/effacer-dialog-component/effacer-dialog-component.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +81,7 @@ import { EffacerDialogComponentComponent } from './components/projets-list/effac
     UnsubscribeDialogComponent,
     PerformanceComponent,
     EffacerDialogComponentComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -138,7 +137,8 @@ import { EffacerDialogComponentComponent } from './components/projets-list/effac
     },
     {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}
     ],
-  entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent, EffacerDialogComponentComponent],
+  entryComponents: [RegisterDialogComponent, LoginDialogComponent, UnsubscribeDialogComponent,
+                    EffacerDialogComponentComponent],
 
   bootstrap: [AppComponent]
 })

@@ -44,10 +44,6 @@ export class ToolBarComponent implements OnInit {
       height: '420px'});
   }
 
-
-
-
-
   // ----------------------------------------------------------- //
   // Méthodes de changement du thème de couleur :
 

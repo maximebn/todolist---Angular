@@ -1,10 +1,10 @@
-<div fxLayout="row">
-  <div fxFlex="70%">
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxFlex="60%" class="titre">
       <mat-radio-button [disableRipple]="true" class="radio-button" >
-        {{tache.titre}}
+            {{tache.titre}}
       </mat-radio-button>
     </div>
-    <div fxFlex=30%>
+    <div fxFlex>
       <button mat-flat-button>{{tache.date | date: 'dd-MM-yyyy'}}</button>
       <button mat-flat-button [routerLink]="['../projet', tache.projet.id,'titre', tache.projet.titre]" class="titreProjet">{{tache.projet.titre}}<i class="fas fa-circle-notch"></i></button>
     </div>
