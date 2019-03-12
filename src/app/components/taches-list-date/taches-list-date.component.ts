@@ -51,12 +51,12 @@ export class TachesListDateComponent implements OnInit {
       for(let i=0; i< this.taches.length; i++){
         let statut = this.taches[i].statut;
         if(statut !== "En retard"){
+        let date=this.taches[i].date;
 
-        let date = this.taches[i].date;
-
+        console.log(date);
         if (this.dates.indexOf(date) === -1){
-          let objetDate = {date: date};
-          this.dates.push(objetDate);
+          this.dates.push(date);
+          console.log(this.dates);
       }
 
      }
