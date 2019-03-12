@@ -19,7 +19,7 @@ const routes: Routes = [
       {
         path: 'todayList',
         component: TachesListDateComponent,
-        data: { title: 'Aujourd\'hui', page: 'todayList', dates: [ 
+        data: { title: 'Aujourd\'hui', page: 'todayList', dates: [
           {date: moment().locale('fr').format('YYYY-MM-DD')}
         ]}
       },
@@ -27,13 +27,13 @@ const routes: Routes = [
         path: 'weekList',
         component: TachesListDateComponent,
         data: { title: '7 prochains jours', page: 'weekList', dates: [
-          {date: moment().locale('fr').format('YYYY-MM-DD')},
-          {date: moment().locale('fr').add(1, 'days').format('YYYY-MM-DD')},
-           {date: moment().locale('fr').add(2, 'days').format('YYYY-MM-DD')},
-           {date: moment().locale('fr').add(3, 'days').format('YYYY-MM-DD')},
-           {date: moment().locale('fr').add(4, 'days').format('YYYY-MM-DD')},
-           {date: moment().locale('fr').add(5, 'days').format('YYYY-MM-DD')},
-           {date: moment().locale('fr').add(6, 'days').format('YYYY-MM-DD')}
+          {date: moment().format('YYYY-MM-DD')},
+          {date: moment().add(1, 'days').format('YYYY-MM-DD')},
+           {date: moment().add(2, 'days').format('YYYY-MM-DD')},
+           {date: moment().add(3, 'days').format('YYYY-MM-DD')},
+           {date: moment().add(4, 'days').format('YYYY-MM-DD')},
+           {date: moment().add(5, 'days').format('YYYY-MM-DD')},
+           {date: moment().add(6, 'days').format('YYYY-MM-DD')}
         ]}
       },
       {
@@ -44,7 +44,7 @@ const routes: Routes = [
       {
         path: 'allTache',
         component: TachesListDateComponent,
-        data: { title: 'Toutes vos taches', page: 'findAll', dates: [ ]}  
+        data: { title: 'Toutes vos taches', page: 'findAll', dates: []}
       },
       {
         path: 'projet/:id/titre/:titre',

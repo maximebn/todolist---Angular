@@ -5,6 +5,7 @@ import { TacheService } from 'src/app/shared/services/tacheservice';
 import { ActivatedRoute } from '@angular/router';
 import* as moment from 'moment'
 import { ToastrComponentlessModule } from 'ngx-toastr';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-taches-list-date',
@@ -29,20 +30,11 @@ export class TachesListDateComponent implements OnInit {
 
   ngOnInit() {
     this.page = this.route.snapshot.data.page;
-    
-
-    this.dates= this.route.snapshot.data.dates;
-   
-  
-   
-   
-
+    //this.dates = this.route.snapshot.data.dates;
     this.titre = this.route.snapshot.data.title;
-
-    console.log(this.page);
-
+    console.log(this.route.snapshot.data.dates);
     this.getRemote(this.page);
-   
+
   }
 
   public getRemote(page?: string ){
@@ -51,26 +43,26 @@ export class TachesListDateComponent implements OnInit {
 
     this.tacheService.getRemoteTaches(this.page).subscribe((resultat) => {
 
-    console.log(resultat);
     this.taches = resultat;
-    this.dates=this.route.snapshot.data.dates;
-    if (this.dates.length===0){
-      
+    console.log(resultat);
+    this.dates = this.route.snapshot.data.dates;
+    if (this.dates.length === 0) {
+
       for(let i=0; i< this.taches.length; i++){
-        let statut= this.taches[i].statut;
+        let statut = this.taches[i].statut;
         if(statut !== "En retard"){
-        let date=this.taches[i].date;
-        
+
+        let date = this.taches[i].date;
+
         if (this.dates.indexOf(date) === -1){
-          let objetDate= { date: date};
+          let objetDate = {date: date};
           this.dates.push(objetDate);
       }
-      }
+
+     }
     }
   }
-
-    })
-
+    });
   }
 }
 

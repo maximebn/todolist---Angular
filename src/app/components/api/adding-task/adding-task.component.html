@@ -22,20 +22,21 @@
   <div fxLayout="row">
     <div fxFlex="25%">
         <mat-form-field>
-            <select [formControl]="priorite" matNativeControl placeholder="Priorité">
-              <option value="Normale">Normale</option>
-              <option value="Importante">Importante</option>
-              <option value="Prioritaire">Prioritaire</option>
-            </select>
+            <mat-select [formControl]="priorite" matNativeControl placeholder="Priorité">
+              <mat-option value="Normale">Normale</mat-option>
+              <mat-option value="Importante">Importante</mat-option>
+              <mat-option value="Prioritaire">Prioritaire</mat-option>
+            </mat-select>
         </mat-form-field>
     </div>
 
     <div fxFlex="25%">
         <mat-form-field>
-            <select [formControl]="projetSaisi" matNativeControl placeholder="Projet">
-              <option *ngFor="let projet of projets" value="projet">
-                {{projet.titre}}</option>
-            </select>
+            <mat-select [formControl]="projetSaisi" matNativeControl placeholder="Projet">
+              <div *ngFor="let projet of projets">
+                  <mat-option [value]="projet"> {{projet.titre}}</mat-option>
+              </div>
+            </mat-select>
         </mat-form-field>
     </div>
 
