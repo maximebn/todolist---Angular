@@ -59,11 +59,14 @@ export class AddingTaskComponent implements OnInit {
 
     this.tache = {};
     this.tache.titre = this.titreSaisi.value;
-    //this.tache.date = momentDate.format("YYYY-MM-DD");
+    this.tache.date = momentDate.format("YYYY-MM-DD");
     this.tache.priorite = this.priorite.value;
     this.tache.statut = '';
     this.tache.id = '';
-    this.tache.projet = this.projetSaisi.value;
+    let projetJson : ProjetInterface={};
+    projetJson.id = this.projetSaisi.value.id;
+    projetJson.titre = this.projetSaisi.value.titre;
+    this.tache.projet = projetJson;
 
     this.creationTacheService.addTask(this.tache).subscribe(() => console.log('ok'));
     this.dialogRef.close();
