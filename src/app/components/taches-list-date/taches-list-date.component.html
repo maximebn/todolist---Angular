@@ -28,7 +28,7 @@
 
   <div class="blocTaches">
     <div *ngFor="let tache of taches">
-          <app-tache [tache]="tache" *ngIf= "tache.statut === 'En retard'"></app-tache>
+          <app-tache  [params]="{ hideProjet: false}" [tache]="tache" *ngIf= "tache.statut === 'En retard'"></app-tache>
     </div>
   </div>
 
@@ -39,7 +39,7 @@
   <mat-divider></mat-divider>
   <div *ngFor="let tache of taches">
       <div>
-          <app-tache [tache]="tache" *ngIf="(tache.date === date) && (tache.statut != 'En retard') && (tache.statut != 'Effectuée')" ></app-tache>
+          <app-tache [params]="{ hideProjet: false}" [tache]="tache" *ngIf="(tache.date === date) && (tache.statut != 'En retard') && (tache.statut != 'Effectuée')" ></app-tache>
       </div>
     </div>
     <app-adding-task-outside-dialog [params]="{ update: false,

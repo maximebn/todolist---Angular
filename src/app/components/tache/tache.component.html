@@ -8,8 +8,8 @@
       </mat-radio-button>
     </div>
     <div fxFlex>
-      <button mat-flat-button>{{tache.date | date: 'dd-MM-yyyy'}}</button>
-      <button mat-flat-button [routerLink]="['../projet', tache.projet.id,'titre', tache.projet.titre]" class="titreProjet">{{tache.projet.titre}}<i class="fas fa-circle-notch"></i></button>
+      <button mat-flat-button (click)="showUpdate(tache)">{{tache.date | date: 'dd-MM-yyyy'}}</button>
+      <button mat-flat-button *ngIf="!params.hideProjet"  [routerLink]="['../projet', tache.projet.id,'titre', tache.projet.titre]" class="titreProjet">{{tache.projet.titre}}<i class="fas fa-circle-notch"></i></button>
     </div>
 
 

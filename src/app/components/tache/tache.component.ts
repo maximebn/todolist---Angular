@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class TacheComponent implements OnInit {
   @Input() tache : TacheInterface;
+  @Input() params:any;
 
   isCanceled: boolean;
   
