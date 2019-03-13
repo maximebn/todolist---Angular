@@ -1,11 +1,12 @@
 
 <form [formGroup]="projetForm">
   <div class="form-group">
-      <input class="form-control" placeholder={{params.placeHolder}} [formControl]="titreSaisi" required>
-          <button mat-button (click)="save()" [hidden]="params.update">
+      <input class="form-control" value={{params.placeHolder}} [hidden]="!params.update"  [formControl]="titreSaisi" required >
+      <input class="form-control" placeholder={{params.placeHolder}} [hidden]="params.update"  [formControl]="titreSaisi" required >
+      <button mat-button (click)="save()" [hidden]="params.update" [disabled]="titreSaisi.invalid">
                 Ajout projet
           </button>
-          <button mat-button  (click)="update(projet)" [hidden]="!params.update">Modifier</button>
+          <button mat-button  (click)="update(projet)" [hidden]="!params.update" [disabled]="titreSaisi.invalid">Modifier</button>
           <button mat-button (click)="doNothing(projet)" [hidden]="!params.update">Annuler</button>
   </div>
 </form>

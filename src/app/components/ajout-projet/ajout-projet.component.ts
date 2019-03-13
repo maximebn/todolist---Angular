@@ -2,7 +2,7 @@ import { ProjetInterface } from './../../shared/interface/projet';
 import { ProjetService } from './../../shared/services/projetservice';
 
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -15,14 +15,15 @@ export class AjoutProjetComponent implements OnInit {
 
 
 @Input() public projet: ProjetInterface = {};
-public titreSaisi = new FormControl('', Validators.required);
+public titreSaisi = new FormControl('', Validators.minLength(1));
 public projetForm: FormGroup;
 public projets: Array<ProjetInterface>;
 @Input() params: any;// Modifier info et affichage composant  (ajouter ou modifier)
 
 
   constructor(
-    public projetService: ProjetService
+    public projetService: ProjetService,
+
 
   ) { }
 
