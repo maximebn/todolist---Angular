@@ -28,10 +28,12 @@ constructor(
 
   ngOnInit() {
     this.getRemote();
-    
+    this.subscription = this.tacheService.tacheBehaviorSubject.subscribe(()=>{
+      this.getRemote()});
 
 
-    
+
+
   }
   public getRemote() {
     this.route.url.subscribe(()=> {
@@ -39,17 +41,17 @@ constructor(
       this.projet.titre=this.route.snapshot.paramMap.get('titre');
       this.projetService.getRemoteTachesProjet(this.projet.id).subscribe((resultat) => {
         this.taches = resultat;
-        
+
         //this.subscription=this.tacheService.tacheBehaviorSubject.subscribe();
-        
-      
-        
+
+
+
       });
     })
-    
-     
-    
-   
+
+
+
+
   }
 
 }
