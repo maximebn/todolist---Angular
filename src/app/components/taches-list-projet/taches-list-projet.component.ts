@@ -19,6 +19,7 @@ export class TachesListProjetComponent implements OnInit {
   projet: ProjetInterface={};
   public subscription: Subscription;
   public doIshow;
+  public isCanceled;
 
 //TODO gérer <app listTacheProjet [projet] = "{id: '', titre: ''}">
 
@@ -31,11 +32,17 @@ constructor(
   ngOnInit() {
     this.subscription = this.tacheService.tacheBehaviorSubject.subscribe(()=>{
     this.getRemote()});
+    this.isCanceled = true;
   }
 
   public toggle() {
-    this.doIshow = !this.doIshow;
+    this.isCanceled = !this.isCanceled;
    }
+
+  receiveUpdate($event) {
+    console.log($event);
+    this.isCanceled = $event;
+ }
 
   public getRemote() {
     this.route.url.subscribe(()=> {

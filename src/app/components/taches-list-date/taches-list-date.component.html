@@ -9,9 +9,8 @@
         width="550px" />
 
     <div class="centré">
-        <button mat-button>
-            Ajouter une tâche
-        </button>
+        <app-adding-task-outside-dialog (ajoutTacheEvent)="receiveUpdate($event)" [hidden]="(dateCliquee != date) || (isCanceled === true)"></app-adding-task-outside-dialog>
+        <button  type="button" class="btn btn-light ajoutTache" (click)="toggle()"><i class="fas fa-plus"></i>Ajouter une tâche</button>
     </div>
 </div>
 
