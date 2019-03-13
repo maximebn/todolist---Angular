@@ -54,20 +54,22 @@ export class ProjetsListComponent implements OnInit {
     projet.isUpdating=true;
   }
 
+  public receiveUpdate($event) {
+    this.doIshow = !$event;
+  }
 
+  public toggle() {
+    this.doIshow = !this.doIshow;
+  }
 
-   public toggle() {
-     this.doIshow = !this.doIshow;
-    }
+  public toggleProjects() {
+    this.doIshowProjects = !this.doIshowProjects;
+ }
 
-    public toggleProjects() {
-      this.doIshowProjects = !this.doIshowProjects;
-     }
-
-     public openDialogueDelete(projet): void {
+  public openDialogueDelete(projet): void {
       const dialogRef = this.dialog.open(EffacerDialogComponentComponent, {
         width: '350px',
-        height: '160px',
+        height: '200px',
         data: projet});
     }
 }

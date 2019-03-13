@@ -1,8 +1,9 @@
 import { ProjetInterface } from './../../shared/interface/projet';
 import { ProjetService } from './../../shared/services/projetservice';
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { OuterSubscriber } from 'rxjs/internal/OuterSubscriber';
 
 
 @Component({
@@ -18,7 +19,12 @@ export class AjoutProjetComponent implements OnInit {
 public titreSaisi = new FormControl('', Validators.required);
 public projetForm: FormGroup;
 public projets: Array<ProjetInterface>;
+wasSent: boolean;
+
+
 @Input() params: any;// Modifier info et affichage composant  (ajouter ou modifier)
+@Output() ajoutProjetEvent = new EventEmitter<boolean>();
+
 
 
   constructor(
@@ -48,6 +54,9 @@ public projets: Array<ProjetInterface>;
         this.projetService.remplaceSubject(this.projets);
       }
     );
+
+    this.wasSent = true;
+    this.ajoutProjetEvent.emit(this.wasSent);
   }
 
   //Modifier un projet existant

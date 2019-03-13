@@ -1,5 +1,5 @@
+import { TacheService } from './../../../shared/services/tacheservice';
 import { ProjetService } from 'src/app/shared/services/projetservice';
-import { CreateTask } from './../../../shared/services/create.service';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
@@ -25,7 +25,7 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
   tacheForm: FormGroup;
   projets: Array<ProjetInterface>;
 
-  constructor(private creationTacheService : CreateTask, private projetService: ProjetService) {}
+  constructor(private projetService: ProjetService, private tacheService: TacheService) {}
 
   ngOnInit() {
     this.tacheForm = new FormGroup({});
@@ -57,7 +57,7 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     projetJson.titre = this.projetSaisi.value.titre;
     this.tache.projet = projetJson;
 
-    this.creationTacheService.addTask(this.tache).subscribe(() => console.log('ok'));
+    this.tacheService.addTask(this.tache).subscribe(() => console.log('ok'));
 
     this.wasSent = true;
     this.ajoutTacheEvent.emit(this.wasSent);
