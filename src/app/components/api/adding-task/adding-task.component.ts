@@ -1,9 +1,9 @@
+import { TacheService } from './../../../shared/services/tacheservice';
 
 import { Component, OnInit, Inject, Input } from '@angular/core';
 
 
 import {FormControl, FormGroup} from '@angular/forms';
-import { CreateTask } from 'src/app/shared/services/create.service';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -36,7 +36,7 @@ export class AddingTaskComponent implements OnInit {
 
 
 
-  constructor(private creationTacheService : CreateTask,
+  constructor(private tacheService: TacheService,
     public dialogRef: MatDialogRef<AddingTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public projets: Array<ProjetInterface>) {}
 
@@ -68,7 +68,7 @@ export class AddingTaskComponent implements OnInit {
     projetJson.titre = this.projetSaisi.value.titre;
     this.tache.projet = projetJson;
 
-    this.creationTacheService.addTask(this.tache).subscribe(() => console.log('ok'));
+    this.tacheService.addTask(this.tache).subscribe(() => console.log('ok'));
     this.dialogRef.close();
 
   }
