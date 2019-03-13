@@ -1,0 +1,65 @@
+<div class="card">
+  <div class="card-body">
+
+      <form [formGroup]="tacheForm">
+
+          <div fxLayout="row">
+
+            <div fxFlex="50%">
+                <mat-form-field>
+                    <input matInput [formControl]="titreSaisi" required maxlenght="150"
+                      placeholder="Votre nouvelle tâche">
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="20%">
+                  <mat-form-field>
+                    <input [formControl]="date" matInput [matDatepicker]="picker"
+                      placeholder="Choisir une date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker [startAt]="13-06-2019"></mat-datepicker>
+                  </mat-form-field>
+              </div>
+
+              <div fxFlex="20%">
+                  <mat-form-field>
+                      <mat-select [formControl]="projetSaisi" matNativeControl placeholder="Projet">
+                        <div *ngFor="let projet of projets">
+                            <mat-option [value]="projet"> {{projet.titre}}</mat-option>
+                        </div>
+                      </mat-select>
+                  </mat-form-field>
+              </div>
+
+            </div>
+
+          <div fxLayout="row">
+            <div fxFlex="25%">
+                <mat-form-field>
+                    <mat-select [formControl]="priorite" matNativeControl placeholder="Priorité">
+                      <mat-option value="Normale">Normale</mat-option>
+                      <mat-option value="Importante">Importante</mat-option>
+                      <mat-option value="Prioritaire">Prioritaire</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="30%">
+                <button mat-button class="ajoutTache" (click)="save()">
+                    Ajouter une tâche
+                </button>
+            </div>
+
+            <div fxFlex="20%">
+                <button mat-button color="primary" class="cancel no-hover-effect">Annuler</button>
+            </div>
+
+         </div>
+
+        </form>
+
+
+
+
+  </div>
+</div>

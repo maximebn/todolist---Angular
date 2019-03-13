@@ -19,9 +19,10 @@ export class TachesListDateComponent implements OnInit {
   @Input() dates: Array<any>;
 
   public titre: string;
+  public doIshow;
+
 
   panelOpenState: boolean;
-
 
   constructor(
     private tacheService: TacheService,
@@ -34,8 +35,12 @@ export class TachesListDateComponent implements OnInit {
     this.titre = this.route.snapshot.data.title;
     console.log(this.route.snapshot.data.dates);
     this.getRemote(this.page);
-
   }
+
+  public toggle() {
+    this.doIshow = !this.doIshow;
+   }
+
 
   public getRemote(page?: string ){
 

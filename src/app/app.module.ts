@@ -68,6 +68,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { AddingTaskOutsideDialogComponent } from './components/api/adding-task-outside-dialog/adding-task-outside-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +86,8 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
     UnsubscribeDialogComponent,
     PerformanceComponent,
     EffacerDialogComponentComponent,
-    EffacerTacheDialogComponent
+    EffacerTacheDialogComponent,
+    AddingTaskOutsideDialogComponent
   ],
   imports: [
     BrowserModule,
