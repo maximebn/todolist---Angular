@@ -2,7 +2,7 @@ import { ProjetService } from 'src/app/shared/services/projetservice';
 import { CreateTask } from './../../../shared/services/create.service';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProjetInterface } from 'src/app/shared/interface/projet';
 import * as moment from 'moment';
 
@@ -13,6 +13,9 @@ import * as moment from 'moment';
 })
 export class AddingTaskOutsideDialogComponent implements OnInit {
   @Input() tache: TacheInterface;
+  @Output() ajoutTacheEvent = new EventEmitter<boolean>();
+  wasSent = false;
+
 
   titreSaisi = new FormControl();
   date = new FormControl(new Date());
@@ -30,6 +33,10 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     console.log(this.projets);
   }
 
+  toggle() {
+    this.wasSent = true;
+    this.ajoutTacheEvent.emit(this.wasSent);
+  }
 
   public save(): void {
 
@@ -51,6 +58,8 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     this.tache.projet = projetJson;
 
     this.creationTacheService.addTask(this.tache).subscribe(() => console.log('ok'));
-  }
 
+    this.wasSent = true;
+    this.ajoutTacheEvent.emit(this.wasSent);
+  }
 }

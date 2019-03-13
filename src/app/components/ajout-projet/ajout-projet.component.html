@@ -1,8 +1,8 @@
 
-<form [formGroup]="projetForm">
+<form [formGroup]="projetForm" class="needs-validation" novalidate>
   <div class="form-group">
-      <input class="form-control" placeholder={{params.placeHolder}} [formControl]="titreSaisi" required>
-          <button mat-button (click)="save()" [hidden]="params.update">
+      <input type="text" class="form-control" placeholder={{params.placeHolder}} [formControl]="titreSaisi" required>
+          <button mat-button type="submit" (click)="save()" [hidden]="params.update">
                 Ajout projet
           </button>
           <button mat-button  (click)="update(projet)" [hidden]="!params.update">Modifier</button>

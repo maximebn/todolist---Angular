@@ -1,5 +1,6 @@
+import { AddingTaskOutsideDialogComponent } from './../api/adding-task-outside-dialog/adding-task-outside-dialog.component';
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import { TacheService } from 'src/app/shared/services/tacheservice';
 import { ActivatedRoute } from '@angular/router';
@@ -15,11 +16,11 @@ import { of } from 'rxjs';
 export class TachesListDateComponent implements OnInit {
   public taches: Array<TacheInterface>=[{}];
   @Input() page: string;
-
   @Input() dates: Array<any>;
 
   public titre: string;
-  public doIshow;
+  public dateCliquee;
+  public isCanceled;
 
 
   panelOpenState: boolean;
@@ -35,11 +36,18 @@ export class TachesListDateComponent implements OnInit {
     this.titre = this.route.snapshot.data.title;
     console.log(this.route.snapshot.data.dates);
     this.getRemote(this.page);
+    this.isCanceled = true;
   }
 
-  public toggle() {
-    this.doIshow = !this.doIshow;
+  public toggle(date: any) {
+    this.dateCliquee = date;
+    this.isCanceled = !this.isCanceled;
    }
+
+  receiveUpdate($event) {
+     console.log($event);
+     this.isCanceled = $event;
+  }
 
 
   public getRemote(page?: string ){

@@ -46,9 +46,9 @@
 <mat-divider></mat-divider>
 <button type="button" class="btn btn-light ajoutProjet" (click) ="toggle()"><i class="fas fa-plus"></i>Ajouter un projet</button>
 <app-ajout-projet *ngIf="doIshow" [params]="{ titreComp: 'Ajouter un projet',
-                                              placeHolder: 'nom du projet',
-                                              update: false,
-                                              step : 1 } "
+placeHolder: 'nom du projet',
+update: false,
+step : 1 } "
                                                ></app-ajout-projet>
 
 </div>

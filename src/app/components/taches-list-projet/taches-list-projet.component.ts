@@ -18,6 +18,8 @@ export class TachesListProjetComponent implements OnInit {
   public taches: Array< TacheInterface >;
   projet: ProjetInterface={};
   public subscription: Subscription;
+  public doIshow;
+
 //TODO gérer <app listTacheProjet [projet] = "{id: '', titre: ''}">
 
 constructor(
@@ -28,28 +30,27 @@ constructor(
 
   ngOnInit() {
     this.getRemote();
-    
-
-
-    
   }
+
+  public toggle() {
+    this.doIshow = !this.doIshow;
+   }
+
   public getRemote() {
     this.route.url.subscribe(()=> {
       this.projet.id= +this.route.snapshot.paramMap.get('id');
       this.projet.titre=this.route.snapshot.paramMap.get('titre');
       this.projetService.getRemoteTachesProjet(this.projet.id).subscribe((resultat) => {
         this.taches = resultat;
-        
+
         //this.subscription=this.tacheService.tacheBehaviorSubject.subscribe();
-        
-      
-        
+
       });
     })
-    
-     
-    
-   
+
+
+
+
   }
 
 }
