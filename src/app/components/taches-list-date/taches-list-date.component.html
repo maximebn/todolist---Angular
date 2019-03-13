@@ -1,5 +1,3 @@
-
-
 <h4>{{ titre }}</h4>
 
 <div *ngIf="taches.length == 0">
@@ -40,7 +38,7 @@
           <app-tache [tache]="tache" *ngIf="(tache.date === date) && (tache.statut != 'En retard') && (tache.statut != 'Effectuée')" ></app-tache>
       </div>
     </div>
-
     <app-adding-task-outside-dialog (ajoutTacheEvent)="receiveUpdate($event)" [hidden]="(dateCliquee != date) || (isCanceled === true)"></app-adding-task-outside-dialog>
     <button  type="button" class="btn btn-light ajoutTache" (click)="toggle(date)"><i class="fas fa-plus"></i>Ajouter une tâche</button>
+
 </div>

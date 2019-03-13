@@ -4,7 +4,7 @@ import { ProjetService } from './../../shared/services/projetservice';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OuterSubscriber } from 'rxjs/internal/OuterSubscriber';
-
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-ajout-projet',
@@ -14,29 +14,22 @@ import { OuterSubscriber } from 'rxjs/internal/OuterSubscriber';
 })
 export class AjoutProjetComponent implements OnInit {
 
-
-@Input() public projet: ProjetInterface = {};
-public titreSaisi = new FormControl('', Validators.required);
+public titreSaisi = new FormControl('', Validators.minLength(1));
 public projetForm: FormGroup;
 public projets: Array<ProjetInterface>;
 wasSent: boolean;
 
-
+@Input() public projet: ProjetInterface = {};
 @Input() params: any;// Modifier info et affichage composant  (ajouter ou modifier)
 @Output() ajoutProjetEvent = new EventEmitter<boolean>();
 
-
-
   constructor(
-    public projetService: ProjetService
-
-  ) { }
+    public projetService: ProjetService) { }
 
   ngOnInit() {
       this.projetForm = new FormGroup({});
+}
 
-
-  }
 // Créer un nouveau projet
   public save(){
     this.projet= {};
