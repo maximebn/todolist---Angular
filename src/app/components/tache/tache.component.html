@@ -1,18 +1,16 @@
+
 <div>
 <div fxLayout="row">
 
 <div fxFlex="60%">
       <mat-radio-button [disableRipple]="true" class="radio-button" (click)= changeStatutEffectuee(tache) >
-
-
         {{tache.titre}}
       </mat-radio-button>
     </div>
-    <div fxFlex=30%>
+    <div fxFlex>
       <button mat-flat-button>{{tache.date | date: 'dd-MM-yyyy'}}</button>
       <button mat-flat-button [routerLink]="['../projet', tache.projet.id,'titre', tache.projet.titre]" class="titreProjet">{{tache.projet.titre}}<i class="fas fa-circle-notch"></i></button>
     </div>
-
 
 
     <div fxFlex=10%>

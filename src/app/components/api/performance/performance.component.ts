@@ -6,13 +6,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './performance.component.html',
   styleUrls: ['./performance.component.scss']
 })
-export class PerformanceComponent {
+export class PerformanceComponent implements OnInit {
   indicePerformance: number;
   nbreTachesEffectuees: number;
   nbreTachesEnRetard: number;
   doIshow: boolean;
 
   constructor(private userService: UserService) {
+  }
+
+  ngOnInit() {
     this.userService.getPerformance().subscribe(result => {
       this.nbreTachesEffectuees = result.nbreTachesEffectuees;
       this.nbreTachesEnRetard = result.nbreTachesEnRetard;

@@ -64,7 +64,9 @@ import { UnsubscribeDialogComponent } from './components/api/unsubscribe-dialog/
 import { PerformanceComponent } from './components/api/performance/performance.component';
 import { EffacerDialogComponentComponent } from './components/projets-list/effacer-dialog-component/effacer-dialog-component.component';
 import { EffacerTacheDialogComponent } from './components/tache/effacer-tache-dialog/effacer-tache-dialog.component';
-
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 @NgModule({
   declarations: [
@@ -143,12 +145,11 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
     {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'},
     {provide: MAT_DATE_LOCALE, useValue: 'fr'},
     ],
+
   entryComponents: [RegisterDialogComponent,
      LoginDialogComponent,
      UnsubscribeDialogComponent,
      AddingTaskComponent, EffacerDialogComponentComponent, EffacerTacheDialogComponent],
-
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }

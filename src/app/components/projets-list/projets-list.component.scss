@@ -27,6 +27,7 @@ div {
   padding-top: 10px;
   padding-bottom:10px;
   padding-left:10px;
+  padding-right:30px;
   border-radius: 5px;
   margin-left: 15px;
   text-align: left;
@@ -34,6 +35,7 @@ div {
   color: rgba(41, 37, 37, 0.767);
   outline: none;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .projets:hover {
@@ -82,4 +84,17 @@ background-color: transparent !important;
 
 .fa-ellipsis-h {
 margin-top:10px;
+}
+
+.ajoutTache {
+  font-size: 14px;
+  width: 180px;
+  text-align: left;
+  outline: none;
+  background-color: transparent;
+  color: rgba(41, 37, 37, 0.767);
+  outline: none;
+  border: none;
+  margin-top:10px;
+  margin-left: 20px;
 }

@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, BehaviorSubject} from 'rxjs';
 import {environment} from './../../../environments/environment';
 import { Injectable , Input} from '@angular/core';
 
@@ -9,13 +9,12 @@ import { Injectable , Input} from '@angular/core';
     providedIn: 'root'
   })
 export class TacheService{
+   tacheBehaviorSubject: BehaviorSubject<TacheInterface>= new BehaviorSubject<TacheInterface>({})
 
     constructor(private httpClient: HttpClient){
 
     }
 public getRemoteTaches(page): Observable<TacheInterface[]> {
-
-
         return this.httpClient.get<TacheInterface[]>(
           environment.apiRoot+'tache/'+page)
       }
@@ -29,6 +28,10 @@ public updateTache(tache:TacheInterface) :Observable<any>{
 public deleteOne(tache: TacheInterface){
   console.log(tache);
   return this.httpClient.delete(environment.apiRoot + 'tache/deleteOne?idTache=' + tache.id);
+}
+
+public remplaceTacheSubject(tache: TacheInterface){
+  this.tacheBehaviorSubject.next(tache);
 }
 
 }
