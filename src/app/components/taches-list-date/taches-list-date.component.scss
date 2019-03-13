@@ -40,16 +40,11 @@ img {
   width: 180px;
   text-align: left;
   outline: none;
-  background-color: transparent;
-  color: rgba(41, 37, 37, 0.767);
+  background-color: var(--background-color);
+  color: white;
   outline: none;
   border: none;
   margin-top:10px;
-  margin-left: 20px;
-}
-
-.ajoutTache:hover {
-  color: var(--background-color);
 }
 
 .fas {

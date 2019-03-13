@@ -1,4 +1,4 @@
-<h6>{{projet.titre}}</h6>
+<h4>{{projet.titre}}</h4>
 <div *ngFor="let tache of taches">
 
     <app-tache [tache]="tache" *ngIf="(tache.statut != 'Effectuée')"></app-tache>

@@ -1,6 +1,6 @@
 <h4>{{ titre }}</h4>
 
-<div *ngIf="taches.length == 0">
+<div [hidden]="taches.length > 0">
     <h6 class="centré">
         Vous n'avez encore planifié aucune tâche. Il est temps de se réveiller !
     </h6>
@@ -15,11 +15,11 @@
 </div>
 
 
-<div *ngIf="taches.length > 0">
+<div [hidden]="taches.length == 0">
 
-  <h6 class="enretard">
-    En retard :
-  </h6>
+    <h6 class="enretard">
+        En retard :
+      </h6>
 
   <div class="blocTaches">
     <div *ngFor="let tache of taches">
