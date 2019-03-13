@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { TacheService } from 'src/app/shared/services/tacheservice';
 import { MatDialog } from '@angular/material/dialog';
 import { EffacerTacheDialogComponent } from './effacer-tache-dialog/effacer-tache-dialog.component';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { EffacerTacheDialogComponent } from './effacer-tache-dialog/effacer-tach
 })
 export class TacheComponent implements OnInit {
   @Input() tache : TacheInterface;
+  
 
 
 
@@ -20,6 +22,7 @@ export class TacheComponent implements OnInit {
   constructor( public tacheService : TacheService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    
 
 
   }
@@ -27,6 +30,7 @@ export class TacheComponent implements OnInit {
   public changeStatutEffectuee(tache: TacheInterface){
     tache.statut="Effectuée";
     this.tacheService.updateTache(tache).subscribe();
+    this.tacheService.remplaceTacheSubject(tache);
   }
 
   public openDialogueDelete(tache): void {
