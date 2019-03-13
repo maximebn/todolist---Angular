@@ -14,6 +14,7 @@ import * as moment from 'moment';
 export class AddingTaskOutsideDialogComponent implements OnInit {
   @Input() tache: TacheInterface;
   @Output() ajoutTacheEvent = new EventEmitter<boolean>();
+  @Input() params: any;
   wasSent = false;
 
 
@@ -61,5 +62,46 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
 
     this.wasSent = true;
     this.ajoutTacheEvent.emit(this.wasSent);
+  }
+  public update(tache: TacheInterface) {
+    let tacheJson: TacheInterface={}
+    if(this.titreSaisi.value !== null){
+      tacheJson.titre = this.titreSaisi.value;
+    }
+    else{
+      tacheJson.titre=tache.titre;
+    }
+    const formDate: string = this.date.value;
+
+    // Convertir la date 'chaîne' en date 'date'
+    const momentDate: moment.Moment = moment(formDate, 'DD/MM/YYYY');
+    tacheJson.date=momentDate.format("YYYY-MM-DD");
+    if(this.priorite.value !== null){
+      tacheJson.priorite = this.priorite.value;
+    }else{
+      tacheJson.priorite=tache.priorite;
+    }
+    tacheJson.statut=tache.statut;
+    tacheJson.id=tache.id;
+
+
+    let projetJson : ProjetInterface={};
+    if(this.projetSaisi.value == null){
+
+      projetJson.id = tache.projet.id
+      projetJson.titre =  tache.projet.titre;
+    } else{
+     projetJson.id = this.projetSaisi.value.id;
+     projetJson.titre = this.projetSaisi.value.titre;
+    }
+console.log(projetJson)
+tacheJson.projet = projetJson;
+
+
+
+console.log(tacheJson);
+    this.tacheService.updateTache(tacheJson);
+
+
   }
 }
