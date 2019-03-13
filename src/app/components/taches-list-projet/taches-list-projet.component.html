@@ -8,7 +8,7 @@
     <app-adding-task-outside-dialog  [params]="{ update: false,
         placeholder: 'Votre nouvelle tâche',
       date: date,
-      projet: 'projet',
+      projet: projet,
     priorite: 'priorite'}" (ajoutTacheEvent)="receiveUpdate($event)" [hidden]="(isCanceled)"></app-adding-task-outside-dialog>
     <button  type="button" class="btn btn-light ajoutTache" (click)="toggle()"><i class="fas fa-plus"></i>Ajouter une tâche</button>
 </div>

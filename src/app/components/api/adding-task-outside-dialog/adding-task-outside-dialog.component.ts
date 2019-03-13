@@ -39,14 +39,23 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     this.ajoutTacheEvent.emit(this.wasSent);
   }
 
+
+  
   public save(): void {
 
     // Récupère la date depuis le formulaire
-    const formDate: string = this.date.value;
+    let formDate: string;
 
     // Convertir la date 'chaîne' en date 'date'
+    console.log(this.params.date)
+    console.log(this.date.value)
+    if(this.date.value !== null){
+      formDate= this.date.value;
+    }
+    else{
+      formDate=this.params.date;
+    }
     const momentDate: moment.Moment = moment(formDate, 'DD/MM/YYYY');
-
     this.tache = {};
     this.tache.titre = this.titreSaisi.value;
     this.tache.date = momentDate.format('YYYY-MM-DD');
@@ -59,9 +68,13 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     this.tache.id = '';
     let projetJson : ProjetInterface={};
     if(this.projetSaisi.value == null){
+      if(this.params.projet.id === 0){
       projetJson.id = this.projets[0].id;
       projetJson.titre =  this.projets[0].titre;
-    }
+    }else{
+      projetJson.id = this.params.projet.id;
+      projetJson.titre =  this.params.projet.titre;
+    }}
     else{projetJson.id = this.projetSaisi.value.id;
 
       projetJson.titre = this.projetSaisi.value.titre}
@@ -77,6 +90,9 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     this.wasSent = true;
     this.ajoutTacheEvent.emit(this.wasSent);
   }
+
+
+
   public update(tache: TacheInterface) {
     let tacheJson: TacheInterface={}
     if(this.titreSaisi.value !== null){

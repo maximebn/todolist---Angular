@@ -12,7 +12,8 @@
         <app-adding-task-outside-dialog   [params]="{ update: false,
           placeholder: 'Votre nouvelle tâche',
         date: date,
-        projet: 'projet',
+        projet: { id: 0,
+          titre: 'projet'},
       priorite: 'priorite'}" (ajoutTacheEvent)="receiveUpdate($event)" [hidden]="(dateCliquee != date) || (isCanceled === true)"></app-adding-task-outside-dialog>
         <button  type="button" class="btn btn-light ajoutTache" (click)="toggle()"><i class="fas fa-plus"></i>Ajouter une tâche</button>
     </div>
@@ -44,7 +45,8 @@
     <app-adding-task-outside-dialog [params]="{ update: false,
                                                 placeholder: 'Votre nouvelle tâche',
                                               date: date,
-                                              projet: 'projet',
+                                              projet: { id: 0,
+                                                titre: 'projet'},
                                             priorite: 'priorite'}" (ajoutTacheEvent)="receiveUpdate($event)" [hidden]="(dateCliquee != date) || (isCanceled === true)"></app-adding-task-outside-dialog>
     <button  type="button" class="btn btn-light ajoutTache" (click)="toggle(date)"><i class="fas fa-plus"></i>Ajouter une tâche</button>
 

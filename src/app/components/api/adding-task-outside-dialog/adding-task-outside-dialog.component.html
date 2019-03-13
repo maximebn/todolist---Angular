@@ -38,7 +38,7 @@
           <div fxLayout="row">
             <div fxFlex="25%">
                 <mat-form-field>
-                    <mat-select [formControl]="projetSaisi" matNativeControl placeholder={{params.projet}}>
+                    <mat-select [formControl]="projetSaisi"  matNativeControl placeholder={{params.projet.titre}}>
                       <div *ngFor="let projet of projets">
                           <mat-option [value]="projet"> {{projet.titre}}</mat-option>
                       </div>

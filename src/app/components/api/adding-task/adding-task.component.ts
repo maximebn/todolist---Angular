@@ -95,21 +95,5 @@ export class AddingTaskComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  public update(tache: TacheInterface) {
-    const formDate: string = this.date.value;
-
-    // Convertir la date 'chaîne' en date 'date'
-    const momentDate: moment.Moment = moment(formDate, 'DD/MM/YYYY');
-    tache.date=momentDate.format("YYYY-MM-DD");
-    tache.titre=this.titreSaisi.value;
-    tache.priorite=this.priorite.value;
-    tache.statut= this.statut.value;
-    tache.projet= this.projetSaisi.value;
-
-
-    this.tacheService.updateTache(tache);
-
-
-  }
-
+  
 }

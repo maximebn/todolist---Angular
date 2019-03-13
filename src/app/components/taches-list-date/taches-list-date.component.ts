@@ -35,7 +35,7 @@ export class TachesListDateComponent implements OnInit {
     this.page = this.route.snapshot.data.page;
     //this.dates = this.route.snapshot.data.dates;
     this.titre = this.route.snapshot.data.title;
-    this.getRemote(this.page);
+    //this.getRemote(this.page);
     this.subscription = this.tacheService.tacheBehaviorSubject.subscribe(()=>{
     this.getRemote(this.page)});
     this.isCanceled = true;

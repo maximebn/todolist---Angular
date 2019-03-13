@@ -36,8 +36,8 @@
 <app-adding-task-outside-dialog [params]="{ update: true,
                                             placeholder: tache.titre,
                                             date: tache.date,
-                                            projet: tache.projet.titre,
+                                            projet: tache.projet,
                                             priorite: tache.priorite
-                                           }" [tache]="tache" [hidden]="!tache.isUpdating"></app-adding-task-outside-dialog>
+                                           }" [tache]="tache" [hidden]="(!tache.isUpdating)  || (isCanceled === true)"  (ajoutTacheEvent)="receiveUpdate($event)"></app-adding-task-outside-dialog>
 <mat-divider></mat-divider>
 
