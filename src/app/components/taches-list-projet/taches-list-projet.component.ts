@@ -29,7 +29,8 @@ constructor(
   ) { }
 
   ngOnInit() {
-    this.getRemote();
+    this.subscription = this.tacheService.tacheBehaviorSubject.subscribe(()=>{
+    this.getRemote()});
   }
 
   public toggle() {
@@ -43,13 +44,10 @@ constructor(
       this.projetService.getRemoteTachesProjet(this.projet.id).subscribe((resultat) => {
         this.taches = resultat;
 
-        //this.subscription=this.tacheService.tacheBehaviorSubject.subscribe();
+      //this.subscription=this.tacheService.tacheBehaviorSubject.subscribe();
 
       });
     })
-
-
-
 
   }
 

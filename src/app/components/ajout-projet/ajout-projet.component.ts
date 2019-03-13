@@ -28,7 +28,7 @@ public projets: Array<ProjetInterface>;
 
   ngOnInit() {
       this.projetForm = new FormGroup({});
-  
+
 
   }
 // Créer un nouveau projet
@@ -43,7 +43,7 @@ public projets: Array<ProjetInterface>;
     this.projetService.saveProjetRemote(this.projet).subscribe(//set l'id renvoyé par le back
       (resultat)=> {
         this.projet = resultat;
-       
+
         this.projets.push(this.projet);//ajout du projet avec id à la liste récupérée
         this.projetService.remplaceSubject(this.projets);
       }
@@ -56,18 +56,19 @@ public projets: Array<ProjetInterface>;
     // this.projet.id=projet.id;
     // this.projet.titre=this.titreSaisi.value;
     //this.projet.isUpdating = false;// Réafficher le projet et non le composant pr le modifier
-    
-    
+
+
     this.projetService.behaviorSubject.subscribe((resultat) => {
       this.projets = resultat;
-      
+
     })
     const index=this.projets.indexOf(projet);// Trouver l'index dans le tableau projets où l'on doit fr la modif
+
     projet.isUpdating=false;
     projet.titre=this.titreSaisi.value;
     this.projetService.updateProjetRemote(projet).subscribe(
-      ()=> {    
-        
+      ()=> {
+
         this.projets.splice(index, 1, projet );//suppression de l'ancien projet à l'index recuperé
                                                 // et ajout du nouveau projet à cet index
         this.projetService.remplaceSubject(this.projets);

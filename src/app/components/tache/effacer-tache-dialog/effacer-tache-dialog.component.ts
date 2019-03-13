@@ -18,7 +18,10 @@ export class EffacerTacheDialogComponent implements OnInit {
   ngOnInit() {
   }
   public validateDeletingTache(tache: TacheInterface): void {
-    this.tacheService.deleteOne(tache).subscribe();
+    this.tacheService.deleteOne(tache).subscribe(() =>
+    {
+      this.tacheService.remplaceTacheSubject(tache);
+    });
   }
 
   onNoClick(): void {

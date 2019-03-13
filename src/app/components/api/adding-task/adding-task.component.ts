@@ -1,14 +1,17 @@
+import { Subscription } from 'rxjs';
+import { TacheService } from './../../../shared/services/tacheservice';
 
 import { Component, OnInit, Inject, Input } from '@angular/core';
 
 
 import {FormControl, FormGroup} from '@angular/forms';
-import { CreateTask } from 'src/app/shared/services/create.service';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import * as moment from 'moment';
 import { ProjetInterface } from 'src/app/shared/interface/projet';
+import { TacheComponent } from '../../tache/tache.component';
+
 
 export interface Priorite {
   value: string;
@@ -36,7 +39,9 @@ export class AddingTaskComponent implements OnInit {
 
 
 
-  constructor(private creationTacheService : CreateTask,
+
+  constructor(private tacheService: TacheService,
+
     public dialogRef: MatDialogRef<AddingTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public projets: Array<ProjetInterface>) {}
 
@@ -44,7 +49,7 @@ export class AddingTaskComponent implements OnInit {
 
   ngOnInit() {
     this.tacheForm = new FormGroup({});
-    console.log(this.projets);
+
   }
 
 
@@ -64,11 +69,21 @@ export class AddingTaskComponent implements OnInit {
     this.tache.statut = '';
     this.tache.id = '';
     let projetJson : ProjetInterface={};
-    projetJson.id = this.projetSaisi.value.id;
-    projetJson.titre = this.projetSaisi.value.titre;
+    if(this.projetSaisi.value == null){
+      projetJson.id = this.projets[0].id;
+      projetJson.titre =  this.projets[0].titre;
+    }
+    else{projetJson.id = this.projetSaisi.value.id;
+
+      projetJson.titre = this.projetSaisi.value.titre}
+
+
     this.tache.projet = projetJson;
 
-    this.creationTacheService.addTask(this.tache).subscribe(() => console.log('ok'));
+    this.tacheService.addTask(this.tache).subscribe((resultat) => {
+      this.tache = resultat;
+      this.tacheService.remplaceTacheSubject(this.tache);
+    });
     this.dialogRef.close();
 
   }
@@ -76,7 +91,21 @@ export class AddingTaskComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  public update(tache: TacheInterface) {
+    const formDate: string = this.date.value;
+
+    // Convertir la date 'chaîne' en date 'date'
+    const momentDate: moment.Moment = moment(formDate, 'DD/MM/YYYY');
+    tache.date=momentDate.format("YYYY-MM-DD");
+    tache.titre=this.titreSaisi.value;
+    tache.priorite=this.priorite.value;
+    tache.statut= this.statut.value;
+    tache.projet= this.projetSaisi.value;
 
 
+    this.tacheService.updateTache(tache);
+
+
+  }
 
 }

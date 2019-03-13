@@ -37,7 +37,7 @@
   <mat-divider></mat-divider>
   <div *ngFor="let tache of taches">
       <div>
-          <app-tache [tache]="tache" *ngIf="(tache.date === date) &&(tache.statut != 'En retard') " ></app-tache>
+          <app-tache [tache]="tache" *ngIf="(tache.date === date) && (tache.statut != 'En retard') && (tache.statut != 'Effectuée')" ></app-tache>
       </div>
     </div>
 

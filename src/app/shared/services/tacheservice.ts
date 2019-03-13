@@ -21,17 +21,22 @@ public getRemoteTaches(page): Observable<TacheInterface[]> {
 
 public updateTache(tache:TacheInterface) :Observable<any>{
   const tacheDto = JSON.stringify(tache);
-  console.log(tacheDto);
+
   return this.httpClient.put(environment.apiRoot+ 'tache/update', tacheDto )
 }
 
 public deleteOne(tache: TacheInterface){
-  console.log(tache);
+
   return this.httpClient.delete(environment.apiRoot + 'tache/deleteOne?idTache=' + tache.id);
 }
 
 public remplaceTacheSubject(tache: TacheInterface){
   this.tacheBehaviorSubject.next(tache);
 }
+public addTask(tache: TacheInterface): Observable<TacheInterface> {
+  const uri: string = environment.apiRoot + 'tache/save';
+  const tachejson=JSON.stringify(tache);
 
+  return this.httpClient.post<any>(uri, tachejson)
+}
 }
