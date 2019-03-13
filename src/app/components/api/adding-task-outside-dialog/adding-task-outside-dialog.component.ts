@@ -50,15 +50,29 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     this.tache = {};
     this.tache.titre = this.titreSaisi.value;
     this.tache.date = momentDate.format('YYYY-MM-DD');
+    if(this.priorite.value === null){
+      this.tache.priorite='Normale';
+    }else{
     this.tache.priorite = this.priorite.value;
+    }
     this.tache.statut = '';
     this.tache.id = '';
     let projetJson : ProjetInterface={};
-    projetJson.id = this.projetSaisi.value.id;
-    projetJson.titre = this.projetSaisi.value.titre;
+    if(this.projetSaisi.value == null){
+      projetJson.id = this.projets[0].id;
+      projetJson.titre =  this.projets[0].titre;
+    }
+    else{projetJson.id = this.projetSaisi.value.id;
+
+      projetJson.titre = this.projetSaisi.value.titre}
+
+
     this.tache.projet = projetJson;
 
-    this.tacheService.addTask(this.tache).subscribe(() => console.log('ok'));
+    this.tacheService.addTask(this.tache).subscribe((resultat) => {
+      this.tache = resultat;
+      this.tacheService.remplaceTacheSubject(this.tache);
+    });
 
     this.wasSent = true;
     this.ajoutTacheEvent.emit(this.wasSent);
@@ -94,13 +108,14 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
      projetJson.id = this.projetSaisi.value.id;
      projetJson.titre = this.projetSaisi.value.titre;
     }
-console.log(projetJson)
+
 tacheJson.projet = projetJson;
 
 
 
-console.log(tacheJson);
-    this.tacheService.updateTache(tacheJson);
+
+    this.tacheService.updateTache(tacheJson).subscribe();
+    this.tacheService.remplaceTacheSubject(tacheJson);
 
 
   }

@@ -65,7 +65,11 @@ export class AddingTaskComponent implements OnInit {
     this.tache = {};
     this.tache.titre = this.titreSaisi.value;
     this.tache.date = momentDate.format("YYYY-MM-DD");
+    if(this.priorite.value === null){
+      this.tache.priorite='Normale';
+    }else{
     this.tache.priorite = this.priorite.value;
+    }
     this.tache.statut = '';
     this.tache.id = '';
     let projetJson : ProjetInterface={};
