@@ -46,7 +46,7 @@ const routes: Routes = [
       {
         path: 'allTache',
         component: TachesListDateComponent,
-        data: { title: 'Toutes vos taches', page: 'findAll', dates: []}
+        data: { title: 'Toutes vos tâches', page: 'findAll', dates: []}
       },
       {
         path: 'projet/:id/titre/:titre',

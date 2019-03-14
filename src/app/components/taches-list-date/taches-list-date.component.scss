@@ -35,6 +35,18 @@ img {
   outline: none;
 }
 
+.ajoutTacheNone {
+  font-size: 14px;
+  width: 180px;
+  text-align: left;
+  outline: none;
+  background-color: var(--background-color);
+  color: white;
+  outline: none;
+  border: none;
+  margin-top:10px;
+}
+
 .ajoutTache {
   font-size: 14px;
   width: 180px;
@@ -46,10 +58,6 @@ img {
   border: none;
   margin-top:10px;
   margin-left: 20px;
-}
-
-.ajoutTache:hover {
-  color: var(--background-color);
 }
 
 .fas {

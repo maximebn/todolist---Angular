@@ -12,32 +12,19 @@
   width: 90%;
 }
 
-
 .ajoutTache {
-    color: white;
-    background-color : var(--background-color);
-    outline: none;
-    width: 100%;
-    margin-top: 10px;
-    font-size: 12px;
-    border: none;
+   color: white;
+  background-color : var(--background-color);
+  outline: none;
+  margin-top: 20px;
+ }
+
+ .cancel {
+  float:right;
+  outline: none;
+  color: grey;
+  margin-right: 25px;
+  margin-top: 5px;
 }
 
-  .btn-secondary:active {
-    box-shadow: none;
-    border: none;
-    background-color: transparent;
-  }
-
-  .cancel {
-    background-color: transparent;
-    font-size: 12px;
-    outline: none;
-    color: grey;
-    width: 80%;
-    border: none;
-    margin-top: 10px;
-    margin-left: 20px;
-    margin-right: 10px;
-  }
 

@@ -74,9 +74,9 @@ div {
 }
 
 .mat-menu-item {
-float: right;
-background-color: transparent !important;
-}
+  background-color: transparent !important;
+  outline: none;
+  }
 
 .bouton-menu {
   outline:none;

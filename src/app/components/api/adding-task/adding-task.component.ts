@@ -38,8 +38,6 @@ export class AddingTaskComponent implements OnInit {
   //priorites: string[] = ['Normale', 'Importante', 'Prioritaire'];
 
 
-
-
   constructor(private tacheService: TacheService,
 
     public dialogRef: MatDialogRef<AddingTaskComponent>,

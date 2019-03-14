@@ -1,67 +1,69 @@
 <div class="card">
   <div class="card-body">
 
-      <form [formGroup]="tacheForm">
+<form [formGroup]="tacheForm">
 
-          <div fxLayout="row">
+  <div fxLayout="row">
 
-            <div fxFlex="50%">
-                <mat-form-field>
-                    <input matInput  *ngIf="!params.update" [formControl]="titreSaisi" required maxlength="150"
-                      placeholder={{params.placeholder}}>
-                      <input matInput  *ngIf="params.update" [formControl]="titreSaisi"  maxlength="150"
-                     value={{params.placeholder}}>
-                </mat-form-field>
-            </div>
+    <div fxFlex="75%">
+        <mat-form-field>
+            <input matInput  *ngIf="!params.update" [formControl]="titreSaisi" required maxlength="150"
+              placeholder={{params.placeholder}}>
+              <input matInput  *ngIf="params.update" [formControl]="titreSaisi"  maxlength="150"
+             value={{params.placeholder}}>
+        </mat-form-field>
+    </div>
 
-            <div fxFlex="25%">
-                  <mat-form-field>
-                    <input [formControl]="date" matInput [matDatepicker]="picker"
-                     value={{params.date}}>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-              </div>
 
-              <div fxFlex="25%">
-                  <mat-form-field>
-                      <mat-select [formControl]="priorite" matNativeControl placeholder={{params.priorite}}>
-                        <mat-option value="Normale">Normale</mat-option>
-                        <mat-option value="Importante">Importante</mat-option>
-                        <mat-option value="Prioritaire">Prioritaire</mat-option>
-                      </mat-select>
-                  </mat-form-field>
-              </div>
-
-            </div>
-
-          <div fxLayout="row">
-            <div fxFlex="25%">
-                <mat-form-field>
-                    <mat-select [formControl]="projetSaisi"  matNativeControl placeholder={{params.projet.titre}}>
-                      <div *ngFor="let projet of projets">
-                          <mat-option [value]="projet"> {{projet.titre}}</mat-option>
-                      </div>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-
-            <div fxFlex="50%">
-                <button type="button" class="btn btn-secondary btn-sm ajoutTache" *ngIf="!params.update" (click)="save()">
-                    Ajouter une tâche
-                </button>
-                <button type="button" class="btn btn-secondary btn-sm ajoutTache" *ngIf="params.update" (click)="update(tache)">
-                  Modifier cette tâche
-              </button>
-            </div>
-
-            <div fxFlex="25%">
-              <button type="button" class="btn btn-secondary btn-sm cancel" (click)="toggle()">Annuler</button>
-            </div>
-
-         </div>
-
-        </form>
+    <div fxFlex="30%">
+      <button mat-button class="ajoutTache" *ngIf="!params.update" (click)="save()">
+          Ajouter une tâche
+      </button>
+      <button mat-button class="ajoutTache" *ngIf="params.update" (click)="update(tache)">
+          Modifier une tâche
+      </button>
+   </div>
 
   </div>
+
+  <div fxLayout="row">
+    <div fxFlex="25%">
+        <mat-form-field>
+            <mat-select [formControl]="priorite" matNativeControl placeholder={{params.priorite}}>
+              <mat-option value="Normale">Normale</mat-option>
+              <mat-option value="Importante">Importante</mat-option>
+              <mat-option value="Prioritaire">Prioritaire</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div fxFlex="25%">
+        <mat-form-field>
+            <mat-select [formControl]="projetSaisi"  matNativeControl placeholder={{params.projet.titre}}>
+              <div *ngFor="let projet of projets">
+                  <mat-option [value]="projet"> {{projet.titre}}</mat-option>
+              </div>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div fxFlex="25%">
+        <mat-form-field>
+            <input [formControl]="date" matInput [matDatepicker]="picker"
+             value={{params.date}}>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    </div>
+
+    <div fxFlex="25%">
+      <button mat-button color="primary" class="cancel" (click)="toggle()">Annuler</button>
+    </div>
+
+    </div>
+
+
+</form>
+
+</div>
 </div>

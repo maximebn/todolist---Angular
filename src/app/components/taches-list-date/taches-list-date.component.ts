@@ -1,12 +1,9 @@
 import { AddingTaskOutsideDialogComponent } from './../api/adding-task-outside-dialog/adding-task-outside-dialog.component';
-
 import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import { TacheService } from 'src/app/shared/services/tacheservice';
 import { ActivatedRoute } from '@angular/router';
-import* as moment from 'moment'
-import { ToastrComponentlessModule } from 'ngx-toastr';
-import { of, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-taches-list-date',
@@ -33,11 +30,13 @@ export class TachesListDateComponent implements OnInit {
 
   ngOnInit() {
     this.page = this.route.snapshot.data.page;
+    console.log(this.page)
     //this.dates = this.route.snapshot.data.dates;
     this.titre = this.route.snapshot.data.title;
-    //this.getRemote(this.page);
+
     this.subscription = this.tacheService.tacheBehaviorSubject.subscribe(()=>{
     this.getRemote(this.page)});
+    console.log(this.subscription);
     this.isCanceled = true;
   }
 
@@ -52,25 +51,22 @@ export class TachesListDateComponent implements OnInit {
 
   }
 
-
   public getRemote(page?: string ){
     this.tacheService.getRemoteTaches(this.page).subscribe((resultat) => {
 
     this.taches = resultat;
-    console.log(this.taches);
     this.dates = this.route.snapshot.data.dates;
 
     if (this.page === 'findAll') {
-      this.dates=[];
+      this.dates = [];
 
       for(let i=0; i< this.taches.length; i++){
         let statut = this.taches[i].statut;
-        if(statut !== "En retard"){
-        let date=this.taches[i].date;
-
+        if(statut !== 'En retard'){
+        let date = this.taches[i].date;
 
         if (this.dates.indexOf(date) === -1){
-          this.dates.push(date);
+            this.dates.push(date);
       }
 
      }

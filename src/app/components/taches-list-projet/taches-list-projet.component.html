@@ -1,6 +1,6 @@
-<h6>{{projet.titre}}</h6>
-<div *ngFor="let tache of taches">
+<h4>{{projet.titre}}</h4>
 
+<div *ngFor="let tache of taches">
     <app-tache [params]="{ hideProjet: true}" [tache]="tache" *ngIf="(tache.statut != 'Effectuée')"></app-tache>
  </div>
 <div>
@@ -10,5 +10,5 @@
       date: date,
       projet: projet,
     priorite: 'priorite'}" (ajoutTacheEvent)="receiveUpdate($event)" [hidden]="(isCanceled)"></app-adding-task-outside-dialog>
-    <button  type="button" class="btn btn-light ajoutTache" (click)="toggle()"><i class="fas fa-plus"></i>Ajouter une tâche</button>
+    <button [hidden]=(!isCanceled) type="button" class="btn btn-light ajoutTache" (click)="toggle()"><i class="fas fa-plus"></i>Ajouter une tâche</button>
 </div>
