@@ -1,23 +1,24 @@
+
 <form [formGroup]="tacheForm">
 
   <div fxLayout="row">
 
-    <div fxFlex="60%">
+    <div fxFlex="75%">
         <mat-form-field>
             <input matInput [formControl]="titreSaisi" class="form-control" required maxlenght="150"
               placeholder="Votre nouvelle tâche">
         </mat-form-field>
     </div>
 
-    <div fxFlex="40%">
-          <mat-form-field>
-            <input [formControl]="date" class="form-control" matInput [matDatepicker]="picker"
-              placeholder="Choisir une date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-       </div>
-    </div>
+    <div fxFlex="30%">
+      <button mat-button class="ajoutTache" (click)="save()">
+          Ajouter une tâche
+      </button>
+   </div>
+
+  </div>
+
+
 
   <div fxLayout="row">
     <div fxFlex="25%">
@@ -40,20 +41,19 @@
         </mat-form-field>
     </div>
 
-    <div fxFlex="50%">
-        <button mat-button class="ajoutTache" (click)="save()">
-            Ajouter une tâche
-        </button>
+    <div fxFlex="25%">
+      <mat-form-field>
+        <input [formControl]="date" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </div>
 
- </div>
+    <div fxFlex="25%">
+      <button mat-button color="primary" class="cancel" (click)="onNoClick()">Annuler</button>
+    </div>
+
+    </div>
+
 
 </form>
-
-
-<div fxLayout='column'>
-
-    <div fxFlex="40%">
-        <button mat-button color="primary" class="cancel no-hover-effect" (click)="onNoClick()">Annuler</button>
-    </div>
-</div>

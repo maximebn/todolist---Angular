@@ -35,7 +35,7 @@ img {
   outline: none;
 }
 
-.ajoutTache {
+.ajoutTacheNone {
   font-size: 14px;
   width: 180px;
   text-align: left;
@@ -45,6 +45,19 @@ img {
   outline: none;
   border: none;
   margin-top:10px;
+}
+
+.ajoutTache {
+  font-size: 14px;
+  width: 180px;
+  text-align: left;
+  outline: none;
+  background-color: transparent;
+  color: rgba(41, 37, 37, 0.767);
+  outline: none;
+  border: none;
+  margin-top:10px;
+  margin-left: 20px;
 }
 
 .fas {

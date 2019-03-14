@@ -3,29 +3,32 @@ form {
 }
 
 .mat-form-field{
-width: 90%;
+  width: 90%;
 }
 
 .mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab {
-    width: 90%;}
+  margin-left: 10%;
+}
+
+/deep/ .mat-input-underline {
+  background-color: #FF0000;    /* replace this color with your accent color hex code */
+}
 
 .mat-raised-button{
-        line-height: 60px
+  line-height: 60px
 }
 
 .ajoutTache {
   color: white;
   background-color : var(--background-color);
   outline: none;
-  width: 73%;
-  margin-left: 20%;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .cancel {
-  width: 36%;
   float:right;
   outline: none;
   color: grey;
-  margin-right: 20px;
+  margin-right: 25px;
+  margin-top: 5px;
 }

@@ -27,7 +27,7 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
             this.snackBar.open('Opération refusée : ce compte existe déjà. Veuillez utiliser une autre adresse ou vous connecter', 'Fermer');
           }
           else if (error.status === 401) {
-            this.snackBar.open('Vous n\'êtes pas autorisé à accéder à cette ressource. Veuillez vous connecter.', 'Fermer');
+            this.snackBar.open('Oups ! Veuillez vous connecter.', 'Fermer');
             localStorage.removeItem('access_token');
             console.log(localStorage.getItem('access_token'));
             this.router.navigate(['/']);
