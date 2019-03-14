@@ -11,7 +11,7 @@
     <div class="centré">
         <app-adding-task-outside-dialog   [params]="{ update: false,
           placeholder: 'Votre nouvelle tâche',
-        date: date,
+        date: dateVide,
         projet: { id: 0,
           titre: 'projet'},
       priorite: 'priorite'}" (ajoutTacheEvent)="receiveUpdate($event)" [hidden]=(isCanceled)></app-adding-task-outside-dialog>
