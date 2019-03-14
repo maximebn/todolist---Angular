@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TacheService } from 'src/app/shared/services/tacheservice';
 import { mergeMap } from 'rxjs/operators';
+import* as moment from'moment';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { mergeMap } from 'rxjs/operators';
   styleUrls: ['./taches-list-projet.component.scss']
 })
 export class TachesListProjetComponent implements OnInit {
-
+public date : string=moment().locale('fr').format('YYYY-MM-DD');
   public taches: Array< TacheInterface >;
   projet: ProjetInterface={};
   public subscription: Subscription;

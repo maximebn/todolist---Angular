@@ -1,10 +1,14 @@
 <h4>{{projet.titre}}</h4>
 <div *ngFor="let tache of taches">
 
-    <app-tache [tache]="tache" *ngIf="(tache.statut != 'Effectuée')"></app-tache>
+    <app-tache [params]="{ hideProjet: true}" [tache]="tache" *ngIf="(tache.statut != 'Effectuée')"></app-tache>
  </div>
 <div>
 
-    <app-adding-task-outside-dialog (ajoutTacheEvent)="receiveUpdate($event)" [hidden]="(isCanceled)"></app-adding-task-outside-dialog>
+    <app-adding-task-outside-dialog  [params]="{ update: false,
+        placeholder: 'Votre nouvelle tâche',
+      date: date,
+      projet: projet,
+    priorite: 'priorite'}" (ajoutTacheEvent)="receiveUpdate($event)" [hidden]="(isCanceled)"></app-adding-task-outside-dialog>
     <button  type="button" class="btn btn-light ajoutTache" (click)="toggle()"><i class="fas fa-plus"></i>Ajouter une tâche</button>
 </div>
