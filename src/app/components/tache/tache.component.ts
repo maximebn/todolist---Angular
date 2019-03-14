@@ -32,8 +32,9 @@ export class TacheComponent implements OnInit {
 
   public changeStatutEffectuee(tache: TacheInterface){
     tache.statut="Effectuée";
-    this.tacheService.updateTache(tache).subscribe();
-    this.tacheService.remplaceTacheSubject(tache);
+    this.tacheService.updateTache(tache).subscribe(()=>
+     { this.tacheService.remplaceTacheSubject(tache);});
+    
   }
 
   public openDialogueDelete(tache): void {

@@ -72,9 +72,6 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     } else {
       this.tache.date = this.date.value;
     }
-
-    console.log(this.tache.date);
-    console.log(this.params.date);
     this.tache.priorite = this.priorite.value;
     this.tache.statut = "";
     this.tache.id = "";
@@ -100,6 +97,13 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
 
     this.wasSent = true;
     this.ajoutTacheEvent.emit(this.wasSent);
+
+    // remttre le formuaire a vide
+    this.titreSaisi = new FormControl();
+      this.date = new FormControl(this.params.date);
+      this.priorite = new FormControl("Normale");
+      this.statut = new FormControl();
+      this.projetSaisi = new FormControl();
   }
 
   public update(tache: TacheInterface) {

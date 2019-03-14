@@ -4,6 +4,7 @@ import { TacheInterface } from 'src/app/shared/interface/tache';
 import { TacheService } from 'src/app/shared/services/tacheservice';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-taches-list-date',
@@ -14,6 +15,8 @@ export class TachesListDateComponent implements OnInit {
   public taches: Array<TacheInterface>=[{}];
   @Input() page: string;
   @Input() dates: Array<any>;
+
+  public dateVide : string;
 
   public titre: string;
   public dateCliquee;
@@ -38,6 +41,7 @@ export class TachesListDateComponent implements OnInit {
     this.getRemote(this.page)});
     console.log(this.subscription);
     this.isCanceled = true;
+    this. dateVide =moment().locale('fr').format('YYYY-MM-DD');
   }
 
   public toggle(date: any) {
