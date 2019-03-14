@@ -12,7 +12,6 @@ import { ToolBarComponent } from './components/api/tool-bar/tool-bar.component';
 import { HomeComponent } from './components/home/home/home.component';
 import { ApiComponent } from './components/api/api/api.component';
 
-
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -20,7 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 // Material modules :
@@ -122,6 +121,7 @@ import { AddingTaskOutsideDialogComponent } from './components/api/adding-task-o
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    NgbModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,

@@ -15,13 +15,11 @@
            <button mat-button (click)="openDialog(projets)">
             <i class="fas fa-plus"></i>
            </button>
-           <button mat-button [matMenuTriggerFor]="menu">
-            <i class="fas fa-chart-pie"></i>
-           </button>
 
-           <mat-menu #menu="matMenu">
-            <app-performance></app-performance>
-          </mat-menu>
+           <ng-template #popContent><app-performance></app-performance></ng-template>
+              <button mat-button [ngbPopover]="popContent">
+                  <i class="fas fa-chart-pie"></i>
+              </button>
 
            <button mat-button [matMenuTriggerFor]="settings"><i class="fas fa-cog"></i></button>
 

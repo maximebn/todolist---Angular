@@ -1,5 +1,8 @@
+import { TacheService } from './../../../shared/services/tacheservice';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { TacheInterface } from 'src/app/shared/interface/tache';
 
 @Component({
   selector: 'app-performance',
@@ -11,8 +14,10 @@ export class PerformanceComponent implements OnInit {
   nbreTachesEffectuees: number;
   nbreTachesEnRetard: number;
   doIshow: boolean;
+  subscription: Subscription;
+  taches: Array<TacheInterface>;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private tacheService: TacheService) {
   }
 
   ngOnInit() {
@@ -22,7 +27,8 @@ export class PerformanceComponent implements OnInit {
       this.indicePerformance = result.indicePerformance;
       console.log(this.indicePerformance);
       });
-  }
+}
+
 
   public isWorking() {
     this.doIshow = true;
@@ -31,5 +37,11 @@ export class PerformanceComponent implements OnInit {
     }
     return this.doIshow;
   }
+
+
+
+
+
+
 
 }
