@@ -14,6 +14,7 @@ import * as moment from 'moment';
 export class AddingTaskOutsideDialogComponent implements OnInit {
   @Input() tache: TacheInterface;
   @Output() ajoutTacheEvent = new EventEmitter<boolean>();
+  @Input() params: any;
   wasSent = false;
 
 
@@ -38,28 +39,100 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     this.ajoutTacheEvent.emit(this.wasSent);
   }
 
+
+  
   public save(): void {
 
     // Récupère la date depuis le formulaire
+    let formDate: string;
+
+    // Convertir la date 'chaîne' en date 'date'
+    console.log(this.params.date)
+    console.log(this.date.value)
+    if(this.date.value !== null){
+      formDate= this.date.value;
+    }
+    else{
+      formDate=this.params.date;
+    }
+    const momentDate: moment.Moment = moment(formDate, 'DD/MM/YYYY');
+    this.tache = {};
+    this.tache.titre = this.titreSaisi.value;
+    this.tache.date = momentDate.format('YYYY-MM-DD');
+    if(this.priorite.value === null){
+      this.tache.priorite='Normale';
+    }else{
+    this.tache.priorite = this.priorite.value;
+    }
+    this.tache.statut = '';
+    this.tache.id = '';
+    let projetJson : ProjetInterface={};
+    if(this.projetSaisi.value == null){
+      if(this.params.projet.id === 0){
+      projetJson.id = this.projets[0].id;
+      projetJson.titre =  this.projets[0].titre;
+    }else{
+      projetJson.id = this.params.projet.id;
+      projetJson.titre =  this.params.projet.titre;
+    }}
+    else{projetJson.id = this.projetSaisi.value.id;
+
+      projetJson.titre = this.projetSaisi.value.titre}
+
+
+    this.tache.projet = projetJson;
+
+    this.tacheService.addTask(this.tache).subscribe((resultat) => {
+      this.tache = resultat;
+      this.tacheService.remplaceTacheSubject(this.tache);
+    });
+
+    this.wasSent = true;
+    this.ajoutTacheEvent.emit(this.wasSent);
+  }
+
+
+
+  public update(tache: TacheInterface) {
+    let tacheJson: TacheInterface={}
+    if(this.titreSaisi.value !== null){
+      tacheJson.titre = this.titreSaisi.value;
+    }
+    else{
+      tacheJson.titre=tache.titre;
+    }
     const formDate: string = this.date.value;
 
     // Convertir la date 'chaîne' en date 'date'
     const momentDate: moment.Moment = moment(formDate, 'DD/MM/YYYY');
+    tacheJson.date=momentDate.format("YYYY-MM-DD");
+    if(this.priorite.value !== null){
+      tacheJson.priorite = this.priorite.value;
+    }else{
+      tacheJson.priorite=tache.priorite;
+    }
+    tacheJson.statut=tache.statut;
+    tacheJson.id=tache.id;
 
-    this.tache = {};
-    this.tache.titre = this.titreSaisi.value;
-    this.tache.date = momentDate.format('YYYY-MM-DD');
-    this.tache.priorite = this.priorite.value;
-    this.tache.statut = '';
-    this.tache.id = '';
+
     let projetJson : ProjetInterface={};
-    projetJson.id = this.projetSaisi.value.id;
-    projetJson.titre = this.projetSaisi.value.titre;
-    this.tache.projet = projetJson;
+    if(this.projetSaisi.value == null){
 
-    this.tacheService.addTask(this.tache).subscribe(() => console.log('ok'));
+      projetJson.id = tache.projet.id
+      projetJson.titre =  tache.projet.titre;
+    } else{
+     projetJson.id = this.projetSaisi.value.id;
+     projetJson.titre = this.projetSaisi.value.titre;
+    }
 
-    this.wasSent = true;
-    this.ajoutTacheEvent.emit(this.wasSent);
+tacheJson.projet = projetJson;
+
+
+
+
+    this.tacheService.updateTache(tacheJson).subscribe();
+    this.tacheService.remplaceTacheSubject(tacheJson);
+
+
   }
 }

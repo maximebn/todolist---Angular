@@ -14,6 +14,9 @@ import { Subscription } from 'rxjs';
 })
 export class TacheComponent implements OnInit {
   @Input() tache : TacheInterface;
+  @Input() params:any;
+
+  isCanceled: boolean;
   
 
 
@@ -22,7 +25,7 @@ export class TacheComponent implements OnInit {
   constructor( public tacheService : TacheService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    
+    this.isCanceled = true;
 
 
   }
@@ -41,5 +44,12 @@ export class TacheComponent implements OnInit {
   }
   public showUpdate(tache: TacheInterface){
     tache.isUpdating=true;
+    this.isCanceled=false;
+  }
+
+  receiveUpdate($event) {
+     console.log($event);
+     this.isCanceled = $event;
+
   }
 }
