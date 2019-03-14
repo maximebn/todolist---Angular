@@ -59,10 +59,13 @@ export class AddingTaskComponent implements OnInit {
 
     // Convertir la date 'chaîne' en date 'date'
     const momentDate: moment.Moment = moment(formDate, 'DD/MM/YYYY');
+console.log(this.date.value);
+
 
     this.tache = {};
     this.tache.titre = this.titreSaisi.value;
     this.tache.date = momentDate.format("YYYY-MM-DD");
+    console.log(this.tache.date);
     if(this.priorite.value === null){
       this.tache.priorite='Normale';
     }else{
@@ -93,5 +96,5 @@ export class AddingTaskComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  
+
 }
