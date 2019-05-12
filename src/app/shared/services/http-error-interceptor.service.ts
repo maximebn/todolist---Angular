@@ -19,19 +19,20 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.error instanceof Error) {
-          // Erreur côté client :
+          // Client-side error :
           console.error('Aie, erreur :', error.error.message);
         } else {
           if (error.status === 403) {
-            // tslint:disable-next-line:max-line-length
             this.snackBar.open('Opération refusée : ce compte existe déjà. Veuillez utiliser une autre adresse ou vous connecter', 'Fermer');
           }
+
           else if (error.status === 401) {
             this.snackBar.open('Oups ! Veuillez vous connecter.', 'Fermer');
             localStorage.removeItem('access_token');
             console.log(localStorage.getItem('access_token'));
             this.router.navigate(['/']);
           }
+          
           else if (error.status === 404) {
             this.snackBar.open('La page que vous demandez n\'existe plus !', 'Fermer');
             this.router.navigate(['/api']);

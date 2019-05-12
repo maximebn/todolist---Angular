@@ -11,7 +11,7 @@ export class ApiComponent implements OnInit {
   constructor(private requestService: RequestService) {}
 
 
-  // Afin de savoir vers quelle page diriger selon la connexion :
+  // On init, I have to know on which page I must redirect depending on the connexion : 
   ngOnInit() {
       this.requestService.checkCredentials();
   }

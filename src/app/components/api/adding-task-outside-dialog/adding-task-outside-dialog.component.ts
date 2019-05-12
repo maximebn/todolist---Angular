@@ -5,13 +5,13 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { ProjetInterface } from "src/app/shared/interface/projet";
 import * as moment from "moment";
-import { PARAMETERS } from "@angular/core/src/util/decorators";
 
 @Component({
   selector: "app-adding-task-outside-dialog",
   templateUrl: "./adding-task-outside-dialog.component.html",
   styleUrls: ["./adding-task-outside-dialog.component.scss"]
 })
+
 export class AddingTaskOutsideDialogComponent implements OnInit {
   @Input() tache: TacheInterface;
   @Output() ajoutTacheEvent = new EventEmitter<boolean>();
@@ -30,6 +30,7 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     private projetService: ProjetService,
     private tacheService: TacheService
   ) {}
+
 
   ngOnInit() {
     this.tacheForm = new FormGroup({});
@@ -66,16 +67,18 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     if (this.date.value != this.params.date) {
       const formDate: string = this.date.value;
 
-      // Convertir la date 'chaîne' en date 'date'
+      // Converts strong to date
       const momentDate: moment.Moment = moment(formDate, "DD/MM/YYYY");
       this.tache.date = momentDate.format("YYYY-MM-DD");
     } else {
       this.tache.date = this.date.value;
     }
+
     this.tache.priorite = this.priorite.value;
     this.tache.statut = "";
     this.tache.id = "";
     let projetJson: ProjetInterface = {};
+
     if (this.projetSaisi.value == null) {
       if (this.params.projet.id === 0) {
         projetJson.id = this.projets[0].id;
@@ -86,7 +89,6 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
       }
     } else {
       projetJson.id = this.projetSaisi.value.id;
-
       projetJson.titre = this.projetSaisi.value.titre;
     }
     this.tache.projet = projetJson;
@@ -98,7 +100,7 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     this.wasSent = true;
     this.ajoutTacheEvent.emit(this.wasSent);
 
-    // remttre le formuaire a vide
+    // Form
     this.titreSaisi = new FormControl();
       this.date = new FormControl(this.params.date);
       this.priorite = new FormControl("Normale");
@@ -112,15 +114,12 @@ export class AddingTaskOutsideDialogComponent implements OnInit {
     if (this.date.value != this.params.date) {
       const formDate: string = this.date.value;
 
-      // Convertir la date 'chaîne' en date 'date'
       const momentDate: moment.Moment = moment(formDate, "DD/MM/YYYY");
       tacheJson.date = momentDate.format("YYYY-MM-DD");
     } else {
       tacheJson.date = this.date.value;
     }
 
-    console.log(this.params.date);
-    console.log(this.date.value);
     tacheJson.priorite = this.priorite.value;
     tacheJson.statut = tache.statut;
     tacheJson.id = tache.id;

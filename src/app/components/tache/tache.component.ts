@@ -1,10 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TacheInterface } from 'src/app/shared/interface/tache';
-import * as moment from 'moment';
 import { TacheService } from 'src/app/shared/services/tacheservice';
 import { MatDialog } from '@angular/material/dialog';
 import { EffacerTacheDialogComponent } from './effacer-tache-dialog/effacer-tache-dialog.component';
-import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -18,23 +16,16 @@ export class TacheComponent implements OnInit {
 
   isCanceled: boolean;
   
-
-
-
-
   constructor( public tacheService : TacheService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.isCanceled = true;
-
-
   }
 
   public changeStatutEffectuee(tache: TacheInterface){
     tache.statut="Effectuée";
     this.tacheService.updateTache(tache).subscribe(()=>
      { this.tacheService.remplaceTacheSubject(tache);});
-    
   }
 
   public openDialogueDelete(tache): void {
@@ -43,6 +34,7 @@ export class TacheComponent implements OnInit {
       height: '160px',
       data: tache});
   }
+
   public showUpdate(tache: TacheInterface){
     tache.isUpdating=true;
     this.isCanceled=false;

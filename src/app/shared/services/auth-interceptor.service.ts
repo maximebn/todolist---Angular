@@ -14,11 +14,10 @@ export class AuthInterceptorService implements HttpInterceptor {
   // ------------------------------------------------------------------------------------------------------ //
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Je récupère le token depuis le cookie ;
-    // Je modifie mon header en y ajoutant un cookie :
+    // I reclaim token from local storage
+    // I edit my header adding data
 
-    // Si le token existe bien, je l'ajoute à toutes les requêtes
-    // S'il n'existe pas (cas des premiers accès login/authentification), je ne fais rien.
+    // If token exists, I add it to my requests. If it does not exist (first login/authentication), nothing happens
 
     if (this.requestService.isLoggedIn()) {
     const authToken = this.requestService.getTokenFromStorage();
@@ -28,7 +27,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         'Content-Type': 'application/json'
         });
 
-      // request.headers.append('Authorization', 'Bearer ' + authToken);
+    // request.headers.append('Authorization', 'Bearer ' + authToken);
     const authReq = request.clone({headers});
     return next.handle(authReq);
     }

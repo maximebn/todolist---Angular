@@ -1,16 +1,10 @@
-import { Subscription } from 'rxjs';
 import { TacheService } from './../../../shared/services/tacheservice';
-
 import { Component, OnInit, Inject, Input } from '@angular/core';
-
-
 import {FormControl, FormGroup} from '@angular/forms';
 import { TacheInterface } from 'src/app/shared/interface/tache';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 import * as moment from 'moment';
 import { ProjetInterface } from 'src/app/shared/interface/projet';
-import { TacheComponent } from '../../tache/tache.component';
 
 
 export interface Priorite {
@@ -35,8 +29,6 @@ export class AddingTaskComponent implements OnInit {
 
   tacheForm: FormGroup;
 
-  //priorites: string[] = ['Normale', 'Importante', 'Prioritaire'];
-
 
   constructor(private tacheService: TacheService,
 
@@ -47,41 +39,39 @@ export class AddingTaskComponent implements OnInit {
 
   ngOnInit() {
     this.tacheForm = new FormGroup({});
-
   }
 
 
   public save(): void {
 
-
-    // Récupère la date depuis le formulaire
+    // Reclaims date from form
     const formDate: string = this.date.value;
 
-    // Convertir la date 'chaîne' en date 'date'
+    // Converts strong to date
     const momentDate: moment.Moment = moment(formDate, 'DD/MM/YYYY');
-console.log(this.date.value);
-
 
     this.tache = {};
     this.tache.titre = this.titreSaisi.value;
     this.tache.date = momentDate.format("YYYY-MM-DD");
-    console.log(this.tache.date);
     if(this.priorite.value === null){
       this.tache.priorite='Normale';
-    }else{
+    }
+    else {
     this.tache.priorite = this.priorite.value;
     }
+
     this.tache.statut = '';
     this.tache.id = '';
     let projetJson : ProjetInterface={};
-    if(this.projetSaisi.value == null){
+
+    if(this.projetSaisi.value == null) {
       projetJson.id = this.projets[0].id;
       projetJson.titre =  this.projets[0].titre;
     }
-    else{projetJson.id = this.projetSaisi.value.id;
-
-      projetJson.titre = this.projetSaisi.value.titre}
-
+    else {
+      projetJson.id = this.projetSaisi.value.id;
+      projetJson.titre = this.projetSaisi.value.titre
+    }
 
     this.tache.projet = projetJson;
 
@@ -89,8 +79,8 @@ console.log(this.date.value);
       this.tache = resultat;
       this.tacheService.remplaceTacheSubject(this.tache);
     });
-    this.dialogRef.close();
 
+    this.dialogRef.close();
   }
 
   onNoClick(): void {

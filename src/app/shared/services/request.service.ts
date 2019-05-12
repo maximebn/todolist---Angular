@@ -15,7 +15,8 @@ export class RequestService {
               private router: Router, private snackBar: MatSnackBar) {}
 
    // ------------------------------------------------------------------------------------------------------ //
-  // Je demande un token à partir du mail, password, et des données oAuth2 : un body, un en-tête, une uri.
+  // I ask for a token from mail, passwxord and OAuth2 data : body, header, uri.
+  
   obtainAccessToken(loginData: any): void {
     const uri = 'http://localhost:8000/oauth/token';
 
@@ -31,14 +32,13 @@ export class RequestService {
     };
 
   // ------------------------------------------------------------------------------------------------------ //
-  // Je demande au back, et sauvegarde le token dans un cookie :
+  // I request to back-end, and save token in local storage :
     this.httpClient.post<any>(uri, body.toString(), {headers}).subscribe(
       data => {
         this.saveToken(data);
     });
   }
 
-  // Je redirgie vers l'api si token généré
   saveToken(token){
     localStorage.setItem('access_token', token.access_token);
     this.router.navigate(['/api']);
@@ -55,7 +55,7 @@ export class RequestService {
     return false;
   }
 
-  // Si token : vers l'api, sinon vers login :
+  // If token : api, if not : login
   checkCredentials() {
     console.log(this.isLoggedIn);
     if (!this.isLoggedIn()) {
@@ -65,7 +65,7 @@ export class RequestService {
     }
   }
 
-  // logout : je supprimer le cookie, donc le token, je redirige vers login :
+  // logout : I delete local storage, then home page :
   logout() {
       localStorage.removeItem('access_token');
       this.router.navigate(['/']);

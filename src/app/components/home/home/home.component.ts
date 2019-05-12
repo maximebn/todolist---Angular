@@ -19,18 +19,18 @@ export class HomeComponent implements OnInit {
   private mail: string;
   private password: string;
 
-  // Injection des services
+  // Service injection
   constructor(public dialog: MatDialog, private userService: UserService,
               private requestService: RequestService, private snackBar: MatSnackBar) {
   }
 
-  // Afin de savoir vers quelle page diriger selon la connexion :
+  // Where I redirect on connection
   ngOnInit() {
      this.requestService.checkCredentials();
   }
 
   // ------------------------------------------------------------------------------ //
-  // Boite de dialogue pour création de compte
+  // Dialog for creating account
   openDialog(): void {
     const dialogRef = this.dialog.open(RegisterDialogComponent, {
       width: '350px',
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
   }
 
   // ------------------------------------------------------------------------------ //
-  // Boite de dialogue pour login :
+  // Dialog for login :
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '350px',
@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
       const logUtilisateur: User = new User().deserialize(result);
       console.log(logUtilisateur);
 
-      // Je demande un token
+      // I ask for token
       this.requestService.obtainAccessToken(logUtilisateur);
       },
       error => {  {

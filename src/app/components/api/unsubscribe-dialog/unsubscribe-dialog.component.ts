@@ -25,11 +25,11 @@ export class UnsubscribeDialogComponent implements OnInit {
   }
 
   onValidateDeleting(): void {
-    this.userService.deleteUser().subscribe((data) => {this.dialogRef.close();
-                                                       this.requestService.logout();
-                                                       // tslint:disable-next-line:max-line-length
-                                                       this.snackBar.open('Votre compte a bien été supprimé. Bon vent.', 'Fermer');
-                                                      }
+    this.userService.deleteUser().subscribe((data) => {
+      this.dialogRef.close();
+      this.requestService.logout();
+      this.snackBar.open('Votre compte a bien été supprimé. Bon vent.', 'Fermer');
+     }
     );
 
   }

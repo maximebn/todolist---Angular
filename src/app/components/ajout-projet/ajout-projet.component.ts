@@ -3,8 +3,6 @@ import { ProjetService } from './../../shared/services/projetservice';
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { OuterSubscriber } from 'rxjs/internal/OuterSubscriber';
-import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-ajout-projet',
@@ -12,6 +10,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./ajout-projet.component.scss'],
 
 })
+
 export class AjoutProjetComponent implements OnInit {
 
 public titreSaisi = new FormControl('', Validators.minLength(1));
@@ -30,20 +29,26 @@ wasSent: boolean;
       this.projetForm = new FormGroup({});
 }
 
-// Créer un nouveau projet
+// ****************************************************************************************
+// Creating a new project
+
   public save(){
     this.projet= {};
     this.projet.id = '';
     this.projet.titre = this.titreSaisi.value;
-    //recuperer la liste actuelle de projets
+
+    //I first want to reclaim the current projects list :
     this.projetService.behaviorSubject.subscribe((resultat) => {
       this.projets = resultat;
     })
-    this.projetService.saveProjetRemote(this.projet).subscribe(//set l'id renvoyé par le back
+
+    this.projetService.saveProjetRemote(this.projet).subscribe(
+      // I want to set the id given by back-end
       (resultat)=> {
         this.projet = resultat;
 
-        this.projets.push(this.projet);//ajout du projet avec id à la liste récupérée
+        // Then, I add the project to the reclaimed list
+        this.projets.push(this.projet);
         this.projetService.remplaceSubject(this.projets);
       }
     );
@@ -52,32 +57,38 @@ wasSent: boolean;
     this.ajoutProjetEvent.emit(this.wasSent);
   }
 
-  //Modifier un projet existant
+// ****************************************************************************************
+// Editing an existing project
+
   public update(projet: ProjetInterface){
     // this.projet={};
     // this.projet.id=projet.id;
     // this.projet.titre=this.titreSaisi.value;
     //this.projet.isUpdating = false;// Réafficher le projet et non le composant pr le modifier
 
-
     this.projetService.behaviorSubject.subscribe((resultat) => {
       this.projets = resultat;
 
     })
-    const index=this.projets.indexOf(projet);// Trouver l'index dans le tableau projets où l'on doit fr la modif
+
+    // Finding the index in the projects list where the editing has to be done
+    const index=this.projets.indexOf(projet);
 
     projet.isUpdating=false;
     projet.titre=this.titreSaisi.value;
     this.projetService.updateProjetRemote(projet).subscribe(
       ()=> {
 
-        this.projets.splice(index, 1, projet );//suppression de l'ancien projet à l'index recuperé
-                                                // et ajout du nouveau projet à cet index
+        // I delete the previous project at the index I found
+        this.projets.splice(index, 1, projet );
+                                                
+        // And I add the new one at this same index
         this.projetService.remplaceSubject(this.projets);
       }
     );
   }
 
+  // ****************************************************************************************
   public doNothing(projet: ProjetInterface){
     projet.isUpdating=false;
   }

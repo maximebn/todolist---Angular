@@ -27,13 +27,8 @@ export class ProjetsListComponent implements OnInit {
     this.getRemote();
     this.subscription = this.projetService.behaviorSubject.subscribe((resultat)=>{
       this.projets = resultat;
-
-
-
       this.projets.forEach(projet => {
         projet.isUpdating=false;
-
-
 
       });
     }

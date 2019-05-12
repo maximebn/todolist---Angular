@@ -13,7 +13,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   // --------------------------------------------------------------------------------- //
-  // Création d'un compte utilisateur :
+  // User account creation :
   public addUser(user: any): Observable<any> {
     const uriPost = environment.apiRoot + 'registration';
     const httpOptions = {

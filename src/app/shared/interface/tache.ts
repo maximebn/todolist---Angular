@@ -4,8 +4,6 @@ export interface TacheInterface {
     titre?: string;
     date?: string;
     priorite?: string;
-
-
     statut?:string;
     id?: any;
     projet?:ProjetInterface;

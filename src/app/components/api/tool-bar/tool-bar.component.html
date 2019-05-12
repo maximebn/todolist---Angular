@@ -1,4 +1,8 @@
+<!-- TOOLBAR COMPONENT -->
+
 <mat-toolbar color="primary" style="min-height: 55px !important; height: 30px !important;">
+
+  <!-- ONE  SINGLE ROW -->
     <mat-toolbar-row class="container col-lg-12 mx-auto">
          <div class="col-lg-2">
          </div>
@@ -16,11 +20,14 @@
             <i class="fas fa-plus"></i>
            </button>
 
+           <!-- POP CONTENT TO SIPLAY PERFORMANCE INDEX - POPOVER -->
+
            <ng-template #popContent><app-performance></app-performance></ng-template>
               <button mat-button [ngbPopover]="popContent">
                   <i class="fas fa-chart-pie"></i>
               </button>
 
+            <!-- SETTINGS : COLOR THEME, LOG OUT, UNSUBSCRIBE -->
            <button mat-button [matMenuTriggerFor]="settings"><i class="fas fa-cog"></i></button>
 
              <mat-menu #settings="matMenu">

@@ -22,14 +22,14 @@ export class ToolBarComponent implements OnInit {
   public projets: Array<ProjetInterface>;
   public subscription :Subscription;
 
-   // Injection du themeService dans le constructeur (service de changement de thème et sauvegarde en local storage)
+   // ThemeService injection within the constructor, if I xant to change color theme, locally sotred
    constructor(private themeService: ThemeService,
               private projetService:  ProjetService,
      private requestService: RequestService, private router: Router,
                private dialog: MatDialog, private userService: UserService, private snackBar: MatSnackBar, public dialogue: MatDialog) {
   }
 
-  // Initialisation : véfication et chargement du thème en local Storage sinon thème par défaut :
+  // Init : I check if there is a local color theme, if not I apply a default color theme :
   ngOnInit() {
     if (!localStorage.length) {
       this.themeService.changeToOrangeTheme();
@@ -65,7 +65,7 @@ export class ToolBarComponent implements OnInit {
   }
 
   // ----------------------------------------------------------- //
-  // Méthodes de changement du thème de couleur :
+  // Changing color theme :
 
   public changeToOrangeTheme(): void {
     if (!this.themeService.isOrangeTheme()) {
@@ -96,4 +96,4 @@ export class ToolBarComponent implements OnInit {
 
 }
 
-  // ----------------------------------------------------------- //
+// ----------------------------------------------------------- //

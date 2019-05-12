@@ -9,6 +9,7 @@ import { TacheInterface } from 'src/app/shared/interface/tache';
   templateUrl: './performance.component.html',
   styleUrls: ['./performance.component.scss']
 })
+
 export class PerformanceComponent implements OnInit {
   indicePerformance: number;
   nbreTachesEffectuees: number;
@@ -25,10 +26,8 @@ export class PerformanceComponent implements OnInit {
       this.nbreTachesEffectuees = result.nbreTachesEffectuees;
       this.nbreTachesEnRetard = result.nbreTachesEnRetard;
       this.indicePerformance = result.indicePerformance;
-      console.log(this.indicePerformance);
       });
 }
-
 
   public isWorking() {
     this.doIshow = true;
