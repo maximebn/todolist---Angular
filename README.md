@@ -1,12 +1,12 @@
-# ToDoList
+## ToDoList
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
 
-# Description
+## Description
 
 A very common and basic front-end development of a web-app project to manage daily tasks (to do list) ! Use of Angular 7 framework.
 
-# Features
+## Features
 
 - Homepage
 - Personal account page
