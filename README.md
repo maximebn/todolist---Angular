@@ -1,6 +1,24 @@
-# EssaiToDoIst
+# ToDoList
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
+
+# Description
+
+A very common and basic front-end development of a web-app project to manage daily tasks (to do list) ! Use of Angular 7 framework.
+
+# Features
+
+- Homepage
+- Personal account page
+- Registration
+- Token authentication
+- Tasks and project management (creation, updates, deletes, emailing ...)
+- Performance index on tasks' completion
+- Color themes
+- Unsubscription
+- Error interceptors
+
+...
 
 ## Development server
 
@@ -25,3 +43,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
+
