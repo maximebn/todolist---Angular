@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Description
 
-A very common and basic front-end development of a web-app project to manage daily tasks (to do list) ! Use of Angular 7 framework.
+A basic front-end development of a web-app project to manage daily tasks (to do list) ! Use of Angular 7 framework.
 
 ## Features
 
